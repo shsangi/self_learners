@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="theme-color" content="#0a1e3f">
+    <meta name="theme-color" content="#0ea5e9">
     <title>Syllabus · Self Learners</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
         :root {
             --navy: #0a1e3f; --navy-light: #1a3a6b; --navy-soft: #e8eef7;
             --black: #0f1419; --yellow: #f5b800; --yellow-soft: #fff7dd;
+            --sky: #0ea5e9; --sky-dark: #0284c7; --sky-soft: #e0f2fe; --sky-light: #7dd3fc;
             --bg: #f4f6fa; --card: #fff; --text: #0f1419;
             --text-soft: #475569; --text-muted: #94a3b8;
             --border: #e2e8f0;
@@ -33,54 +34,54 @@
 
         .header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
         .header h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; display: flex; align-items: center; gap: 10px; color: var(--navy); }
-        .header h1 span { background: var(--yellow); padding: 4px 12px; border-radius: var(--radius-full); font-size: .7rem; font-weight: 700; color: var(--black); text-transform: uppercase; }
-        .count-badge { background: var(--navy); color: #fff; padding: 6px 16px; border-radius: var(--radius-full); font-size: .78rem; font-weight: 700; box-shadow: var(--shadow-sm); }
+        .header h1 span { background: var(--sky); padding: 4px 12px; border-radius: var(--radius-full); font-size: .7rem; font-weight: 700; color: #fff; text-transform: uppercase; }
+        .count-badge { background: var(--sky); color: #fff; padding: 6px 16px; border-radius: var(--radius-full); font-size: .78rem; font-weight: 700; box-shadow: var(--shadow-sm); }
 
         .controls { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
         .controls-row { display: flex; flex-wrap: wrap; gap: 10px; }
         .search-box { flex: 1; position: relative; min-width: 180px; }
         .search-box input { width: 100%; padding: 12px 18px 12px 44px; border: 1.5px solid var(--border); border-radius: var(--radius-full); background: var(--card); font-size: .9rem; color: var(--text); box-shadow: var(--shadow-sm); transition: all .2s; }
-        .search-box input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 4px rgba(10,30,63,.1); }
+        .search-box input:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 4px rgba(14,165,233,.1); }
         .search-box::before { content: "🔍"; position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 1rem; opacity: .5; }
-        .subject-select { padding: 12px 40px 12px 18px; border: 1.5px solid var(--border); border-radius: var(--radius-full); background: var(--card); font-size: .9rem; color: var(--text); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230a1e3f' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; min-width: 160px; font-weight: 600; box-shadow: var(--shadow-sm); }
-        .subject-select:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 4px rgba(10,30,63,.1); }
+        .subject-select { padding: 12px 40px 12px 18px; border: 1.5px solid var(--border); border-radius: var(--radius-full); background: var(--card); font-size: .9rem; color: var(--text); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230ea5e9' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; min-width: 160px; font-weight: 600; box-shadow: var(--shadow-sm); }
+        .subject-select:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 4px rgba(14,165,233,.1); }
 
         .syllabus { display: flex; flex-direction: column; gap: 0; }
         .paper-block { background: var(--card); border-radius: var(--radius-lg); padding: 20px 18px 18px; margin-bottom: 16px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: all .2s; }
         .paper-block:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
         .paper-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; padding-bottom: 8px; }
-        .paper-title .marks { font-weight: 700; font-size: .72rem; color: var(--black); background: var(--yellow); padding: 4px 14px; border-radius: var(--radius-full); }
+        .paper-title .marks { font-weight: 700; font-size: .72rem; color: #fff; background: var(--sky); padding: 4px 14px; border-radius: var(--radius-full); }
         .paper-title .subject-link { color: var(--navy); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
-        .paper-title .subject-link:hover { color: var(--navy-light); }
+        .paper-title .subject-link:hover { color: var(--sky-dark); }
         .paper-title .subject-link::after { content: "↗"; font-size: .75rem; opacity: .5; font-weight: 700; }
-        .last-studied { font-size: .68rem; color: var(--navy); background: var(--navy-soft); padding: 5px 14px; border-radius: var(--radius-full); display: inline-block; margin: 6px 0 12px 0; font-weight: 600; border: 1px solid rgba(10,30,63,.08); }
+        .last-studied { font-size: .68rem; color: var(--sky-dark); background: var(--sky-soft); padding: 5px 14px; border-radius: var(--radius-full); display: inline-block; margin: 6px 0 12px 0; font-weight: 600; border: 1px solid var(--sky-light); }
         .last-studied span { font-weight: 700; }
         .subject-divider { border: none; border-top: 2px dashed var(--border); margin: 8px 0 14px 0; }
         .module-group { margin-bottom: 14px; }
         .module-head { font-weight: 700; font-size: .88rem; color: var(--black); margin-bottom: 8px; display: flex; align-items: baseline; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); }
-        .topic-item { padding: 10px 0 10px 16px; border-left: 3px solid var(--yellow); margin-left: 4px; margin-bottom: 10px; background: linear-gradient(to right, rgba(245,184,0,.04), transparent 60%); border-radius: 0 10px 10px 0; }
+        .topic-item { padding: 10px 0 10px 16px; border-left: 3px solid var(--sky); margin-left: 4px; margin-bottom: 10px; background: linear-gradient(to right, rgba(14,165,233,.04), transparent 60%); border-radius: 0 10px 10px 0; }
         .topic-item .topic-label { font-weight: 700; font-size: .88rem; color: var(--navy); }
         .topic-item .topic-label .topic-link { color: var(--navy); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
-        .topic-item .topic-label .topic-link:hover { color: var(--navy-light); }
+        .topic-item .topic-label .topic-link:hover { color: var(--sky-dark); }
         .topic-item .topic-label .topic-link::after { content: "↗"; font-size: .65rem; opacity: .5; font-weight: 700; }
         .subtopic-list { margin: 6px 0 2px 6px; padding-left: 6px; list-style: none; counter-reset: sub-counter; }
         .subtopic-list li { counter-increment: sub-counter; font-size: .83rem; color: var(--text-soft); line-height: 1.55; padding: 3px 0 3px 26px; position: relative; margin-bottom: 2px; }
-        .subtopic-list li::before { content: counter(sub-counter); position: absolute; left: 0; top: 3px; width: 18px; height: 18px; background: var(--navy); color: #fff; border-radius: 50%; font-size: .65rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .subtopic-list li::before { content: counter(sub-counter); position: absolute; left: 0; top: 3px; width: 18px; height: 18px; background: var(--sky); color: #fff; border-radius: 50%; font-size: .65rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
         .subtopic-list li .sub-link { color: var(--text-soft); cursor: pointer; }
-        .subtopic-list li .sub-link:hover { color: var(--navy); }
+        .subtopic-list li .sub-link:hover { color: var(--sky-dark); }
         .subtopic-list li .sub-link::after { content: "↗"; font-size: .55rem; opacity: .4; }
         .sub-subtopic-list { margin: 4px 0 4px 22px; padding-left: 4px; list-style: none; }
         .sub-subtopic-list li { font-size: .8rem; color: var(--text-soft); line-height: 1.55; padding: 2px 0 2px 20px; position: relative; }
-        .sub-subtopic-list li::before { content: attr(data-letter) ")"; position: absolute; left: 0; font-weight: 600; color: var(--navy); font-size: .72rem; }
+        .sub-subtopic-list li::before { content: attr(data-letter) ")"; position: absolute; left: 0; font-weight: 600; color: var(--sky-dark); font-size: .72rem; }
         .sub-subtopic-list li .sub-link { color: var(--text-soft); cursor: pointer; }
-        .sub-subtopic-list li .sub-link:hover { color: var(--navy); }
+        .sub-subtopic-list li .sub-link:hover { color: var(--sky-dark); }
         .sub-subtopic-list li .sub-link::after { content: "↗"; font-size: .5rem; opacity: .35; margin-left: 2px; }
-        .topic-item .book-ref { font-size: .78rem; color: var(--text-soft); margin-top: 6px; padding: 6px 12px; background: var(--bg); border-radius: 10px; border-left: 3px solid var(--navy); }
-        .topic-item .book-ref .book-link { color: var(--navy); cursor: pointer; font-weight: 600; }
+        .topic-item .book-ref { font-size: .78rem; color: var(--text-soft); margin-top: 6px; padding: 6px 12px; background: var(--sky-soft); border-radius: 10px; border-left: 3px solid var(--sky); }
+        .topic-item .book-ref .book-link { color: var(--sky-dark); cursor: pointer; font-weight: 600; }
         .topic-item .book-ref .book-link::after { content: "↗"; font-size: .55rem; opacity: .5; }
         .empty-state { padding: 48px 20px; text-align: center; background: var(--card); border-radius: var(--radius-lg); color: var(--text-soft); border: 2px dashed var(--border); font-size: .92rem; font-weight: 500; }
         .loading { display: flex; justify-content: center; align-items: center; gap: 12px; padding: 48px 0; color: var(--text-soft); font-size: .9rem; font-weight: 600; }
-        .spinner { width: 24px; height: 24px; border: 3px solid var(--border); border-top: 3px solid var(--navy); border-radius: 50%; animation: spin .8s linear infinite; }
+        .spinner { width: 24px; height: 24px; border: 3px solid var(--border); border-top: 3px solid var(--sky); border-radius: 50%; animation: spin .8s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         .footer { margin-top: 20px; font-size: .72rem; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border); padding-top: 16px; font-weight: 500; }
     </style>
@@ -104,9 +105,6 @@
 </div>
 
 <script>
-/* ============================================================
-   SYLLABUS PAGE — CSS Syllabus browser with search
-   ============================================================ */
 (function () {
     const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSficiiXO39uzMxJ7TUSd_2GNxZaX8R_ZlIjr_CUIpG2DTbMfw3eXJH3b1wJdbeX6ZUCykDg82uAiac/pub?output=csv';
     const container = document.getElementById('syllabusContainer');
