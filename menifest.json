@@ -1,16 +1,15 @@
 {
-  "name": "Self Learners · CSS 2027 Hub",
+  "name": "Self Learners",
   "short_name": "Self Learners",
   "description": "High quality CSS preparation hub — MCQs, syllabus, past papers, schedule & eligibility.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f4f6fa",
-  "theme_color": "#0ea5e9",
+  "background_color": "#f0f4f8",
+  "theme_color": "#0f766e",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["education", "productivity"],
   "icons": [
     {
       "src": "https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27",
