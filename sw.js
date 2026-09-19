@@ -3,11 +3,6 @@ const CACHE = 'self-learners-v1';
 const PRECACHE = [
   './',
   './index.html',
-  './page-edu.html',
-  './page-schedule.html',
-  './page-syllabus.html',
-  './page-papers.html',
-  './page-eligibility.html',
   './manifest.json'
 ];
 
@@ -30,18 +25,15 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
-
   const url = new URL(req.url);
 
-  // Network-first for Google Sheets (always fresh data)
+  // Network-first for Google Sheets / Drive
   if (url.hostname.includes('docs.google.com') || url.hostname.includes('googleusercontent.com')) {
-    event.respondWith(
-      fetch(req).catch(() => caches.match(req))
-    );
+    event.respondWith(fetch(req).catch(() => caches.match(req)));
     return;
   }
 
-  // Cache-first for everything else (app shell + assets)
+  // Cache-first for app assets
   event.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;
