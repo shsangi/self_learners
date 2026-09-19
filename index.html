@@ -1,486 +1,3489 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="theme-color" content="#0ea5e9">
-    <title>Self Learners · CSS 2027 Hub</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="theme-color" content="#0f766e"/>
+<meta name="description" content="Self Learners MCQ Quiz"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Self Learners"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<title>Self Learners</title>
+<link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27" id="faviconLink">
+<link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27">
+<link rel="manifest" href="./manifest.json" id="appManifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --bg:#f0f4f8; --sf:#fff; --sf2:#f8fafc; --bd:#e2e8f0;
+  --tx:#0f172a; --tx2:#475569; --tx3:#64748b;
+  --pr:#0f766e; --prd:#0d9488; --ac:#0ea5e9;
+  --ok:#10b981; --okb:#d1fae5;
+  --er:#ef4444; --erb:#fee2e2;
+  --wn:#f59e0b; --wnb:#fef3c7;
+  --iv:#ec4899; --ivb:#fce7f3;
+  --r:20px; --rf:9999px;
+  --sh:0 10px 40px -12px rgba(15,23,42,.12);
+  --shl:0 25px 50px -12px rgba(15,23,42,.18);
+}
 
-    <!-- PWA -->
-    <link rel="manifest" href="./manifest.json">
-    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27">
-    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Self Learners">
-    <meta name="mobile-web-app-capable" content="yes">
+/* ============================================================
+   BASE
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+body{
+  font-family:Inter,system-ui,sans-serif;
+  background:var(--bg);
+  min-height:100dvh;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:1.25rem;
+  color:var(--tx);
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior:contain;
+}
+input,textarea{-webkit-user-select:text;user-select:text}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
-        :root {
-            --navy: #0a1e3f; --navy-light: #1a3a6b; --navy-soft: #e8eef7;
-            --black: #0f1419; --black-soft: #1c232b;
-            --yellow: #f5b800; --yellow-dark: #d99e00; --yellow-soft: #fff7dd;
-            --sky: #0ea5e9; --sky-dark: #0284c7; --sky-soft: #e0f2fe; --sky-light: #7dd3fc;
-            --bg: #f4f6fa; --card: #ffffff; --text: #0f1419;
-            --text-soft: #475569; --text-muted: #94a3b8;
-            --border: #e2e8f0;
-            --shadow-sm: 0 2px 6px rgba(10,30,63,.06);
-            --shadow-md: 0 8px 20px -6px rgba(10,30,63,.12);
-            --shadow-lg: 0 20px 40px -12px rgba(10,30,63,.18);
-            --radius-full: 9999px; --bottom-nav-h: 68px;
-        }
-        html { -webkit-text-size-adjust: 100%; }
-        body {
-            background: var(--bg);
-            background-image: radial-gradient(circle at 0% 0%, rgba(14,165,233,.06) 0%, transparent 40%),
-                              radial-gradient(circle at 100% 100%, rgba(10,30,63,.05) 0%, transparent 45%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            padding: 1rem .75rem 2rem;
-            color: var(--text);
-            display: flex; justify-content: center;
-            font-size: 15px; line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-        .app-wrapper { max-width: 1560px; width: 100%; }
+/* ============================================================
+   INSTALL BANNER
+   ============================================================ */
+.install-banner{
+  position:fixed;bottom:1rem;left:50%;
+  transform:translateX(-50%) translateY(200%);
+  background:var(--sf);border-radius:18px;
+  padding:.85rem 1.15rem;
+  box-shadow:0 20px 50px -12px rgba(15,23,42,.3);
+  display:flex;align-items:center;gap:.85rem;
+  z-index:9998;max-width:420px;width:calc(100% - 2rem);
+  border:1.5px solid var(--bd);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.install-banner.show{transform:translateX(-50%) translateY(0)}
+.install-banner .ib-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,#0f766e,#0ea5e9);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;flex-shrink:0;overflow:hidden;
+}
+.install-banner .ib-icon img{width:100%;height:100%;object-fit:cover}
+.install-banner .ib-text{flex:1;min-width:0}
+.install-banner .ib-text strong{display:block;font-size:.88rem;font-weight:700;margin-bottom:.1rem}
+.install-banner .ib-text span{font-size:.75rem;color:var(--tx3)}
+.install-banner .ib-btn{
+  background:var(--pr);color:#fff;border:none;
+  font-weight:600;font-size:.8rem;padding:.55rem 1.1rem;
+  border-radius:var(--rf);cursor:pointer;font-family:inherit;
+  white-space:nowrap;flex-shrink:0;
+}
+.install-banner .ib-close{
+  background:0 0;border:none;font-size:1rem;color:var(--tx3);
+  cursor:pointer;padding:.25rem;border-radius:6px;flex-shrink:0;line-height:1;
+}
 
-        .toggle-bar {
-            display: flex; gap: 4px; margin-bottom: 16px;
-            background: var(--card); padding: 6px;
-            border-radius: var(--radius-full);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            position: sticky; top: 8px; z-index: 100;
-            backdrop-filter: blur(12px);
-        }
-        .toggle-btn {
-            flex: 1; text-align: center;
-            padding: 10px 14px;
-            border-radius: var(--radius-full);
-            font-weight: 600; font-size: .82rem;
-            color: var(--text-soft); background: transparent;
-            border: none; cursor: pointer;
-            transition: all .22s cubic-bezier(.4,0,.2,1);
-            display: flex; align-items: center; justify-content: center;
-            gap: 6px; white-space: nowrap; min-height: 40px;
-        }
-        .toggle-btn .emoji { font-size: .95rem; }
-        .toggle-btn:hover { background: var(--sky-soft); color: var(--sky-dark); }
-        .toggle-btn.active {
-            background: linear-gradient(135deg, var(--sky), var(--sky-dark));
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(14,165,233,.35);
-        }
-        .toggle-btn.active .emoji { color: #fff; }
+/* ============================================================
+   LOGIN SCREEN
+   ============================================================ */
+.login-wrapper{
+  max-width:400px;width:100%;background:var(--sf);
+  border-radius:28px;padding:2.75rem 2rem;
+  box-shadow:var(--shl);border:1px solid rgba(255,255,255,.6);
+  scroll-margin:1rem;
+}
+.login-wrapper .logo{
+  width:72px;height:72px;border-radius:18px;object-fit:contain;
+  background:var(--sf2);padding:10px;margin:0 auto 1.25rem;display:block;
+}
+.login-wrapper h1{
+  font-size:1.85rem;font-weight:800;letter-spacing:-.03em;
+  background:linear-gradient(135deg,#0f766e,#0ea5e9);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-align:center;margin-bottom:.25rem;
+}
+.login-wrapper .sub{color:var(--tx3);font-size:.9rem;text-align:center;margin-bottom:2rem}
+.login-wrapper label{display:block;font-weight:600;font-size:.8rem;color:var(--tx2);margin-bottom:.35rem}
+.login-wrapper .input-group{position:relative;margin-bottom:1.15rem}
+.login-wrapper .input-group input{
+  width:100%;padding:.9rem 1.15rem;padding-right:3rem;
+  border:1.5px solid var(--bd);border-radius:var(--rf);
+  font-size:.95rem;font-family:inherit;background:var(--sf2);color:var(--tx);
+}
+.login-wrapper .input-group input:focus{
+  outline:0;border-color:var(--pr);background:#fff;
+  box-shadow:0 0 0 4px rgba(15,118,110,.12);
+}
+.login-wrapper .toggle-password{
+  position:absolute;right:1rem;top:50%;transform:translateY(-50%);
+  background:0 0;border:none;cursor:pointer;font-size:1.15rem;color:var(--tx3);padding:.25rem;
+}
+.login-wrapper .btn-login{
+  width:100%;background:linear-gradient(135deg,#0f766e,#0d9488);
+  border:none;color:#fff;font-weight:600;font-size:1rem;
+  padding:.95rem;border-radius:var(--rf);cursor:pointer;
+  box-shadow:0 8px 20px rgba(15,118,110,.25);margin-top:.5rem;
+}
+.login-wrapper .btn-login:disabled{opacity:.5;cursor:not-allowed}
+.login-wrapper .btn-guest{
+  width:100%;background:var(--sf2);border:1.5px solid var(--bd);
+  color:var(--tx2);font-weight:600;font-size:.95rem;
+  padding:.85rem;border-radius:var(--rf);cursor:pointer;font-family:inherit;
+  margin-top:.75rem;display:flex;align-items:center;justify-content:center;gap:.4rem;
+}
+.login-wrapper .btn-guest:hover{background:#fff;border-color:var(--pr);color:var(--pr)}
+.login-wrapper .divider{
+  display:flex;align-items:center;gap:.6rem;
+  margin:.85rem 0 .5rem;color:var(--tx3);font-size:.72rem;font-weight:500;
+}
+.login-wrapper .divider::before,
+.login-wrapper .divider::after{content:'';flex:1;height:1px;background:var(--bd)}
+.login-wrapper .login-footer{text-align:center;font-size:.8rem;color:var(--tx3);margin-top:1.25rem}
 
-        .page-stage {
-            position: relative;
-            min-height: calc(100vh - 100px);
-            background: var(--card);
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .page-frame {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            border: none; background: transparent;
-            opacity: 0; pointer-events: none;
-            transition: opacity .25s ease;
-        }
-        .page-frame.active {
-            opacity: 1; pointer-events: auto;
-            position: relative;
-            min-height: calc(100vh - 100px);
-            height: auto;
-        }
-        .page-loading {
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            gap: 12px; padding: 4rem 2rem;
-            color: var(--text-soft); font-weight: 600;
-        }
-        .spinner {
-            width: 32px; height: 32px;
-            border: 3px solid var(--border);
-            border-top-color: var(--sky);
-            border-radius: 50%;
-            animation: spin .8s linear infinite;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+/* ============================================================
+   TOASTS
+   ============================================================ */
+.toast-container{
+  position:fixed;top:1.25rem;right:1.25rem;z-index:9999;
+  display:flex;flex-direction:column;gap:.6rem;
+  max-width:360px;width:100%;
+}
+.toast{
+  padding:.9rem 1.1rem;border-radius:14px;
+  font-size:.875rem;font-weight:500;box-shadow:var(--shl);
+  animation:slideIn .35s cubic-bezier(.16,1,.3,1);
+  display:flex;align-items:center;gap:.7rem;
+  border:1px solid rgba(255,255,255,.2);
+}
+.toast.success{background:var(--okb);color:#065f46;border-left:4px solid var(--ok)}
+.toast.error  {background:var(--erb);color:#991b1b;border-left:4px solid var(--er)}
+.toast.warning{background:var(--wnb);color:#92400e;border-left:4px solid var(--wn)}
+.toast.info   {background:#e0f2fe;color:#075985;border-left:4px solid var(--ac)}
+.toast .toast-close{
+  margin-left:auto;background:0 0;border:none;font-size:1.1rem;
+  cursor:pointer;color:inherit;opacity:.5;
+}
+@keyframes slideIn{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes fadeOut{to{opacity:0;transform:translateY(-8px)}}
+.toast.removing{animation:fadeOut .25s ease forwards}
 
-        .bottom-nav {
-            display: none;
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: var(--bottom-nav-h);
-            background: rgba(255,255,255,.96);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border);
-            box-shadow: 0 -8px 24px rgba(10,30,63,.08);
-            z-index: 9000;
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        .bottom-nav-inner {
-            display: flex; height: var(--bottom-nav-h);
-            justify-content: space-around; max-width: 720px; margin: 0 auto;
-        }
-        .bottom-nav-btn {
-            flex: 1; background: transparent; border: none;
-            cursor: pointer; display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            gap: 3px; color: var(--text-muted);
-            font-family: inherit; font-weight: 600;
-            font-size: .63rem; padding: 8px 4px;
-            position: relative; transition: color .2s;
-        }
-        .bottom-nav-btn .nav-emoji {
-            font-size: 1.3rem; transition: transform .22s cubic-bezier(.34,1.56,.64,1);
-        }
-        .bottom-nav-btn.active { color: var(--sky-dark); }
-        .bottom-nav-btn.active .nav-emoji {
-            transform: translateY(-3px) scale(1.1);
-            filter: drop-shadow(0 3px 6px rgba(14,165,233,.4));
-        }
-        .bottom-nav-btn.active::before {
-            content: ''; position: absolute; top: 0;
-            left: 50%; transform: translateX(-50%);
-            width: 32px; height: 3px;
-            border-radius: 0 0 4px 4px;
-            background: var(--sky);
-        }
+/* ============================================================
+   CONFIRM DIALOG
+   ============================================================ */
+.confirm-overlay{
+  position:fixed;inset:0;background:rgba(15,23,42,.45);
+  backdrop-filter:blur(6px);z-index:10000;
+  display:none;align-items:center;justify-content:center;
+}
+.confirm-overlay.active{display:flex}
+.confirm-box{
+  background:var(--sf);border-radius:24px;
+  padding:2rem 2.25rem;max-width:420px;width:90%;
+  box-shadow:var(--shl);animation:scaleIn .3s cubic-bezier(.16,1,.3,1);
+}
+@keyframes scaleIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.confirm-box .icon{text-align:center;margin-bottom:.4rem}
+.confirm-box .icon span{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:64px;height:64px;border-radius:50%;background:var(--sf2);font-size:2rem;
+}
+.confirm-box h3{font-size:1.25rem;font-weight:700;text-align:center;margin-bottom:.4rem}
+.confirm-box p{color:var(--tx2);font-size:.925rem;text-align:center;margin-bottom:1.5rem;line-height:1.5}
+.confirm-box .btn-group{display:flex;gap:.75rem;justify-content:center}
+.confirm-box .btn-group button{
+  padding:.65rem 1.75rem;border-radius:var(--rf);
+  font-weight:600;font-size:.9rem;border:none;cursor:pointer;font-family:inherit;
+}
+.confirm-box .btn-cancel {background:var(--sf2);color:var(--tx2);border:1px solid var(--bd)}
+.confirm-box .btn-confirm{background:var(--er);color:#fff}
+.confirm-box .btn-primary{background:var(--pr);color:#fff}
 
-        /* INSTALL BANNER */
-        .install-banner {
-            position: fixed; bottom: 1.2rem; left: 50%;
-            transform: translateX(-50%) translateY(200%);
-            background: #fff;
-            border-radius: 20px;
-            padding: 1.1rem 1.4rem;
-            display: flex; align-items: center; gap: 1rem;
-            z-index: 9998; max-width: 460px; width: calc(100% - 2rem);
-            border: 2px solid var(--sky);
-            transition: transform .45s cubic-bezier(.16,1,.3,1);
-            box-shadow: 0 30px 60px -15px rgba(14,165,233,.35), 0 0 0 4px rgba(14,165,233,.08);
-        }
-        .install-banner.show { transform: translateX(-50%) translateY(0); }
-        .install-banner .ib-icon {
-            width: 52px; height: 52px; border-radius: 14px;
-            background: linear-gradient(135deg, var(--sky), var(--sky-dark));
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-weight: 800; flex-shrink: 0; overflow: hidden;
-            box-shadow: 0 6px 16px -4px rgba(14,165,233,.5);
-        }
-        .install-banner .ib-icon img { width: 100%; height: 100%; object-fit: cover; }
-        .install-banner .ib-text { flex: 1; min-width: 0; }
-        .install-banner .ib-text strong {
-            display: block; font-size: .95rem; font-weight: 800;
-            color: var(--navy); margin-bottom: .2rem; letter-spacing: -.01em;
-        }
-        .install-banner .ib-text span { font-size: .78rem; color: var(--text-soft); line-height: 1.35; display: block; }
-        .install-banner .ib-btn {
-            background: linear-gradient(135deg, var(--sky), var(--sky-dark));
-            color: #fff; border: none; font-weight: 800;
-            font-size: .85rem; padding: .7rem 1.3rem;
-            border-radius: var(--radius-full); cursor: pointer; font-family: inherit;
-            box-shadow: 0 4px 12px -4px rgba(14,165,233,.6);
-            transition: all .2s;
-            white-space: nowrap;
-        }
-        .install-banner .ib-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -4px rgba(14,165,233,.7); }
-        .install-banner .ib-close {
-            background: 0 0; border: none; font-size: 1.1rem;
-            color: var(--text-muted); cursor: pointer; padding: .3rem;
-            border-radius: 50%; width: 28px; height: 28px;
-            display: flex; align-items: center; justify-content: center;
-            transition: all .15s;
-        }
-        .install-banner .ib-close:hover { background: var(--bg); color: var(--text); }
+/* ============================================================
+   QUIZ WRAPPER + TOP BAR
+   ============================================================ */
+.quiz-wrapper{
+  max-width:860px;width:100%;background:var(--sf);
+  border-radius:24px;padding:0 1.75rem 1.5rem;
+  box-shadow:var(--shl);display:none;
+  border:1px solid rgba(255,255,255,.5);
+}
+.top-bar{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  flex-wrap:wrap;gap:.4rem .6rem;
+  padding:.85rem 0 .45rem;margin-bottom:.45rem;
+  position:sticky;top:0;z-index:50;background:var(--sf);
+  border-bottom:1px solid transparent;
+  transition:border-color .2s,box-shadow .2s;
+}
+.top-bar.scrolled{
+  border-bottom-color:var(--bd);
+  box-shadow:0 4px 12px -8px rgba(15,23,42,.15);
+}
+.brand{display:flex;align-items:flex-start;gap:.45rem;min-width:0;flex:1 1 auto}
+.brand-logo{
+  width:30px;height:30px;border-radius:8px;object-fit:contain;
+  background:var(--sf2);padding:3px;flex-shrink:0;margin-top:2px;
+}
+.brand-title{min-width:0;flex:1 1 auto}
+.brand-title h1{
+  font-size:.92rem;font-weight:700;
+  background:linear-gradient(135deg,#0f766e,#0ea5e9);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;word-break:break-word;max-width:280px;
+}
+.selected-subjects{
+  font-size:.62rem;font-weight:500;color:var(--tx3);line-height:1.3;margin-top:.1rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;word-break:break-word;max-width:280px;
+}
+.selected-subjects:empty{display:none}
+.selected-subjects .subj-label{color:var(--tx3);font-weight:600}
+.selected-subjects .subj-list{color:var(--pr);font-weight:500}
+.top-actions{
+  display:flex;align-items:center;gap:.3rem;
+  flex-wrap:wrap;justify-content:flex-end;flex-shrink:0;
+}
 
-        @media (max-width: 768px) {
-            .toggle-bar { display: none; }
-            .bottom-nav { display: block; }
-            body { padding: .6rem .6rem calc(var(--bottom-nav-h) + env(safe-area-inset-bottom) + 16px); }
-            .install-banner { bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom) + 1rem); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-        }
-    </style>
+/* ----- Mode toggle ----- */
+.mode-toggle{
+  display:inline-flex;align-items:center;
+  background:var(--sf2);border:1.5px solid var(--bd);
+  border-radius:var(--rf);padding:2px;gap:1px;
+}
+.mode-toggle label{
+  display:inline-flex;align-items:center;gap:.2rem;
+  padding:.22rem .55rem;border-radius:var(--rf);
+  font-size:.66rem;font-weight:600;color:var(--tx2);
+  cursor:pointer;white-space:nowrap;
+}
+.mode-toggle label input{display:none}
+.mode-toggle label.active{background:linear-gradient(135deg,#0f766e,#0d9488);color:#fff}
+
+/* ----- Pills ----- */
+.attempted-pill{
+  display:inline-flex;align-items:center;gap:.2rem;
+  background:linear-gradient(135deg,#ecfeff,#f0fdfa);
+  border:1.5px solid #99f6e4;padding:.18rem .5rem;
+  border-radius:var(--rf);font-size:.66rem;font-weight:600;color:#0e7490;
+  white-space:nowrap;
+}
+.attempted-pill .attempted{color:var(--pr);font-weight:800}
+.timer-pill{
+  display:inline-flex;align-items:center;gap:.15rem;
+  background:var(--sf2);border:1.5px solid var(--bd);
+  padding:.18rem .5rem;border-radius:var(--rf);
+  font-size:.66rem;font-weight:600;color:var(--tx2);white-space:nowrap;
+}
+.timer-pill .timer{color:var(--tx);font-weight:700}
+.timer-pill.warning{background:var(--wnb);border-color:var(--wn);color:#92400e}
+.timer-pill.danger{background:var(--erb);border-color:var(--er);color:#991b1b;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+
+/* Facts progress pill — only shown in facts mode */
+.facts-pill{
+  display:none;align-items:center;gap:.2rem;
+  background:linear-gradient(135deg,#fef3c7,#fffbeb);
+  border:1.5px solid #fcd34d;padding:.18rem .5rem;
+  border-radius:var(--rf);font-size:.66rem;font-weight:600;color:#92400e;
+  white-space:nowrap;
+}
+.facts-pill .facts-done{color:#b45309;font-weight:800}
+.facts-mode-active .facts-pill{display:inline-flex}
+
+.btn-icon{
+  background:0 0;border:none;font-size:.85rem;cursor:pointer;
+  padding:.2rem;border-radius:7px;width:26px;height:26px;
+  display:flex;align-items:center;justify-content:center;color:var(--tx2);
+}
+.btn-icon:disabled{opacity:.4;cursor:not-allowed}
+.btn-icon .refresh-spin{display:inline-block;animation:spin .9s linear infinite}
+@keyframes spin{100%{transform:rotate(360deg)}}
+
+.btn-drawer{
+  display:none;background:0 0;border:none;font-size:1rem;cursor:pointer;
+  padding:.2rem;border-radius:7px;width:26px;height:26px;
+  align-items:center;justify-content:center;color:var(--tx2);
+}
+.btn-drawer:hover{background:var(--sf2)}
+
+/* ============================================================
+   PROGRESS + QUESTION CARD
+   ============================================================ */
+.progress-block{background:#e2e8f0;height:5px;border-radius:var(--rf);margin:.25rem 0 .35rem;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#0f766e,#0ea5e9);border-radius:var(--rf);transition:width .35s}
+
+.question-card{
+  background:var(--sf2);border:1px solid var(--bd);
+  border-radius:20px;padding:1.5rem 1.5rem .85rem;
+  margin:.6rem 0 .95rem;position:relative;
+}
+.question-body{
+  max-height:52vh;overflow-y:auto;overflow-x:hidden;
+  padding-right:.6rem;padding-bottom:.5rem;
+  scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;
+}
+.question-body::-webkit-scrollbar{width:8px}
+.question-body::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;border:2px solid var(--sf2)}
+.question-card .q-text{
+  font-weight:600;font-size:1.1rem;margin-bottom:.95rem;
+  color:var(--tx);line-height:1.5;cursor:pointer;
+}
+.question-card .q-text:hover{color:var(--pr);text-decoration:underline;text-underline-offset:3px}
+
+/* ----- Options ----- */
+.options-list{display:flex;flex-direction:column;gap:.55rem}
+.options-list .option-btn{
+  background:#fff;border:1.5px solid var(--bd);border-radius:var(--rf);
+  padding:.75rem 1.2rem;font-size:.95rem;font-weight:500;color:var(--tx);
+  text-align:left;cursor:pointer;display:flex;align-items:center;gap:.7rem;
+  width:100%;font-family:inherit;
+}
+.options-list .option-btn:hover:not(:disabled){background:#f0fdfa;border-color:#5eead4}
+.options-list .option-btn .letter{
+  background:#e0f2fe;color:#0369a1;font-weight:700;
+  width:28px;height:28px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:.78rem;
+}
+.options-list .option-btn.correct{background:var(--okb);border-color:var(--ok)}
+.options-list .option-btn.correct .letter{background:var(--ok);color:#fff}
+.options-list .option-btn.wrong{background:var(--erb);border-color:var(--er)}
+.options-list .option-btn.wrong .letter{background:var(--er);color:#fff}
+.options-list .option-btn.selected-opt{border-color:var(--pr);background:#f0fdfa}
+.options-list .option-btn:disabled{cursor:default;opacity:.85}
+.options-list .option-btn .icon-indicator{margin-left:auto;font-size:1.1rem;font-weight:600}
+
+/* ----- Feedback + meta chips ----- */
+.feedback-box{
+  margin-top:.95rem;padding:.85rem 1rem;border-radius:14px;
+  font-weight:600;font-size:.88rem;line-height:1.45;
+}
+.feedback-box.correct-fb{background:#d1fae5;border:1.5px solid #10b981;color:#065f46}
+.feedback-box.wrong-fb  {background:#fee2e2;border:1.5px solid #ef4444;color:#991b1b}
+.q-meta-block{margin-top:.75rem;display:flex;flex-wrap:wrap;gap:.4rem}
+.meta-chip{
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:#fff;border:1px solid var(--bd);padding:.28rem .65rem;
+  border-radius:var(--rf);font-size:.68rem;font-weight:600;color:var(--tx2);
+}
+.meta-chip.subject-chip{background:#ecfeff;color:#0e7490;border-color:#a5f3fc}
+.meta-chip.topic-chip  {background:#fef3c7;color:#92400e;border-color:#fde68a}
+.meta-chip.job-chip    {background:#ede9fe;color:#5b21b6;border-color:#ddd6fe}
+
+/* ============================================================
+   ACTION BAR + BUTTONS
+   ============================================================ */
+.action-bar{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:.8rem;margin:.85rem 0 .1rem;
+}
+.action-bar .left-buttons{display:flex;gap:.5rem}
+
+.btn-primary{
+  background:#0f766e;border:none;color:#fff;font-weight:600;font-size:.9rem;
+  padding:.6rem 1.5rem;border-radius:var(--rf);cursor:pointer;font-family:inherit;
+}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed}
+.btn-success{
+  background:var(--ok);border:none;color:#fff;font-weight:600;font-size:.9rem;
+  padding:.6rem 1.5rem;border-radius:var(--rf);cursor:pointer;font-family:inherit;
+}
+.btn-success:disabled{opacity:.4;cursor:not-allowed}
+
+.end-quiz-bottom{
+  margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--bd);
+  display:flex;justify-content:center;
+}
+.end-quiz-bottom .btn-success{
+  padding:.75rem 2.5rem;font-size:1rem;
+  box-shadow:0 6px 20px rgba(16,185,129,.3);
+}
+.result-active .end-quiz-bottom{display:none!important}
+
+/* ============================================================
+   OVERVIEW GRID
+   ============================================================ */
+.overview-section{margin-top:1.25rem;border-top:1px solid var(--bd);padding-top:.85rem}
+.overview-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:.5rem;flex-wrap:wrap;gap:.4rem;
+}
+.overview-header>span{font-weight:600;font-size:.78rem;color:var(--tx2);letter-spacing:.03em}
+.legend{display:flex;gap:.7rem;font-size:.7rem;font-weight:500;color:var(--tx2);flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:.25rem}
+.legend-item .count{font-weight:700;font-size:.78rem;min-width:1rem;text-align:center}
+.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0}
+.legend-dot.done-dot   {background:#0ea5e9}
+.legend-dot.pending-dot{background:#cbd5e1}
+.legend-dot.correct-dot{background:var(--ok)}
+.legend-dot.wrong-dot  {background:var(--er)}
+.legend-dot.invalid-dot{background:var(--iv)}
+
+.grid-dots{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-top:.25rem}
+.grid-dot{
+  width:28px;height:28px;border-radius:50%;background:#e2e8f0;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:600;font-size:.65rem;color:var(--tx2);
+  cursor:pointer;border:2px solid transparent;font-family:inherit;
+}
+.grid-dot.correct-dot{background:var(--ok);color:#fff}
+.grid-dot.wrong-dot  {background:var(--er);color:#fff}
+.grid-dot.pending-dot{background:#e2e8f0;color:var(--tx2)}
+.grid-dot.invalid-dot{background:var(--iv);color:#fff}
+.grid-dot.done-dot   {background:#0ea5e9;color:#fff}
+.grid-dot.locked-dot {background:#f1f5f9;color:#cbd5e1;cursor:not-allowed;position:relative}
+.grid-dot.locked-dot::after{content:'🔒';position:absolute;font-size:.5rem;bottom:-2px;right:-2px}
+.grid-dot.active-dot {border-color:#0f172a;transform:scale(1.12)}
+
+/* ============================================================
+   RESULT CARD
+   ============================================================ */
+.result-card{text-align:center;padding:.5rem;display:none}
+.result-card h2{font-size:1.7rem;font-weight:700;letter-spacing:-.02em}
+.result-score{
+  font-size:3rem;font-weight:800;
+  background:linear-gradient(135deg,#0f766e,#0ea5e9);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin:.3rem 0 .2rem;
+}
+.result-msg{color:var(--tx2);font-size:1rem;margin:.2rem 0 1.25rem}
+.result-details{
+  text-align:left;margin:1.2rem 0 .85rem;
+  display:flex;flex-direction:column;gap:.8rem;
+  max-height:380px;overflow-y:auto;padding-right:.4rem;
+}
+.result-details .detail-item{
+  background:var(--sf2);border:1px solid var(--bd);
+  border-radius:14px;padding:.75rem .9rem;
+}
+.result-details .detail-item.correct-detail{border-left:5px solid var(--ok)}
+.result-details .detail-item.wrong-detail  {border-left:5px solid var(--er)}
+.result-details .detail-item.invalid-detail{border-left:5px solid var(--iv);background:var(--ivb)}
+.result-details .detail-q{font-weight:600;font-size:.85rem;color:var(--tx);margin-bottom:.2rem;cursor:pointer}
+.result-details .detail-answer{font-size:.82rem;color:var(--tx2)}
+.result-details .detail-answer .correct-ans{color:var(--ok);font-weight:600}
+
+.submitted-header{
+  text-align:center;padding:.5rem 1rem;background:var(--okb);
+  border-radius:var(--rf);margin-bottom:.85rem;
+  font-weight:600;color:#065f46;font-size:.85rem;
+}
+
+/* ============================================================
+   READ (SOLVED) MODE
+   ============================================================ */
+.read-container{
+  margin-top:.65rem;display:flex;flex-direction:column;gap:.75rem;
+  max-height:78vh;min-height:55vh;overflow-y:auto;padding-right:.4rem;
+  scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;
+}
+.read-container::-webkit-scrollbar{width:8px}
+.read-container::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;border:2px solid var(--sf)}
+.read-item{
+  background:var(--sf2);border:1px solid var(--bd);
+  border-left:4px solid var(--pr);border-radius:16px;
+  padding:.85rem 1rem .75rem;position:relative;
+}
+.read-item .read-q{
+  font-size:.92rem;line-height:1.5;color:var(--tx);font-weight:600;
+  word-break:break-word;cursor:pointer;padding-right:1.6rem;
+}
+.read-item .read-q:hover{color:var(--pr);text-decoration:underline;text-underline-offset:3px}
+.read-item .read-q .read-srno{font-weight:800;color:var(--pr);margin-right:.4rem}
+.read-item .read-options{margin-top:.45rem;display:flex;flex-direction:column;gap:.28rem}
+.read-item .read-opt{
+  display:flex;align-items:flex-start;gap:.45rem;
+  padding:.35rem .6rem;border-radius:10px;
+  font-size:.82rem;line-height:1.45;color:var(--tx2);font-weight:500;
+  background:#fff;border:1px solid var(--bd);word-break:break-word;
+}
+.read-item .read-opt .ro-letter{
+  flex-shrink:0;width:20px;height:20px;border-radius:50%;
+  background:#e0f2fe;color:#0369a1;font-weight:700;font-size:.68rem;
+  display:inline-flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.read-item .read-opt.correct-opt{background:var(--okb);border-color:var(--ok);color:#065f46;font-weight:600}
+.read-item .read-opt.correct-opt .ro-letter{background:var(--ok);color:#fff}
+.read-item .read-opt.correct-opt .ro-check{margin-left:auto;font-weight:700;color:#065f46}
+.read-item .read-meta{margin-top:.45rem;display:flex;flex-wrap:wrap;gap:.3rem;font-size:.6rem;font-weight:600}
+.read-item .read-meta .rm-chip{
+  display:inline-flex;align-items:center;gap:.15rem;
+  padding:.12rem .45rem;border-radius:var(--rf);
+  background:#fff;border:1px solid var(--bd);color:var(--tx3);
+}
+.read-item .read-meta .rm-subject{background:#ecfeff;color:#0e7490;border-color:#a5f3fc}
+.read-item .read-meta .rm-topic  {background:#fef3c7;color:#92400e;border-color:#fde68a}
+.read-item .read-meta .rm-job    {background:#ede9fe;color:#5b21b6;border-color:#ddd6fe}
+.read-item .read-mcol{
+  position:absolute;top:8px;right:8px;width:16px;height:16px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.85);pointer-events:none;
+}
+.read-item .read-mcol svg{width:10px;height:10px;display:block}
+.read-item .read-mcol .q-mark{font-size:.65rem;font-weight:700;color:#9ca3af}
+.read-item .read-mcol.true {background:#e0f2fe}
+.read-item .read-mcol.false{background:#fee2e2}
+.read-item .read-mcol.empty{background:#f1f5f9}
+.read-empty{text-align:center;padding:2.5rem 1rem;color:var(--tx3);font-size:.95rem;font-style:italic}
+
+/* ============================================================
+   SEARCH BAR (Solved + Facts)
+   ============================================================ */
+.mode-search-bar{
+  display:flex;align-items:center;gap:.5rem;
+  margin:.6rem 0 .25rem;
+  background:var(--sf2);border:1.5px solid var(--bd);
+  border-radius:var(--rf);padding:.35rem .75rem;
+  transition:border-color .15s,box-shadow .15s;
+}
+.mode-search-bar:focus-within{
+  border-color:var(--pr);background:#fff;
+  box-shadow:0 0 0 3px rgba(15,118,110,.1);
+}
+.mode-search-bar .msb-icon{
+  font-size:.85rem;color:var(--tx3);flex-shrink:0;line-height:1;
+}
+.mode-search-bar input{
+  flex:1;border:none;background:0 0;outline:0;
+  font-family:inherit;font-size:.85rem;color:var(--tx);
+  padding:.35rem .15rem;min-width:60px;
+}
+.mode-search-bar input::placeholder{color:var(--tx3)}
+.mode-search-bar .msb-clear{
+  background:0 0;border:none;cursor:pointer;
+  color:var(--tx3);font-size:.9rem;padding:.15rem .3rem;
+  border-radius:50%;line-height:1;flex-shrink:0;display:none;
+}
+.mode-search-bar .msb-clear:hover{color:var(--tx);background:var(--bd)}
+.mode-search-bar.has-text .msb-clear{display:block}
+.mode-search-bar .msb-count{
+  font-size:.65rem;font-weight:700;color:var(--pr);
+  background:#ecfeff;border:1px solid #a5f3fc;
+  padding:.1rem .4rem;border-radius:var(--rf);
+  white-space:nowrap;flex-shrink:0;
+}
+.mode-search-bar .msb-count:empty{display:none}
+
+/* ============================================================
+   FACTS MODE
+   ============================================================ */
+.facts-container{
+  margin-top:.65rem;display:flex;flex-direction:column;gap:.6rem;
+  max-height:78vh;min-height:55vh;overflow-y:auto;padding-right:.4rem;
+  scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;
+}
+.facts-container::-webkit-scrollbar{width:8px}
+.facts-container::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;border:2px solid var(--sf)}
+
+.fact-card{
+  background:var(--sf2);border:1px solid var(--bd);
+  border-left:4px solid #0ea5e9;border-radius:16px;
+  padding:.85rem 1rem .8rem;position:relative;
+  cursor:pointer;transition:background .15s,border-color .15s,transform .15s;
+}
+.fact-card:hover{background:#f0f9ff;border-color:#bae6fd;transform:translateY(-1px)}
+.fact-card:active{background:#e0f2fe}
+.fact-card.read-flag{background:#f0fdf4;border-left-color:var(--ok)}
+
+.fact-card .fact-head{
+  display:flex;align-items:flex-start;gap:.5rem;
+  font-size:.92rem;line-height:1.5;color:var(--tx);
+  word-break:break-word;padding-right:1.6rem;
+}
+.fact-card .fact-srno{
+  flex-shrink:0;background:#0ea5e9;color:#fff;font-weight:700;
+  font-size:.68rem;padding:.15rem .5rem;border-radius:var(--rf);
+  margin-top:2px;min-width:24px;text-align:center;
+}
+.fact-card .fact-question{font-weight:600;flex:1}
+.fact-card .fact-search-hint{
+  font-size:.55rem;color:#9ca3af;margin-left:.35rem;opacity:.6;
+}
+.fact-card .fact-answer{
+  margin-top:.45rem;padding-top:.45rem;
+  border-top:1px dashed #e5e7eb;
+  font-size:.82rem;line-height:1.45;color:#047857;font-weight:500;
+  word-break:break-word;
+}
+.fact-card .fact-answer.empty{color:#9ca3af;font-style:italic;font-weight:400}
+.fact-card .fact-meta{
+  margin-top:.45rem;display:flex;flex-wrap:wrap;gap:.3rem;
+  font-size:.6rem;font-weight:600;
+}
+.fact-card .fact-meta .fm-chip{
+  display:inline-flex;align-items:center;gap:.15rem;
+  padding:.12rem .45rem;border-radius:var(--rf);
+  background:#ecfeff;color:#0e7490;border:1px solid #a5f3fc;
+}
+.fact-card .fact-meta .fm-chip.topic{background:#fef3c7;color:#92400e;border-color:#fde68a}
+
+/* ----- Tiny corner verification icon (fact cards) ----- */
+.verify-corner{
+  position:absolute;
+  top:6px;
+  right:6px;
+  width:14px;
+  height:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:9px;
+  font-weight:700;
+  line-height:1;
+  border-radius:50%;
+  pointer-events:none;
+  user-select:none;
+  box-shadow:0 0 0 1px white;
+  z-index:2;
+}
+.verify-corner.true    { background:#2563eb; color:#fff; }
+.verify-corner.false   { background:#dc2626; color:#fff; }
+.verify-corner.unknown { background:#e5e7eb; color:#6b7280; }
+
+/* ============================================================
+   MODE SWITCHING
+   ============================================================ */
+.read-mode-active #singleQuestionView,
+.read-mode-active .progress-block,
+.read-mode-active .overview-section,
+.read-mode-active .end-quiz-bottom,
+.read-mode-active #resultArea{display:none!important}
+.read-mode-active #readView{display:block!important}
+#readView{display:none}
+
+.facts-mode-active #singleQuestionView,
+.facts-mode-active .progress-block,
+.facts-mode-active .overview-section,
+.facts-mode-active .end-quiz-bottom,
+.facts-mode-active #readView,
+.facts-mode-active #resultArea{display:none!important}
+.facts-mode-active #factsView{display:block!important}
+#factsView{display:none}
+
+/* Hide MCQ pills and timer when in facts mode */
+.facts-mode-active .attempted-pill,
+.facts-mode-active .timer-pill{display:none!important}
+
+.attempted-pill,
+.timer-pill{display:inline-flex}
+
+/* ============================================================
+   FILTER PANEL — shared styles for modal + drawer
+   ============================================================ */
+.filter-panel h3{font-size:1.05rem;margin-bottom:.7rem;font-weight:700;text-align:left}
+.filter-panel .panel-user-info{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--sf2);border-radius:14px;padding:.5rem .85rem;
+  margin-bottom:.75rem;border:1px solid var(--bd);
+}
+.filter-panel .panel-user-left{display:flex;align-items:center;gap:.5rem}
+.filter-panel .panel-user-avatar{
+  width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,#0f766e,#0ea5e9);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.82rem;
+}
+.filter-panel .panel-user-name{font-weight:600;font-size:.85rem}
+.filter-panel .panel-logout-btn{
+  background:0 0;border:1.5px solid var(--er);color:var(--er);
+  font-weight:600;font-size:.72rem;padding:.35rem .85rem;
+  border-radius:var(--rf);cursor:pointer;font-family:inherit;white-space:nowrap;
+}
+.filter-panel .panel-reset-row{display:flex;justify-content:flex-end;margin-bottom:.2rem}
+.filter-panel .btn-reset-filters{
+  background:0 0;border:1.5px dashed var(--bd);color:var(--tx3);
+  font-weight:600;font-size:.7rem;padding:.35rem .8rem;
+  border-radius:var(--rf);cursor:pointer;font-family:inherit;
+}
+.filter-panel .panel-label{
+  display:block;text-align:left;font-weight:600;font-size:.75rem;
+  color:var(--tx2);margin:.6rem 0 .2rem;
+}
+.filter-panel .panel-actions{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap;margin-top:.9rem}
+.filter-panel .panel-actions .btn-primary,
+.filter-panel .panel-actions .btn-secondary{padding:.55rem 1.4rem;font-size:.85rem}
+.filter-panel .btn-secondary{
+  background:var(--sf2);border:1px solid var(--bd);color:var(--tx2);
+  font-weight:600;border-radius:var(--rf);cursor:pointer;font-family:inherit;
+}
+
+/* ----- Multi-select (shared) ----- */
+.filter-panel .ms-container{position:relative;width:100%;text-align:left}
+.filter-panel .ms-input-wrapper{
+  display:flex;align-items:center;background:#fff;
+  border:1.5px solid var(--bd);border-radius:12px;
+  padding:.4rem .6rem;min-height:42px;cursor:text;
+}
+.filter-panel .ms-input-wrapper:focus-within{border-color:var(--pr);box-shadow:0 0 0 3px rgba(15,118,110,.1)}
+.filter-panel .ms-chips{display:flex;flex-wrap:wrap;gap:.25rem;flex:1;min-width:0}
+.filter-panel .ms-chip{
+  display:inline-flex;align-items:center;gap:.25rem;
+  background:#ecfeff;color:#0e7490;border:1px solid #a5f3fc;
+  padding:.15rem .4rem .15rem .55rem;border-radius:var(--rf);
+  font-size:.7rem;font-weight:600;max-width:100%;
+}
+.filter-panel .ms-chip .ms-chip-text{overflow:hidden;text-overflow:ellipsis;max-width:140px}
+.filter-panel .ms-chip .ms-chip-remove{
+  background:0 0;border:none;cursor:pointer;font-size:.85rem;
+  color:#0e7490;padding:0 .1rem;border-radius:50%;width:14px;height:14px;
+}
+.filter-panel .ms-search-input{
+  border:none;outline:0;font-family:inherit;font-size:.8rem;
+  padding:.25rem;min-width:60px;flex:1;background:0 0;color:var(--tx);
+}
+.filter-panel .ms-search-input::placeholder{color:var(--tx3);font-size:.75rem}
+.filter-panel .ms-arrow{font-size:.6rem;color:var(--tx3);margin-left:.3rem;transition:transform .2s}
+.filter-panel .ms-container.open .ms-arrow{transform:rotate(180deg)}
+.filter-panel .ms-dropdown{
+  position:absolute;top:calc(100% + 4px);left:0;right:0;
+  background:#fff;border:1.5px solid var(--bd);border-radius:12px;
+  box-shadow:0 12px 32px -8px rgba(15,23,42,.25);
+  max-height:280px;overflow-y:auto;z-index:200;display:none;padding:.3rem;
+}
+.filter-panel .ms-container.open .ms-dropdown{display:block}
+.filter-panel .ms-option{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.4rem .6rem;border-radius:8px;cursor:pointer;
+  font-size:.8rem;color:var(--tx);
+}
+.filter-panel .ms-option:hover{background:var(--sf2)}
+.filter-panel .ms-option.selected{background:#ecfeff;color:#0e7490;font-weight:600}
+.filter-panel .ms-option .ms-check{
+  width:16px;height:16px;border-radius:4px;border:1.5px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:.7rem;color:#fff;
+}
+.filter-panel .ms-option.selected .ms-check{background:var(--pr);border-color:var(--pr)}
+.filter-panel .ms-no-results{text-align:center;padding:.8rem;font-size:.78rem;color:var(--tx3);font-style:italic}
+.filter-panel .ms-select-all-row{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.4rem .6rem;border-bottom:1px dashed var(--bd);margin-bottom:.2rem;
+  cursor:pointer;font-size:.78rem;font-weight:700;color:var(--pr);border-radius:8px;
+}
+.filter-panel .ms-select-all-row .ms-check{
+  width:16px;height:16px;border-radius:4px;border:1.5px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:.7rem;color:#fff;
+}
+.filter-panel .ms-select-all-row.selected .ms-check{background:var(--pr);border-color:var(--pr)}
+
+/* ----- Desktop modal ----- */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(15,23,42,.45);
+  display:none;align-items:center;justify-content:center;
+  z-index:1000;backdrop-filter:blur(6px);
+}
+.modal-overlay.active{display:flex}
+.modal-box{
+  background:var(--sf);max-width:480px;width:92%;
+  border-radius:22px;padding:1.7rem 1.5rem 1.4rem;
+  box-shadow:var(--shl);animation:scaleIn .3s;
+  max-height:92vh;overflow-y:auto;
+}
+
+/* ----- Mobile right drawer ----- */
+.drawer-overlay{
+  position:fixed;inset:0;background:rgba(15,23,42,.45);
+  backdrop-filter:blur(4px);z-index:1100;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s ease;
+}
+.drawer-overlay.active{opacity:1;pointer-events:auto}
+
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;
+  width:min(92vw,380px);
+  background:var(--sf);
+  box-shadow:-20px 0 50px -12px rgba(15,23,42,.3);
+  z-index:1101;
+  transform:translateX(105%);
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+.drawer.open{transform:translateX(0)}
+.drawer-body{
+  padding:1rem 1.25rem 1.25rem;
+  overflow-y:auto;flex:1;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  display:flex;flex-direction:column;
+}
+.drawer-bottom{
+  margin-top:auto;
+  padding-top:1.25rem;
+  border-top:1px solid var(--bd);
+}
+.drawer-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:.85rem;
+  padding-top:.85rem;
+  border-top:1px solid var(--bd);
+}
+.drawer-footer h3{
+  font-size:.9rem;font-weight:700;margin:0;
+  color:var(--tx2);
+  display:flex;align-items:center;gap:.4rem;
+}
+.drawer-footer .drawer-close{
+  background:var(--sf2);border:none;
+  width:34px;height:34px;border-radius:50%;
+  font-size:1rem;cursor:pointer;color:var(--tx2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.drawer-footer .drawer-close:hover{background:var(--bd);color:var(--tx)}
+.drawer-actions{
+  display:flex;flex-direction:column;gap:.55rem;
+  margin-top:1rem;
+}
+.drawer-actions .btn-primary,
+.drawer-actions .btn-secondary,
+.drawer-actions .btn-cancel-full{
+  width:100%;justify-content:center;
+  padding:.7rem 1.2rem;font-size:.9rem;font-weight:600;
+}
+.drawer-actions .btn-secondary{
+  background:var(--sf2);border:1px solid var(--bd);color:var(--tx2);
+}
+.drawer-actions .btn-cancel-full{
+  background:0 0;border:1.5px solid var(--bd);color:var(--tx2);
+  border-radius:var(--rf);cursor:pointer;font-family:inherit;
+}
+
+/* ============================================================
+   M-COL BADGE
+   ============================================================ */
+.m-col-badge{
+  position:absolute;top:6px;right:8px;width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.85);z-index:5;pointer-events:none;
+}
+.m-col-badge svg{width:12px;height:12px;display:block}
+.m-col-badge .q-mark{font-size:.78rem;font-weight:700;color:#9ca3af}
+.m-col-badge.true {background:#e0f2fe}
+.m-col-badge.false{background:#fee2e2}
+.m-col-badge.empty{background:#f1f5f9}
+
+/* ============================================================
+   JOB SITES BUTTON + MODAL
+   ============================================================ */
+.btn-job-sites {
+    background: #16a34a;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: .78rem;
+    padding: .5rem .8rem;
+    border-radius: var(--rf);
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    transition: background .15s;
+    margin-bottom: .55rem;
+}
+.btn-job-sites:hover { background: #15803d; }
+.btn-job-sites:active { transform: scale(.98); }
+
+.jobsites-overlay {
+    position: fixed; inset: 0;
+    background: rgba(15,23,42,.55);
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.jobsites-overlay.active { display: flex; }
+.jobsites-modal {
+    background: var(--sf);
+    max-width: 560px;
+    width: 100%;
+    max-height: 85vh;
+    border-radius: 24px;
+    box-shadow: var(--shl);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: scaleIn .3s cubic-bezier(.16,1,.3,1);
+}
+.jobsites-header {
+    padding: 1.1rem 1.3rem .6rem;
+    border-bottom: 1px solid var(--bd);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+.jobsites-header h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+}
+.jobsites-header h2 span { font-size: 1.2rem; }
+.jobsites-close {
+    background: var(--sf2);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--tx2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s;
+}
+.jobsites-close:hover { background: var(--bd); }
+.jobsites-search {
+    padding: .6rem 1.3rem .4rem;
+    flex-shrink: 0;
+}
+.jobsites-search input {
+    width: 100%;
+    padding: .55rem .9rem;
+    border: 1.5px solid var(--bd);
+    border-radius: var(--rf);
+    font-family: inherit;
+    font-size: .8rem;
+    background: var(--sf2);
+    outline: none;
+    transition: border-color .15s;
+}
+.jobsites-search input:focus { border-color: var(--pr); background: #fff; }
+.jobsites-list {
+    padding: .5rem 1.3rem 1.2rem;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+}
+
+.jobsites-item {
+    background: var(--sf2);
+    border: 1px solid var(--bd);
+    border-radius: 12px;
+    padding: .55rem .75rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    transition: background .15s;
+    font-size: .78rem;
+    flex-wrap: wrap;
+}
+.jobsites-item:hover { background: #f0fdf4; border-color: #86efac; }
+.jobsites-item .js-srno {
+    background: #16a34a;
+    color: #fff;
+    font-weight: 700;
+    font-size: .62rem;
+    padding: .12rem .42rem;
+    border-radius: var(--rf);
+    flex-shrink: 0;
+    min-width: 20px;
+    text-align: center;
+}
+.jobsites-item .js-sector {
+    font-weight: 700;
+    font-size: .7rem;
+    color: #0f766e;
+    flex-shrink: 0;
+    background: #ecfeff;
+    padding: .12rem .5rem;
+    border-radius: var(--rf);
+    border: 1px solid #a5f3fc;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.jobsites-item .js-name {
+    font-weight: 600;
+    font-size: .8rem;
+    color: var(--tx);
+    flex: 1 1 120px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.jobsites-item .js-url {
+    font-size: .7rem;
+    color: #0ea5e9;
+    text-decoration: none;
+    font-weight: 500;
+    flex-shrink: 0;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.jobsites-item .js-url:hover { text-decoration: underline; color: #0284c7; }
+
+.jobsites-loading, .jobsites-empty {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--tx3);
+    font-size: .85rem;
+}
+.jobsites-loading .spinner {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 3px solid var(--bd);
+    border-top-color: var(--pr);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin-bottom: .45rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:640px){
+  .brand-title h1,.selected-subjects{max-width:180px}
+  .brand-title h1{font-size:.85rem}
+  .selected-subjects{font-size:.6rem}
+  .m-col-badge{top:5px;right:5px;width:15px;height:15px}
+  .m-col-badge svg{width:10px;height:10px}
+  .m-col-badge .q-mark{font-size:.65rem}
+}
+@media(max-width:560px){
+  .btn-drawer{display:flex}
+  .btn-icon#refreshBtn{display:none}
+  .quiz-wrapper{padding:0 .75rem 1rem}
+  .brand-logo{width:26px;height:26px}
+  .brand-title h1{font-size:.8rem;max-width:130px}
+  .selected-subjects{max-width:130px;font-size:.58rem}
+  .question-card{padding:1rem .9rem .65rem}
+  .question-card .q-text{font-size:.98rem}
+  .options-list .option-btn{padding:.6rem .9rem;font-size:.85rem}
+  .grid-dot{width:26px;height:26px;font-size:.6rem}
+  .action-bar{flex-direction:column;align-items:stretch;gap:.6rem}
+  .action-bar .left-buttons{justify-content:center}
+  .btn-primary,.btn-success{width:100%;justify-content:center;font-size:.85rem;padding:.55rem 1.2rem}
+  .end-quiz-bottom .btn-success{padding:.65rem 2rem;font-size:.9rem}
+  .timer-pill,.attempted-pill,.facts-pill{padding:.15rem .4rem;font-size:.6rem}
+  .mode-toggle label{padding:.2rem .5rem;font-size:.6rem}
+  .mode-toggle label .mode-emoji{display:none}
+  .toast-container{top:.75rem;right:.75rem;max-width:calc(100% - 1.5rem)}
+  .confirm-box{padding:1.5rem}
+  .confirm-box .btn-group{flex-direction:column}
+  .confirm-box .btn-group button{width:100%}
+  .question-body{max-height:46vh}
+  body{align-items:flex-start;padding-top:1rem;padding-bottom:1rem}
+  .login-wrapper{padding:1.75rem 1.25rem;border-radius:22px}
+  .login-wrapper .logo{width:56px;height:56px;margin-bottom:.85rem;padding:8px}
+  .login-wrapper h1{font-size:1.5rem}
+  .login-wrapper .sub{margin-bottom:1.25rem}
+  .login-wrapper .input-group{margin-bottom:.85rem}
+  .read-item .read-q{font-size:.85rem}
+  .read-item .read-opt{font-size:.78rem}
+  .read-container{max-height:72vh;min-height:50vh}
+  .facts-container{max-height:72vh;min-height:50vh}
+  .fact-card .fact-head{font-size:.85rem}
+  .fact-card .fact-answer{font-size:.78rem}
+  .mode-search-bar input{font-size:.8rem}
+  .filter-panel .ms-dropdown{max-height:220px}
+  .jobsites-modal { max-height: 92vh; border-radius: 18px; }
+  .jobsites-header { padding: .9rem 1rem .5rem; }
+  .jobsites-list { padding: .5rem 1rem 1rem; }
+  .jobsites-item { padding: .5rem .65rem; font-size: .72rem; gap: .4rem; }
+  .jobsites-item .js-url { max-width: 110px; font-size: .66rem; }
+  .jobsites-item .js-sector { max-width: 80px; font-size: .64rem; }
+  .jobsites-item .js-name { font-size: .75rem; }
+}
+@media(display-mode:standalone){
+  body{
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+    padding-left:env(safe-area-inset-left);
+    padding-right:env(safe-area-inset-right);
+  }
+  .drawer{
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+}
+</style>
 </head>
 <body>
-<div class="app-wrapper">
-    <div class="toggle-bar" id="topToggleBar">
-        <button class="toggle-btn active" data-page="edu" data-src="page-edu.html">
-            <span class="emoji">🎓</span> Edu
-        </button>
-        <button class="toggle-btn" data-page="schedule" data-src="page-schedule.html">
-            <span class="emoji">📅</span> Schedule
-        </button>
-        <button class="toggle-btn" data-page="syllabus" data-src="page-syllabus.html">
-            <span class="emoji">📋</span> Syllabus
-        </button>
-        <button class="toggle-btn" data-page="papers" data-src="page-papers.html">
-            <span class="emoji">📄</span> Papers
-        </button>
-        <button class="toggle-btn" data-page="eligibility" data-src="page-eligibility.html">
-            <span class="emoji">🛡️</span> Eligibility
-        </button>
-    </div>
 
-    <div class="page-stage" id="pageStage"></div>
+<!-- ============================================================
+     TOAST CONTAINER
+     ============================================================ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ============================================================
+     INSTALL BANNER (PWA)
+     ============================================================ -->
+<div class="install-banner" id="installBanner">
+  <div class="ib-icon"><img src="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27" alt="SL"></div>
+  <div class="ib-text">
+    <strong>Install Self Learners</strong>
+    <span>Add to home screen for quick access</span>
+  </div>
+  <button class="ib-btn" id="installBtn">Install</button>
+  <button class="ib-close" id="installClose">✕</button>
 </div>
 
-<nav class="bottom-nav" id="bottomNav" role="navigation">
-    <div class="bottom-nav-inner">
-        <button class="bottom-nav-btn active" data-page="edu" data-src="page-edu.html">
-            <span class="nav-emoji">🎓</span>
-            <span class="nav-label">Edu</span>
-        </button>
-        <button class="bottom-nav-btn" data-page="schedule" data-src="page-schedule.html">
-            <span class="nav-emoji">📅</span>
-            <span class="nav-label">Schedule</span>
-        </button>
-        <button class="bottom-nav-btn" data-page="syllabus" data-src="page-syllabus.html">
-            <span class="nav-emoji">📋</span>
-            <span class="nav-label">Syllabus</span>
-        </button>
-        <button class="bottom-nav-btn" data-page="papers" data-src="page-papers.html">
-            <span class="nav-emoji">📄</span>
-            <span class="nav-label">Papers</span>
-        </button>
-        <button class="bottom-nav-btn" data-page="eligibility" data-src="page-eligibility.html">
-            <span class="nav-emoji">🛡️</span>
-            <span class="nav-label">Eligibility</span>
-        </button>
+<!-- ============================================================
+     CONFIRM DIALOG
+     ============================================================ -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <div class="icon"><span id="confirmIcon">❓</span></div>
+    <h3 id="confirmTitle">Are you sure?</h3>
+    <p id="confirmMessage">This action cannot be undone.</p>
+    <div class="btn-group">
+      <button class="btn-cancel"  id="confirmCancel">Cancel</button>
+      <button class="btn-primary" id="confirmOk">Confirm</button>
     </div>
-</nav>
+  </div>
+</div>
 
-<!-- INSTALL BANNER (hub only) -->
-<div class="install-banner" id="installBanner">
-    <div class="ib-icon">
-        <img src="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27"
-             alt="SL" onerror="this.parentElement.textContent='SL'">
+<!-- ============================================================
+     LOGIN SCREEN
+     ============================================================ -->
+<div class="login-wrapper" id="loginScreen">
+  <img class="logo" id="loginLogo"
+       src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='20' fill='%230f766e'/%3E%3Ctext x='40' y='52' text-anchor='middle' font-family='Inter,sans-serif' font-size='38' font-weight='800' fill='white'%3ESL%3C/text%3E%3C/svg%3E"
+       alt="Logo"/>
+  <h1>Self Learners</h1>
+  <p class="sub">We provide you high quality content.</p>
+
+  <label for="emailInput">Email / Username</label>
+  <div class="input-group">
+    <input type="text" id="emailInput" placeholder="Enter your email or username" autocomplete="username"/>
+  </div>
+
+  <label for="passwordInput">Password</label>
+  <div class="input-group">
+    <input type="password" id="passwordInput" placeholder="Enter your password" autocomplete="current-password"/>
+    <button class="toggle-password" id="togglePasswordBtn" type="button">👁️</button>
+  </div>
+
+  <button class="btn-login" id="loginBtn">Sign In</button>
+
+  <div class="divider">or</div>
+
+  <button class="btn-guest" id="guestBtn">
+    👤 Continue as Guest
+    <span style="font-size:.75rem;font-weight:500;color:#92400e;">(15 MCQs only)</span>
+  </button>
+
+  <div class="login-footer"><span id="loginStatus">Loading...</span></div>
+</div>
+
+<!-- ============================================================
+     QUIZ APP
+     ============================================================ -->
+<div class="quiz-wrapper" id="quizApp">
+
+  <!-- ----- Top bar (sticky) ----- -->
+  <div class="top-bar" id="topBar">
+    <div class="brand">
+      <img class="brand-logo" id="brandLogo"
+           src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230f766e'/%3E%3Ctext x='24' y='32' text-anchor='middle' font-family='Inter,sans-serif' font-size='24' font-weight='700' fill='white'%3ESL%3C/text%3E%3C/svg%3E"
+           alt="Logo">
+      <div class="brand-title">
+        <h1 id="quizTitle">All Jobs MCQs</h1>
+        <div class="selected-subjects" id="selectedSubjectsLine"></div>
+      </div>
     </div>
-    <div class="ib-text">
-        <strong>📲 Install Self Learners App</strong>
-        <span>Get quick access &amp; work offline — tap Install to add to your home screen.</span>
+    <div class="top-actions">
+      <div class="mode-toggle" id="modeToggle">
+        <label id="modeMcqLabel" class="active">
+          <input type="radio" name="displayMode" id="modeMcqRadio" value="mcq" checked/>
+          <span class="mode-emoji">📝</span> MCQs
+        </label>
+        <label id="modeReadLabel">
+          <input type="radio" name="displayMode" id="modeReadRadio" value="read"/>
+          <span class="mode-emoji">📖</span> Solved
+        </label>
+        <label id="modeFactsLabel">
+          <input type="radio" name="displayMode" id="modeFactsRadio" value="facts"/>
+          <span class="mode-emoji">💡</span> Facts
+        </label>
+      </div>
+      <span class="attempted-pill" id="attemptedPill">
+        <span class="attempted" id="attemptedCount">0</span>
+        <span>/</span>
+        <span id="totalCount">0</span>
+      </span>
+      <span class="timer-pill" id="timerPill">
+        <span class="timer" id="timerDisplay">00:00</span>
+      </span>
+      <span class="facts-pill" id="factsPill">
+        💡 <span class="facts-done" id="factsDoneCount">0</span>
+        <span>/</span>
+        <span id="factsTotalCount">0</span>
+      </span>
+      <!-- Desktop: opens modal -->
+      <button class="btn-icon" id="refreshBtn" title="Filter &amp; Refresh">
+        <span id="refreshIcon">⚙️</span>
+      </button>
+      <!-- Mobile: opens drawer -->
+      <button class="btn-drawer" id="drawerBtn" title="Filters &amp; options">☰</button>
     </div>
-    <button class="ib-btn" id="installBtn">Install</button>
-    <button class="ib-close" id="installClose" aria-label="Close">✕</button>
+  </div>
+
+  <!-- ----- Quiz content ----- -->
+  <div id="quizContent">
+
+    <div class="progress-block">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- MCQ mode view -->
+    <div id="singleQuestionView">
+      <div id="submittedBanner" style="display:none" class="submitted-header">
+        ✅ Submitted — Click "End Quiz" for final score.
+      </div>
+      <div id="questionCard" class="question-card"></div>
+      <div class="action-bar">
+        <div class="left-buttons">
+          <button class="btn-primary" id="prevBtn">◀ Back</button>
+          <button class="btn-primary" id="nextBtn">Next ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solved (read) mode view -->
+    <div id="readView">
+      <!-- Search bar for Solved mode -->
+      <div class="mode-search-bar" id="readSearchBar">
+        <span class="msb-icon">🔍</span>
+        <input type="text" id="readSearchInput" placeholder="Search questions, options, topics... (case-insensitive)" autocomplete="off"/>
+        <span class="msb-count" id="readSearchCount"></span>
+        <button class="msb-clear" id="readSearchClear" aria-label="Clear">✕</button>
+      </div>
+      <div class="read-container" id="readContainer"></div>
+      <div class="guest-lock" id="readGuestLock" style="display:none">
+        <div class="gl-icon">🔒</div>
+        <h3>Login Required</h3>
+        <p>You've reached the 15‑MCQ guest limit in Solved mode. Please login to view all questions.</p>
+        <button class="gl-btn" id="readLockLoginBtn">🔐 Login to Continue</button>
+      </div>
+    </div>
+
+    <!-- Facts mode view -->
+    <div id="factsView">
+      <!-- Search bar for Facts mode -->
+      <div class="mode-search-bar" id="factsSearchBar">
+        <span class="msb-icon">🔍</span>
+        <input type="text" id="factsSearchInput" placeholder="Search facts, answers, topics, subjects... (case-insensitive)" autocomplete="off"/>
+        <span class="msb-count" id="factsSearchCount"></span>
+        <button class="msb-clear" id="factsSearchClear" aria-label="Clear">✕</button>
+      </div>
+      <div class="facts-container" id="factsContainer"></div>
+      <div class="guest-lock" id="factsGuestLock" style="display:none">
+        <div class="gl-icon">🔒</div>
+        <h3>Login Required</h3>
+        <p>You've reached the 15‑fact guest limit in Facts mode. Please login to view all facts.</p>
+        <button class="gl-btn" id="factsLockLoginBtn">🔐 Login to Continue</button>
+      </div>
+    </div>
+
+    <!-- Overview grid -->
+    <div class="overview-section">
+      <div class="overview-header">
+        <span>OVERVIEW</span>
+        <div class="legend">
+          <span class="legend-item"><span class="legend-dot done-dot"></span> Done <span class="count" id="doneCount">0</span></span>
+          <span class="legend-item"><span class="legend-dot pending-dot"></span> Pending <span class="count" id="pendingCount">0</span></span>
+          <span class="legend-item"><span class="legend-dot correct-dot"></span> Correct <span class="count" id="correctCount">0</span></span>
+          <span class="legend-item"><span class="legend-dot wrong-dot"></span> Wrong <span class="count" id="wrongCount">0</span></span>
+          <span class="legend-item" id="invalidLegend" style="display:none">
+            <span class="legend-dot invalid-dot"></span> Invalid <span class="count" id="invalidCount">0</span>
+          </span>
+        </div>
+      </div>
+      <div class="grid-dots" id="dotGrid"></div>
+    </div>
+
+    <!-- End Quiz (bottom) -->
+    <div class="end-quiz-bottom" id="endQuizBottom">
+      <button class="btn-success" id="endQuizBtn">🏁 End Quiz</button>
+    </div>
+
+    <!-- Result card -->
+    <div class="result-card" id="resultArea">
+      <h2>🏁 Quiz Complete</h2>
+      <div class="result-score" id="finalScore">0 / 0</div>
+      <p class="result-msg" id="resultMessage">Keep learning!</p>
+      <div class="result-details" id="resultDetails"></div>
+      <button class="btn-primary" id="restartFromResult">⟳ Try again</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FILTER — Desktop modal
+       ============================================================ -->
+  <div class="modal-overlay" id="refreshModal">
+    <div class="modal-box filter-panel">
+      <h3>⚙️ Filter &amp; Refresh</h3>
+
+      <div class="panel-user-info">
+        <div class="panel-user-left">
+          <span class="panel-user-avatar" id="modalUserAvatar">U</span>
+          <span class="panel-user-name" id="modalUserName">User</span>
+        </div>
+        <button class="panel-logout-btn" id="modalLogoutBtn">🚪 Logout</button>
+      </div>
+
+      <div class="panel-reset-row">
+        <button class="btn-reset-filters" id="modalResetBtn">⟲ Reset Filters</button>
+      </div>
+
+      <label class="panel-label">💼 Jobs</label>
+      <div class="ms-container" id="modalJobMsContainer">
+        <div class="ms-input-wrapper" id="modalJobMsWrapper">
+          <div class="ms-chips" id="modalJobMsChips"></div>
+          <input type="text" class="ms-search-input" id="modalJobMsSearch" placeholder="Search jobs..."/>
+          <span class="ms-arrow">▼</span>
+        </div>
+        <div class="ms-dropdown" id="modalJobMsDropdown"></div>
+      </div>
+
+      <label class="panel-label">📚 Subjects</label>
+      <div class="ms-container" id="modalSubjMsContainer">
+        <div class="ms-input-wrapper" id="modalSubjMsWrapper">
+          <div class="ms-chips" id="modalSubjMsChips"></div>
+          <input type="text" class="ms-search-input" id="modalSubjMsSearch" placeholder="Search subjects..."/>
+          <span class="ms-arrow">▼</span>
+        </div>
+        <div class="ms-dropdown" id="modalSubjMsDropdown"></div>
+      </div>
+
+      <div class="panel-actions">
+        <button class="btn-secondary" id="modalCancel">Cancel</button>
+        <button class="btn-primary"   id="modalConfirm">Load &amp; Refresh</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FILTER — Mobile right drawer
+       ============================================================ -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+
+    <div class="drawer-body filter-panel">
+
+      <label class="panel-label">💼 Jobs</label>
+      <div class="ms-container" id="drawerJobMsContainer">
+        <div class="ms-input-wrapper" id="drawerJobMsWrapper">
+          <div class="ms-chips" id="drawerJobMsChips"></div>
+          <input type="text" class="ms-search-input" id="drawerJobMsSearch" placeholder="Search jobs..."/>
+          <span class="ms-arrow">▼</span>
+        </div>
+        <div class="ms-dropdown" id="drawerJobMsDropdown"></div>
+      </div>
+
+      <label class="panel-label">📚 Subjects</label>
+      <div class="ms-container" id="drawerSubjMsContainer">
+        <div class="ms-input-wrapper" id="drawerSubjMsWrapper">
+          <div class="ms-chips" id="drawerSubjMsChips"></div>
+          <input type="text" class="ms-search-input" id="drawerSubjMsSearch" placeholder="Search subjects..."/>
+          <span class="ms-arrow">▼</span>
+        </div>
+        <div class="ms-dropdown" id="drawerSubjMsDropdown"></div>
+      </div>
+
+      <div class="drawer-actions">
+        <button class="btn-primary"     id="drawerConfirm">Load &amp; Refresh</button>
+        <button class="btn-secondary"   id="drawerResetBtn">⟲ Reset Filters</button>
+        <button class="btn-cancel-full" id="drawerCancel">Cancel</button>
+      </div>
+
+      <div class="drawer-bottom">
+        <!-- ===== JOB SITES BUTTON (above logout) ===== -->
+        <button class="btn-job-sites" id="jobSitesBtn">🌐 All Jobs Websites</button>
+        <!-- ===== END ===== -->
+
+        <div class="panel-user-info" style="margin-bottom:0">
+          <div class="panel-user-left">
+            <span class="panel-user-avatar" id="drawerUserAvatar">U</span>
+            <span class="panel-user-name" id="drawerUserName">User</span>
+          </div>
+          <button class="panel-logout-btn" id="drawerLogoutBtn">🚪 Logout</button>
+        </div>
+
+        <div class="drawer-footer">
+          <h3><span>⚙️</span> Filters &amp; Options</h3>
+          <button class="drawer-close" id="drawerCloseBtn" aria-label="Close">✕</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       JOB SITES MODAL
+       ============================================================ -->
+  <div class="jobsites-overlay" id="jobsitesOverlay">
+    <div class="jobsites-modal">
+      <div class="jobsites-header">
+        <h2><span>🌐</span> All Jobs Websites</h2>
+        <button class="jobsites-close" id="jobsitesClose">✕</button>
+      </div>
+      <div class="jobsites-search">
+        <input type="text" id="jobsitesSearchInput" placeholder="Search by sector, website name, or URL..." autocomplete="off"/>
+      </div>
+      <div class="jobsites-list" id="jobsitesList">
+        <div class="jobsites-loading"><div class="spinner"></div><br>Loading job sites...</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
-    /* ---------- Page navigation (iframe hub) ---------- */
-    (function () {
-        const stage = document.getElementById('pageStage');
-        const topButtons = document.querySelectorAll('.toggle-btn');
-        const bottomButtons = document.querySelectorAll('.bottom-nav-btn');
-        const frames = new Map();
-        let activePage = null;
+(function () {
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const LOGO = 'https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27';
+const QUIZ_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyB_I39SsLmQC5C8O1KkzZEUgFPAIJQ95k0vFj9M-HX8vI9hsdLh0GFYYO8O1QFnvP4vWkAh3nmbd3/pub?output=csv';
+const FACTS_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRO-FPemOqN9exgEgDyt_x1KfNgTAxf0mOeg16c7THfRaaHg0mbgwuTrObcbIwJKSx2dWtrQCNcrCV/pub?output=csv';
+const SHEET_ID = '17yY_LUiqMsABz7tbtAXFpZIYpHN2TJTZSxo7oJWzckI';
+const LOGIN_GID = '2076597807';
+const LOGIN_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${LOGIN_GID}`;
+const GUEST_LIMIT = 15;
+const JOBSITES_URL =
+  'https://docs.google.com/spreadsheets/d/108C9USSy1WysOwKThC1JFsL5OfjSC3HAX5EysDMw4gM/gviz/tq?tqx=out:csv&gid=614189291';
 
-        const THEME = {
-            navy: '#0a1e3f', navyLight: '#1a3a6b', navySoft: '#e8eef7',
-            black: '#0f1419', yellow: '#f5b800', yellowDark: '#d99e00',
-            yellowSoft: '#fff7dd', sky: '#0ea5e9', skyDark: '#0284c7', skySoft: '#e0f2fe',
-            bg: '#f4f6fa', card: '#ffffff',
-            text: '#0f1419', textSoft: '#475569', textMuted: '#94a3b8',
-            border: '#e2e8f0',
-            success: '#059669', danger: '#dc2626', warning: '#d97706', info: '#0284c7'
-        };
+const KEY_QUIZ = 'slQuizV4';
+const KEY_USER = 'slUser';
+const KEY_MODE = 'slMode';
+const KEY_FACTS_READ = 'slFactsRead';
 
-        function showPage(pageId, src) {
-            if (activePage === pageId) return;
-            activePage = pageId;
+/* ============================================================
+   DOM CACHE
+   ============================================================ */
+const $ = (id) => document.getElementById(id);
+const ui = {
+  loginScreen: $('loginScreen'), loginLogo: $('loginLogo'),
+  email: $('emailInput'), pass: $('passwordInput'),
+  tglPw: $('togglePasswordBtn'), loginBtn: $('loginBtn'),
+  guestBtn: $('guestBtn'), loginStat: $('loginStatus'),
 
-            topButtons.forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
-            bottomButtons.forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
+  quizApp: $('quizApp'), topBar: $('topBar'), brandLogo: $('brandLogo'),
+  qTitle: $('quizTitle'), subjLine: $('selectedSubjectsLine'),
+  mMcqL: $('modeMcqLabel'), mReadL: $('modeReadLabel'), mFactsL: $('modeFactsLabel'),
+  mMcqR: $('modeMcqRadio'), mReadR: $('modeReadRadio'), mFactsR: $('modeFactsRadio'),
+  att: $('attemptedCount'), tot: $('totalCount'),
+  timer: $('timerDisplay'), timerPill: $('timerPill'),
+  factsPill: $('factsPill'),
+  factsDone: $('factsDoneCount'), factsTotal: $('factsTotalCount'),
+  refresh: $('refreshBtn'), refreshIcon: $('refreshIcon'),
+  drawerBtn: $('drawerBtn'),
 
-            if (!frames.has(pageId)) {
-                const wrap = document.createElement('div');
-                wrap.className = 'page-frame';
-                wrap.style.position = 'relative';
-                wrap.style.minHeight = 'calc(100vh - 100px)';
-                wrap.style.opacity = '0';
-                wrap.style.pointerEvents = 'none';
-                wrap.dataset.pageId = pageId;
+  prog: $('progressFill'), single: $('singleQuestionView'),
+  subBanner: $('submittedBanner'), qCard: $('questionCard'),
+  prev: $('prevBtn'), next: $('nextBtn'), endBtn: $('endQuizBtn'),
+  readBox: $('readContainer'), readGuestLock: $('readGuestLock'),
+  readLockLoginBtn: $('readLockLoginBtn'),
+  factsBox: $('factsContainer'), factsGuestLock: $('factsGuestLock'),
+  factsLockLoginBtn: $('factsLockLoginBtn'),
 
-                const loader = document.createElement('div');
-                loader.className = 'page-loading';
-                loader.innerHTML = '<div class="spinner"></div><span>Loading…</span>';
+  readSearchBar: $('readSearchBar'),
+  readSearchInput: $('readSearchInput'),
+  readSearchClear: $('readSearchClear'),
+  readSearchCount: $('readSearchCount'),
+  factsSearchBar: $('factsSearchBar'),
+  factsSearchInput: $('factsSearchInput'),
+  factsSearchClear: $('factsSearchClear'),
+  factsSearchCount: $('factsSearchCount'),
 
-                const iframe = document.createElement('iframe');
-                iframe.src = src;
-                iframe.title = 'Self Learners · ' + pageId;
-                iframe.setAttribute('loading', 'lazy');
-                iframe.style.cssText = 'width:100%;min-height:calc(100vh - 100px);border:none;display:block;background:transparent;';
+  dots: $('dotGrid'),
+  doneC: $('doneCount'), pendC: $('pendingCount'),
+  corrC: $('correctCount'), wrongC: $('wrongCount'),
+  invC: $('invalidCount'), invLeg: $('invalidLegend'),
 
-                wrap.appendChild(loader);
-                wrap.appendChild(iframe);
-                stage.appendChild(wrap);
+  result: $('resultArea'), score: $('finalScore'),
+  rmsg: $('resultMessage'), rdetails: $('resultDetails'),
+  restart: $('restartFromResult'),
 
-                iframe.addEventListener('load', () => {
-                    try {
-                        iframe.contentWindow.postMessage({ type: 'SL_THEME', theme: THEME }, '*');
-                    } catch (e) { /* ignore */ }
-                    wrap.style.opacity = '1';
-                    wrap.style.pointerEvents = 'auto';
-                    loader.style.display = 'none';
-                });
+  modal: $('refreshModal'),
+  mCancel: $('modalCancel'), mConfirm: $('modalConfirm'), mReset: $('modalResetBtn'),
+  mUserAv: $('modalUserAvatar'), mUserName: $('modalUserName'), mLogout: $('modalLogoutBtn'),
 
-                setTimeout(() => {
-                    if (loader.style.display !== 'none') {
-                        wrap.style.opacity = '1';
-                        wrap.style.pointerEvents = 'auto';
-                        loader.style.display = 'none';
-                    }
-                }, 3000);
+  drawer: $('drawer'), drawerOverlay: $('drawerOverlay'),
+  drawerCloseBtn: $('drawerCloseBtn'),
+  dCancel: $('drawerCancel'), dConfirm: $('drawerConfirm'), dReset: $('drawerResetBtn'),
+  dUserAv: $('drawerUserAvatar'), dUserName: $('drawerUserName'), dLogout: $('drawerLogoutBtn'),
 
-                frames.set(pageId, wrap);
-            }
+  cOverlay: $('confirmOverlay'), cIcon: $('confirmIcon'),
+  cTitle: $('confirmTitle'), cMsg: $('confirmMessage'),
+  cOk: $('confirmOk'), cCancel: $('confirmCancel'),
 
-            frames.forEach((wrap, id) => {
-                const isActive = id === pageId;
-                wrap.classList.toggle('active', isActive);
-                wrap.style.opacity = isActive ? '1' : '0';
-                wrap.style.pointerEvents = isActive ? 'auto' : 'none';
-                wrap.style.position = isActive ? 'relative' : 'absolute';
-                wrap.style.display = isActive ? 'block' : 'none';
-            });
+  installBanner: $('installBanner'),
+  installBtn: $('installBtn'),
+  installClose: $('installClose'),
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Job sites
+  jobSitesBtn: $('jobSitesBtn'),
+  jobsitesOverlay: $('jobsitesOverlay'),
+  jobsitesClose: $('jobsitesClose'),
+  jobsitesSearchInput: $('jobsitesSearchInput'),
+  jobsitesList: $('jobsitesList'),
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let questions         = [];
+let originalQuestions = [];
+let currentQ          = 0;
+let total             = 0;
+let answers           = [];
+let status            = [];
+let locked            = [];
+let invalidQs         = [];
+
+let score             = 0;
+let submitted         = false;
+let finished          = false;
+let timeLeft          = 0;
+let timerHandle       = null;
+
+let mode              = 'mcq';
+let isGuest           = false;
+let user              = null;
+let users             = [];
+
+let selJobs           = [];
+let selSubjs          = [];
+let availSubjs        = [];
+let jobSearchText     = '';
+let subjSearchText    = '';
+
+let facts             = [];
+let factsLoaded       = false;
+let factsLoading      = false;
+let factsReadSet      = new Set();
+
+let readSearchQuery   = '';
+let factsSearchQuery  = '';
+
+let passwordVisible   = false;
+let toastTimer        = null;
+let deferredPrompt    = null;   // ← shared with PWA block below
+let confirmResolve    = null;
+
+// Job sites
+let jobSites             = [];
+let jobSitesLoaded       = false;
+let jobSitesLoading      = false;
+let jobSitesSearchQuery  = '';
+
+/* ============================================================
+   PWA — Native Install Prompt (real manifest.json + sw.js)
+   ============================================================ */
+(function setupPWA() {
+  // 1) Manifest — already linked via <link rel="manifest" href="./manifest.json">
+  const manifestLink = $('appManifest');
+  if (manifestLink) manifestLink.href = './manifest.json';
+
+  // 2) Service worker — register REAL ./sw.js (Blob SWs are rejected by Chrome)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch((err) => {
+        console.warn('SW registration failed:', err);
+      });
+    });
+  }
+
+  const KEY_DISMISS = 'slInstallDismissed';
+
+  // 3) Detect standalone (already installed)
+  const isStandalone =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true ||
+    (document.referrer && document.referrer.startsWith('android-app://'));
+
+  if (isStandalone) {
+    ui.installBanner.style.display = 'none';
+    return;
+  }
+
+  // 4) 24-hour dismiss check
+  function shouldShowBanner() {
+    try {
+      const dismissed = localStorage.getItem(KEY_DISMISS);
+      if (!dismissed) return true;
+      return (Date.now() - parseInt(dismissed, 10)) > 24 * 60 * 60 * 1000;
+    } catch (e) { return true; }
+  }
+
+  // 5) Capture beforeinstallprompt — the NATIVE prompt event
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (shouldShowBanner()) {
+      setTimeout(() => ui.installBanner.classList.add('show'), 1500);
+    }
+  });
+
+  // 6) Install button — trigger native prompt if available
+  ui.installBtn.onclick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        toast('Installed! 🎉', 'success', 3000, false);
+        ui.installBanner.classList.remove('show');
+        try { localStorage.setItem(KEY_DISMISS, String(Date.now())); } catch (e) {}
+      } else {
+        toast('Install cancelled', 'info', 2500, false);
+      }
+      deferredPrompt = null;
+      return;
+    }
+    showManualInstructions();
+  };
+
+  ui.installClose.onclick = () => {
+    ui.installBanner.classList.remove('show');
+    try { localStorage.setItem(KEY_DISMISS, String(Date.now())); } catch (e) {}
+  };
+
+  window.addEventListener('appinstalled', () => {
+    ui.installBanner.classList.remove('show');
+    deferredPrompt = null;
+    try { localStorage.setItem(KEY_DISMISS, String(Date.now())); } catch (e) {}
+  });
+
+  function showManualInstructions() {
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const isAndroid = /Android/.test(ua);
+    let msg = '📲 To install Self Learners:\n\n';
+    if (isIOS) {
+      msg += '1. Tap the Share button (⬆️)\n'
+           + '2. Scroll and tap "Add to Home Screen"\n'
+           + '3. Tap "Add"';
+    } else if (isAndroid) {
+      msg += '1. Tap the browser menu (⋮)\n'
+           + '2. Tap "Install app" or "Add to Home Screen"\n'
+           + '3. Confirm';
+    } else {
+      msg += '1. Look for the install icon in the address bar\n'
+           + '2. Or open menu → "Install App"\n'
+           + '3. Confirm';
+    }
+    alert(msg);
+  }
+})();
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+function clean(v) {
+  if (v == null) return '';
+  return String(v)
+    .replace(/[\u200B-\u200D\uFEFF\u00A0]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let cell = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"' && line[i + 1] === '"') { cell += '"'; i++; }
+      else if (ch === '"') inQuotes = false;
+      else cell += ch;
+    } else {
+      if (ch === '"') inQuotes = true;
+      else if (ch === ',') { result.push(clean(cell)); cell = ''; }
+      else cell += ch;
+    }
+  }
+  result.push(clean(cell));
+  return result;
+}
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function sameText(a, b) {
+  return a && b && clean(a).toLowerCase() === clean(b).toLowerCase();
+}
+
+function titleCase(str) {
+  if (!str) return '';
+  return clean(str)
+    .split(/(\s+|\/|-)/)
+    .map((chunk) => {
+      if (/^[\s\/-]+$/.test(chunk)) return chunk;
+      if (/^[A-Z]{2,5}$/.test(chunk)) return chunk;
+      return chunk.charAt(0).toUpperCase() + chunk.slice(1).toLowerCase();
+    })
+    .join('');
+}
+
+function attemptedCount() {
+  return answers.filter((a) => a !== null).length;
+}
+
+function openGoogleSearch(question, subject, topic) {
+  let query = question;
+  const extra = [];
+  if (subject && subject.trim()) extra.push(subject.trim());
+  if (topic && topic.trim()) extra.push(topic.trim());
+  if (extra.length) query = question + ' ' + extra.join(' ');
+  window.open(
+    'https://www.google.com/search?q=' + encodeURIComponent(query.substring(0, 2000)),
+    '_blank'
+  );
+}
+
+function escapeHtml(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function interpretVerify(raw) {
+  if (raw === undefined || raw === null) return 'unknown';
+  const v = String(raw).trim().toLowerCase();
+  if (v === '') return 'unknown';
+  if (v === 'true' || v === 'yes' || v === '1' || v === 'y' || v === 't') return 'true';
+  if (v === 'false' || v === 'no' || v === '0' || v === 'n' || v === 'f') return 'false';
+  return 'unknown';
+}
+
+function resolveCorrectIndex(raw, options) {
+  if (!raw) return -1;
+  const r = clean(raw);
+  for (let i = 0; i < options.length; i++) if (clean(options[i]) === r) return i;
+  const rl = r.toLowerCase();
+  for (let i = 0; i < options.length; i++) if (clean(options[i]).toLowerCase() === rl) return i;
+  if (/^[A-Da-d]$/.test(r)) return 'abcd'.indexOf(r.toLowerCase());
+  if (/^[1-4]$/.test(r)) return parseInt(r, 10) - 1;
+  const m = r.match(/^(?:option\s*|opt\.?\s*)?[\(\[\{\-]?\s*([A-Da-d])\s*[\)\]\}\.\-:]?/i);
+  if (m && m[1]) return 'abcd'.indexOf(m[1].toLowerCase());
+  return -1;
+}
+
+/* ============================================================
+   TOASTS
+   ============================================================ */
+function toast(message, type = 'info', duration = 4000, showIcon = true) {
+  if (toastTimer) clearTimeout(toastTimer);
+  const container = $('toastContainer');
+  while (container.firstChild) container.removeChild(container.firstChild);
+
+  const icons = { success: '✅', error: '❌', warning: '⚠️', info: 'ℹ️' };
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.innerHTML =
+    (showIcon ? `<span class="toast-icon">${icons[type]}</span>` : '') +
+    `<span>${message}</span>` +
+    `<button class="toast-close">✕</button>`;
+  container.appendChild(t);
+
+  const remove = () => {
+    t.classList.add('removing');
+    setTimeout(() => t.remove(), 300);
+  };
+  t.querySelector('.toast-close').onclick = remove;
+  toastTimer = setTimeout(remove, duration);
+}
+
+/* ============================================================
+   CONFIRM DIALOG
+   ============================================================ */
+function confirmBox(icon, title, message, okText) {
+  return new Promise((resolve) => {
+    ui.cIcon.textContent = icon || '❓';
+    ui.cTitle.textContent = title;
+    ui.cMsg.textContent = message;
+    if (okText) ui.cOk.textContent = okText;
+    ui.cOverlay.classList.add('active');
+    confirmResolve = resolve;
+  });
+}
+function closeConfirm(result) {
+  ui.cOverlay.classList.remove('active');
+  if (confirmResolve) {
+    confirmResolve(result);
+    confirmResolve = null;
+  }
+}
+ui.cCancel.onclick = () => closeConfirm(false);
+ui.cOk.onclick     = () => closeConfirm(true);
+ui.cOverlay.onclick = (e) => { if (e.target === ui.cOverlay) closeConfirm(false); };
+
+/* ============================================================
+   LOGIN SCREEN
+   ============================================================ */
+[ui.loginLogo, ui.brandLogo].forEach((img) => {
+  const probe = new Image();
+  probe.onload = () => (img.src = LOGO);
+  probe.src = LOGO;
+});
+
+ui.tglPw.onclick = () => {
+  passwordVisible = !passwordVisible;
+  ui.pass.type = passwordVisible ? 'text' : 'password';
+  ui.tglPw.textContent = passwordVisible ? '🙈' : '👁️';
+};
+
+function fetchUsers() {
+  ui.loginStat.textContent = '⏳ Loading...';
+  ui.loginBtn.disabled = true;
+
+  fetch(LOGIN_URL + '&_t=' + Date.now())
+    .then((r) => r.text())
+    .then((text) => {
+      const lines = text.split('\n').filter((l) => l.trim());
+      users = [];
+      for (let i = 1; i < lines.length; i++) {
+        const cols = parseCSVLine(lines[i]);
+        if (cols.length >= 2 && cols[0] && cols[1]) {
+          users.push({ user: cols[0].trim(), pass: cols[1].trim() });
         }
+      }
+      ui.loginStat.textContent = '🔐 Sign in to continue';
+      ui.loginBtn.disabled = false;
+      restoreSession();
+    })
+    .catch(() => {
+      ui.loginStat.textContent = '⚠️ Unable to connect';
+      ui.loginBtn.disabled = true;
+      toast('Unable to load user data', 'error');
+    });
+}
 
-        topButtons.forEach(btn => {
-            btn.addEventListener('click', () => showPage(btn.dataset.page, btn.dataset.src));
+function handleLogin() {
+  const u = ui.email.value.trim();
+  const p = ui.pass.value.trim();
+  if (!u || !p) { toast('Enter username and password', 'warning', 3000, false); return; }
+
+  const match = users.find(
+    (x) => x.user.toLowerCase() === u.toLowerCase() && x.pass === p
+  );
+  if (match) {
+    user = match;
+    isGuest = false;
+    localStorage.setItem(KEY_USER, JSON.stringify(match));
+    toast('Welcome, ' + match.user + '!', 'success', 2500, false);
+    showQuiz();
+  } else {
+    toast('Invalid credentials', 'error', 3000, false);
+    ui.loginStat.textContent = '❌ Login failed';
+  }
+}
+
+function handleGuest() {
+  isGuest = true;
+  user = { user: 'Guest' };
+  localStorage.removeItem(KEY_QUIZ);
+  toast(`Welcome, Guest! Limited to ${GUEST_LIMIT} MCQs.`, 'info', 3500, false);
+  showQuiz();
+}
+
+function restoreSession() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY_USER) || 'null');
+    if (saved && saved.user === 'Guest') return;
+    if (saved && users.some((x) => x.user === saved.user && x.pass === saved.pass)) {
+      user = saved;
+      isGuest = false;
+      showQuiz();
+    }
+  } catch (e) { /* ignore */ }
+}
+
+ui.loginBtn.onclick = handleLogin;
+ui.guestBtn.onclick = handleGuest;
+ui.email.onkeydown = ui.pass.onkeydown = (e) => {
+  if (e.key === 'Enter') handleLogin();
+};
+
+function showQuiz() {
+  ui.loginScreen.style.display = 'none';
+  ui.quizApp.style.display = 'block';
+  updateUserLabels();
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY_FACTS_READ) || '[]');
+    factsReadSet = new Set(saved);
+  } catch (e) { factsReadSet = new Set(); }
+
+  fetchQuestions(false);
+
+  try {
+    const savedMode = localStorage.getItem(KEY_MODE);
+    setMode(savedMode === 'read' ? 'read' : savedMode === 'facts' ? 'facts' : 'mcq');
+  } catch (e) { /* ignore */ }
+}
+
+function updateUserLabels() {
+  const name = user ? user.user : 'User';
+  const initial = name[0].toUpperCase();
+  ui.mUserAv.textContent = initial;
+  ui.mUserName.textContent = name;
+  ui.dUserAv.textContent = initial;
+  ui.dUserName.textContent = name;
+}
+
+/* ============================================================
+   STATE PERSISTENCE
+   ============================================================ */
+function saveState() {
+  if (isGuest) return;
+  try {
+    localStorage.setItem(KEY_QUIZ, JSON.stringify({
+      questions, answers, status, submitted, finished, score, total,
+      locked, originalQuestions, currentQ, timeLeft, invalidQs,
+      selJobs, selSubjs,
+    }));
+  } catch (e) { /* ignore */ }
+}
+
+function loadState() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(KEY_QUIZ) || 'null');
+    if (raw && raw.questions && raw.questions.length) return raw;
+  } catch (e) { /* ignore */ }
+  return null;
+}
+
+function clearSavedState() {
+  localStorage.removeItem(KEY_QUIZ);
+}
+
+function saveFactsReadSet() {
+  try {
+    localStorage.setItem(KEY_FACTS_READ, JSON.stringify([...factsReadSet]));
+  } catch (e) { /* ignore */ }
+}
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+function startTimer() {
+  if (timerHandle) clearInterval(timerHandle);
+  timerHandle = setInterval(() => {
+    if (finished || submitted) return;
+    timeLeft--;
+    updateTimerDisplay();
+    if (timeLeft <= 0) {
+      clearInterval(timerHandle);
+      timerHandle = null;
+      gradeQuiz();
+      finished = true;
+      ui.endBtn.disabled = true;
+      showResult();
+    }
+    saveState();
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  ui.timer.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+  ui.timerPill.classList.remove('warning', 'danger');
+  if (timeLeft < 60)       ui.timerPill.classList.add('danger');
+  else if (timeLeft < 300) ui.timerPill.classList.add('warning');
+}
+
+/* ============================================================
+   FETCH QUESTIONS
+   ============================================================ */
+function fetchQuestions(forceRefresh) {
+  ui.qCard.innerHTML =
+    '<div style="padding:2rem;text-align:center;color:#475569;">🔄 Loading...</div>';
+  ui.prev.disabled = ui.next.disabled = ui.endBtn.disabled = true;
+  ui.refresh.disabled = true;
+  ui.refreshIcon.textContent = '⟳';
+  ui.refreshIcon.classList.add('refresh-spin');
+  applyQuizTitle();
+
+  if (!forceRefresh && !isGuest) {
+    const saved = loadState();
+    if (saved) {
+      questions         = saved.questions;
+      originalQuestions = saved.originalQuestions || saved.questions.map((q) => ({ ...q }));
+      total             = saved.total || questions.length;
+      answers           = saved.answers || new Array(questions.length).fill(null);
+      status            = saved.status || new Array(questions.length).fill(null);
+      locked            = saved.locked || new Array(questions.length).fill(false);
+      submitted         = saved.submitted || false;
+      finished          = saved.finished || false;
+      score             = saved.score || 0;
+      currentQ          = saved.currentQ || 0;
+      timeLeft          = saved.timeLeft || total * 60;
+      selJobs           = saved.selJobs || [];
+      selSubjs          = saved.selSubjs || [];
+      invalidQs         = saved.invalidQs || [];
+
+      updateAvailableSubjects();
+      applyQuizTitle();
+      renderSelectedSubjectsLine();
+      ui.tot.textContent = total;
+      ui.att.textContent = attemptedCount();
+      ui.refresh.disabled = false;
+      ui.refreshIcon.textContent = '⚙️';
+      ui.refreshIcon.classList.remove('refresh-spin');
+      updateTimerDisplay();
+
+      if (finished) { showResult(); return; }
+      resetToQuizView();
+      startTimer();
+      renderQuestion();
+      renderDots();
+      updateOverview();
+      if (mode === 'read') renderReadMode();
+      if (mode === 'facts') renderFactsMode();
+      return;
+    }
+  }
+
+  if (forceRefresh) {
+    clearSavedState();
+    if (timerHandle) clearInterval(timerHandle);
+  }
+
+  fetch(QUIZ_URL + (QUIZ_URL.includes('?') ? '&' : '?') + '_t=' + Date.now(), {
+    cache: 'no-store',
+  })
+    .then((r) => r.text())
+    .then((text) => {
+      const lines = text.split('\n').filter((l) => l.trim());
+      originalQuestions = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        const cols = parseCSVLine(lines[i]);
+        if (cols.length < 9) continue;
+
+        const qText = cols[1] ? cols[1].trim() : '';
+        if (!qText) continue;
+
+        const options = [cols[2] || '', cols[3] || '', cols[4] || '', cols[5] || '']
+          .map((x) => x.trim());
+        const rawCorrect = cols[6] ? cols[6].trim() : '';
+        const correctIdx = resolveCorrectIndex(rawCorrect, options);
+
+        const showFlag = cols[13] ? cols[13].trim().toLowerCase() : '';
+        if (showFlag === '0' || showFlag === 'false' || showFlag === 'no') continue;
+
+        originalQuestions.push({
+          question:    qText,
+          options,
+          correct:     correctIdx,
+          correctText: rawCorrect || 'No answer',
+          topic:       cols[7] || '',
+          subject:     cols[8] || '',
+          job:         cols[10] || '',
+          mcol:        cols[12] || '',
         });
-        bottomButtons.forEach(btn => {
-            btn.addEventListener('click', () => showPage(btn.dataset.page, btn.dataset.src));
+      }
+
+      updateAvailableSubjects();
+
+      let filtered = originalQuestions;
+      if (selJobs.length)  filtered = filtered.filter((q) => selJobs.some((j) => sameText(q.job, j)));
+      if (selSubjs.length) filtered = filtered.filter((q) => selSubjs.some((s) => sameText(q.subject, s)));
+
+      if (!filtered.length) {
+        toast('No questions match filters. Loading all.', 'warning', 3000, false);
+        filtered = originalQuestions;
+        selJobs = [];
+        selSubjs = [];
+        updateAvailableSubjects();
+      }
+
+      questions = filtered.map((q) => {
+        const sh = shuffleArray(q.options);
+        const nc = sh.indexOf(q.options[q.correct]);
+        return { ...q, options: sh, correct: nc };
+      });
+
+      invalidQs = [];
+      questions.forEach((q, i) => {
+        if (q.correct === -1 && q.correctText && q.correctText.trim() && q.correctText !== 'No answer') {
+          invalidQs.push(i);
+        }
+      });
+
+      total     = questions.length;
+      answers   = new Array(total).fill(null);
+      status    = new Array(total).fill(null);
+      locked    = new Array(total).fill(false);
+      submitted = false;
+      finished  = false;
+      score     = 0;
+      currentQ  = 0;
+      timeLeft  = total * 60;
+
+      applyQuizTitle();
+      renderSelectedSubjectsLine();
+      ui.tot.textContent = total;
+      ui.att.textContent = 0;
+      ui.refresh.disabled = false;
+      ui.refreshIcon.textContent = '⚙️';
+      ui.refreshIcon.classList.remove('refresh-spin');
+
+      resetToQuizView();
+      updateTimerDisplay();
+      startTimer();
+      renderQuestion();
+      renderDots();
+      updateOverview();
+
+      if (mode === 'read') renderReadMode();
+      if (mode === 'facts') renderFactsMode();
+      closeBothPanels();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (forceRefresh) toast(`Loaded ${total} questions`, 'success', 2500, false);
+    })
+    .catch((err) => {
+      console.error(err);
+      ui.qCard.innerHTML =
+        '<div style="padding:2rem;text-align:center;color:#ef4444;">❌ Failed to load</div>';
+      ui.refresh.disabled = false;
+      ui.refreshIcon.textContent = '⚙️';
+      ui.refreshIcon.classList.remove('refresh-spin');
+      closeBothPanels();
+      toast('Failed to load questions', 'error');
+    });
+}
+
+/* ============================================================
+   FETCH FACTS
+   ============================================================ */
+function fetchFacts(callback) {
+  if (factsLoaded) { if (callback) callback(); return; }
+  if (factsLoading) return;
+  factsLoading = true;
+
+  ui.factsBox.innerHTML =
+    '<div class="facts-empty">🔄 Loading facts...</div>';
+
+  fetch(FACTS_URL + (FACTS_URL.includes('?') ? '&' : '?') + '_t=' + Date.now(), {
+    cache: 'no-store',
+  })
+    .then((r) => r.text())
+    .then((text) => {
+      const lines = text.split('\n').filter((l) => l.trim());
+      facts = [];
+
+      if (lines.length < 2) {
+        factsLoaded = true;
+        factsLoading = false;
+        if (callback) callback();
+        return;
+      }
+
+      const headerCols = parseCSVLine(lines[0]).map((h) => h.toLowerCase());
+
+      const findIdx = (keywords, fallback) => {
+        for (let k = 0; k < headerCols.length; k++) {
+          const h = headerCols[k];
+          if (keywords.some((kw) => h.includes(kw))) return k;
+        }
+        return fallback;
+      };
+
+      const srnoIdx    = findIdx(['srno', 'sr no', 's.no', 'serial'], 0);
+      const qIdx       = findIdx(['question'], 1);
+      const aIdx       = findIdx(['answer'], 2);
+      const topicIdx   = findIdx(['question topic', 'topic'], 3);
+      const subjIdx    = findIdx(['subject'], 4);
+      const verifyIdx  = findIdx(['verify'], 5);
+      const createdIdx = findIdx(['created'], 6);
+
+      for (let i = 1; i < lines.length; i++) {
+        const cols = parseCSVLine(lines[i]);
+        if (!cols.length) continue;
+
+        const question = cols[qIdx] ? cols[qIdx].trim() : '';
+        if (!question) continue;
+
+        const rawVerify = cols[verifyIdx] ? cols[verifyIdx].trim() : '';
+        const verify = interpretVerify(rawVerify);
+
+        facts.push({
+          srno:     cols[srnoIdx] ? cols[srnoIdx].trim() : String(i),
+          question: question,
+          answer:   cols[aIdx] ? cols[aIdx].trim() : '',
+          topic:    cols[topicIdx] ? cols[topicIdx].trim() : '',
+          subject:  cols[subjIdx] ? cols[subjIdx].trim() : '',
+          verify:   verify,
+          created:  cols[createdIdx] ? cols[createdIdx].trim() : '',
         });
+      }
 
-        showPage('edu', 'page-edu.html');
-        window.__showPage = showPage;
-    })();
+      factsLoaded = true;
+      factsLoading = false;
+      if (callback) callback();
+    })
+    .catch((err) => {
+      console.error('Facts fetch error:', err);
+      factsLoading = false;
+      ui.factsBox.innerHTML =
+        '<div class="facts-empty" style="color:#ef4444;">❌ Failed to load facts</div>';
+      toast('Failed to load facts', 'error');
+    });
+}
 
-    /* ---------- PWA: Service Worker + Install Prompt ---------- */
-    (function () {
-        const KEY_INSTALL_DISMISSED = 'slInstallDismissed';
-        const banner = document.getElementById('installBanner');
-        const installBtn = document.getElementById('installBtn');
-        const installClose = document.getElementById('installClose');
-        let deferredPrompt = null;
+/* ============================================================
+   TITLES / SUBTITLE
+   ============================================================ */
+function applyQuizTitle() {
+  if (mode === 'facts') {
+    ui.qTitle.textContent = '💡 Facts';
+    return;
+  }
+  let title = 'All Jobs MCQs';
+  if (selJobs.length === 1)    title = titleCase(selJobs[0]) + ' MCQs';
+  else if (selJobs.length > 1) title = selJobs.length + ' Jobs MCQs';
+  ui.qTitle.textContent = title;
+}
 
-        // 1. Register service worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').catch((err) => {
-                    console.warn('SW registration failed:', err);
-                });
-            });
+function renderSelectedSubjectsLine() {
+  if (mode === 'facts') {
+    ui.subjLine.innerHTML = '<span class="subj-label">💡</span> <span class="subj-list">Random facts &amp; general knowledge</span>';
+    ui.subjLine.style.display = '-webkit-box';
+    return;
+  }
+  const parts = [];
+  if (selJobs.length) {
+    parts.push('<span class="subj-label">Jobs:</span> <span class="subj-list">' +
+      selJobs.map(titleCase).join(', ') + '</span>');
+  }
+  if (selSubjs.length) {
+    parts.push('<span class="subj-label">Subjects:</span> <span class="subj-list">' +
+      selSubjs.map(titleCase).join(', ') + '</span>');
+  }
+  ui.subjLine.innerHTML = parts.join(' &nbsp;·&nbsp; ');
+  ui.subjLine.style.display = parts.length ? '-webkit-box' : 'none';
+}
+
+function resetToQuizView() {
+  ui.result.style.display = 'none';
+  ui.single.style.display = 'block';
+  ui.subBanner.style.display = 'none';
+  ui.endBtn.disabled = false;
+  $('endQuizBottom').style.display = 'flex';
+  ui.quizApp.classList.remove('result-active');
+}
+
+/* ============================================================
+   GUEST LIMIT
+   ============================================================ */
+function promptGuestLock() {
+  confirmBox(
+    '🔒',
+    'Login Required',
+    `You have reached the ${GUEST_LIMIT}-MCQ guest limit. ` +
+    `Please login to unlock all questions and full features.`,
+    '🔐 Login Now'
+  ).then((ok) => { if (ok) logoutToLogin(); });
+}
+
+function logoutToLogin() {
+  if (timerHandle) clearInterval(timerHandle);
+  isGuest = false;
+  user = null;
+  localStorage.removeItem(KEY_USER);
+  localStorage.removeItem(KEY_QUIZ);
+
+  ui.quizApp.style.display = 'none';
+  ui.loginScreen.style.display = 'block';
+  ui.loginStat.textContent = '🔐 Sign in to continue';
+  ui.email.value = ui.pass.value = '';
+  passwordVisible = false;
+  ui.pass.type = 'password';
+  ui.tglPw.textContent = '👁️';
+
+  closeBothPanels();
+  toast('Please login to continue', 'info', 3000, false);
+}
+
+/* ============================================================
+   RENDER — MCQ view
+   ============================================================ */
+function renderQuestion() {
+  if (!questions.length) return;
+
+  const q = questions[currentQ];
+  const isAnswered = locked[currentQ] || submitted || finished;
+  const letters = ['A', 'B', 'C', 'D'];
+
+  const badge = renderMColBadge(q.mcol);
+
+  let html = `<div class="q-text" data-q="${encodeURIComponent(q.question)}">${currentQ + 1}. ${q.question}</div>`;
+  html += '<div class="options-list">';
+
+  q.options.forEach((opt, i) => {
+    let cls = 'option-btn';
+    let icon = '';
+
+    if (answers[currentQ] === i) cls += ' selected-opt';
+
+    if (isAnswered) {
+      if (q.correct !== -1 && i === q.correct) {
+        cls += ' correct';
+        icon = '<span class="icon-indicator">✓</span>';
+      }
+      if (answers[currentQ] === i && answers[currentQ] !== q.correct) {
+        cls += ' wrong';
+        icon = '<span class="icon-indicator">✗</span>';
+      }
+    }
+
+    html += `<button class="${cls}" data-i="${i}" ${isAnswered ? 'disabled' : ''}>
+      <span class="letter">${letters[i]}</span>
+      <span>${opt || '(Empty)'}</span>
+      ${icon}
+    </button>`;
+  });
+  html += '</div>';
+
+  if (locked[currentQ] && !submitted && !finished) {
+    const ok = answers[currentQ] === q.correct;
+    html += `<div class="feedback-box ${ok ? 'correct-fb' : 'wrong-fb'}">
+      ${ok ? '✅ Correct!' : '❌ Correct: ' + (q.options[q.correct] || 'N/A')}
+    </div>`;
+
+    const metaChips = [];
+    if (q.subject) metaChips.push(`<span class="meta-chip subject-chip">📚 ${titleCase(q.subject)}</span>`);
+    if (q.topic)   metaChips.push(`<span class="meta-chip topic-chip">🏷️ ${titleCase(q.topic)}</span>`);
+    if (q.job)     metaChips.push(`<span class="meta-chip job-chip">💼 ${titleCase(q.job)}</span>`);
+    if (metaChips.length) html += '<div class="q-meta-block">' + metaChips.join('') + '</div>';
+  }
+
+  ui.qCard.innerHTML = badge + '<div class="question-body">' + html + '</div>';
+
+  ui.qCard.querySelector('.q-text').onclick = (e) => {
+    e.stopPropagation();
+    openGoogleSearch(q.question, q.subject, q.topic);
+  };
+
+  if (!submitted && !finished) {
+    ui.qCard.querySelectorAll('.option-btn:not([disabled])').forEach((btn) => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        if (locked[currentQ] || submitted || finished) return;
+        locked[currentQ] = true;
+        answers[currentQ] = +btn.dataset.i;
+        renderQuestion();
+        renderDots(currentQ);
+        updateProgress();
+        updateOverview();
+        saveState();
+      };
+    });
+  }
+
+  const atGuestLimit = isGuest && currentQ >= GUEST_LIMIT - 1;
+  ui.prev.disabled = currentQ === 0 || finished;
+  ui.next.disabled = currentQ === total - 1 || finished || atGuestLimit;
+  ui.endBtn.disabled = finished;
+  ui.subBanner.style.display = submitted && !finished ? 'block' : 'none';
+
+  updateProgress();
+  saveState();
+}
+
+function renderMColBadge(value) {
+  if (value == null || String(value).trim() === '') {
+    return '<div class="m-col-badge empty"><span class="q-mark">?</span></div>';
+  }
+  const v = String(value).trim().toLowerCase();
+  if (v === 'true') {
+    return `<div class="m-col-badge true">
+      <svg viewBox="0 0 16 16" fill="none">
+        <path d="M13.5 4.5L6 12L2.5 8.5" stroke="#0969da" stroke-width="2.8" stroke-linecap="round"/>
+      </svg></div>`;
+  }
+  if (v === 'false') {
+    return `<div class="m-col-badge false">
+      <svg viewBox="0 0 16 16" fill="none">
+        <path d="M4 4L12 12M12 4L4 12" stroke="#cf222e" stroke-width="2.8" stroke-linecap="round"/>
+      </svg></div>`;
+  }
+  return '<div class="m-col-badge empty"><span class="q-mark">?</span></div>';
+}
+
+/* ============================================================
+   PROGRESS / OVERVIEW
+   ============================================================ */
+function updateProgress() {
+  ui.att.textContent = attemptedCount();
+  ui.prog.style.width = (total ? (attemptedCount() / total) * 100 : 0) + '%';
+  ui.tot.textContent = total;
+}
+
+function renderDots(activeIndex) {
+  ui.dots.innerHTML = '';
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('button');
+    d.className = 'grid-dot';
+    d.textContent = i + 1;
+
+    const isLocked = isGuest && i >= GUEST_LIMIT;
+
+    if (isLocked) {
+      d.classList.add('locked-dot');
+    } else if (invalidQs.includes(i)) {
+      d.classList.add('invalid-dot');
+    } else if (answers[i] !== null) {
+      if (submitted || finished) {
+        if (status[i] === true)       d.classList.add('correct-dot');
+        else if (status[i] === false) d.classList.add('wrong-dot');
+        else                          d.classList.add('done-dot');
+      } else {
+        const q = questions[i];
+        d.classList.add(answers[i] === q.correct ? 'correct-dot' : 'wrong-dot');
+      }
+    } else {
+      d.classList.add('pending-dot');
+    }
+
+    if (activeIndex !== undefined && i === activeIndex) d.classList.add('active-dot');
+
+    d.onclick = () => {
+      if (isLocked) { promptGuestLock(); return; }
+      currentQ = i;
+      renderQuestion();
+      renderDots(i);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    ui.dots.appendChild(d);
+  }
+}
+
+function updateOverview() {
+  let done = 0, pending = 0, correct = 0, wrong = 0, invalid = 0;
+  for (let i = 0; i < total; i++) {
+    if (invalidQs.includes(i)) { invalid++; continue; }
+    if (answers[i] !== null) {
+      done++;
+      if (submitted || finished) {
+        if (status[i] === true)  correct++;
+        else if (status[i] === false) wrong++;
+      } else {
+        if (questions[i] && answers[i] === questions[i].correct) correct++;
+        else wrong++;
+      }
+    } else pending++;
+  }
+  ui.doneC.textContent  = done;
+  ui.pendC.textContent  = pending;
+  ui.corrC.textContent  = correct;
+  ui.wrongC.textContent = wrong;
+  ui.invC.textContent   = invalid;
+  ui.invLeg.style.display = invalid > 0 ? 'inline-flex' : 'none';
+}
+
+/* ============================================================
+   GRADING / RESULT
+   ============================================================ */
+function gradeQuiz() {
+  let correctCount = 0;
+  for (let i = 0; i < questions.length; i++) {
+    const q = questions[i];
+    const a = answers[i];
+    if (invalidQs.includes(i) || q.correct === -1) { status[i] = null; continue; }
+    if (a !== null && a === q.correct) { status[i] = true; correctCount++; }
+    else if (a !== null) { status[i] = false; }
+    else { status[i] = null; }
+  }
+  score = correctCount;
+  submitted = true;
+  if (timerHandle) { clearInterval(timerHandle); timerHandle = null; }
+  ui.subBanner.style.display = 'block';
+  renderQuestion();
+  renderDots();
+  updateOverview();
+  saveState();
+}
+
+function handleEndQuiz() {
+  if (finished) return;
+  if (!submitted) gradeQuiz();
+  finished = true;
+  if (timerHandle) { clearInterval(timerHandle); timerHandle = null; }
+  ui.endBtn.disabled = true;
+  showResult();
+}
+
+function showResult() {
+  finished = true;
+  if (timerHandle) { clearInterval(timerHandle); timerHandle = null; }
+
+  ui.single.style.display = 'none';
+  ui.result.style.display = 'block';
+  $('endQuizBottom').style.display = 'none';
+  ui.quizApp.classList.add('result-active');
+
+  const displayTotal = isGuest ? Math.min(total, GUEST_LIMIT) : total;
+  ui.score.textContent = score + ' / ' + displayTotal;
+
+  if (isGuest) {
+    ui.rmsg.textContent = `👤 Guest mode: limited to ${GUEST_LIMIT} questions. Login for full access!`;
+  } else if (score === displayTotal) {
+    ui.rmsg.textContent = '🌟 Perfect!';
+  } else if (score >= displayTotal * 0.7) {
+    ui.rmsg.textContent = '👏 Great job!';
+  } else {
+    ui.rmsg.textContent = '💪 Keep practicing!';
+  }
+
+  ui.rdetails.innerHTML = '';
+  const displayQs = isGuest ? questions.slice(0, GUEST_LIMIT) : questions;
+
+  displayQs.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'detail-item';
+
+    const inv = invalidQs.includes(i);
+    const ok  = status[i] === true;
+    const wr  = status[i] === false;
+
+    if (inv)      div.classList.add('invalid-detail');
+    else if (ok)  div.classList.add('correct-detail');
+    else if (wr)  div.classList.add('wrong-detail');
+    else          div.style.borderLeft = '5px solid #94a3b8';
+
+    const qEl = document.createElement('div');
+    qEl.className = 'detail-q';
+    qEl.textContent = `${i + 1}. ${q.question}`;
+    qEl.onclick = () => openGoogleSearch(q.question, q.subject, q.topic);
+    div.appendChild(qEl);
+
+    const aEl = document.createElement('div');
+    aEl.className = 'detail-answer';
+
+    if (inv) {
+      aEl.innerHTML = `⚠️ Invalid: "${q.correctText}" not in options.`;
+    } else {
+      const userAns = answers[i] !== null && q.options[answers[i]]
+        ? q.options[answers[i]] : 'Not answered';
+      const correctAns = q.correct !== -1 && q.options[q.correct]
+        ? q.options[q.correct] : 'N/A';
+
+      if (q.correct === -1) {
+        aEl.innerHTML = '⚠️ No correct answer.';
+      } else if (ok) {
+        aEl.innerHTML = `✅ Your answer: <span style="color:#10b981;">${userAns}</span> (Correct)`;
+      } else if (wr) {
+        aEl.innerHTML = `❌ Yours: <span style="color:#ef4444;">${userAns}</span> &nbsp; Correct: <span class="correct-ans">${correctAns}</span>`;
+      } else {
+        aEl.innerHTML = `⏭️ Skipped &nbsp; Correct: <span class="correct-ans">${correctAns}</span>`;
+      }
+    }
+    div.appendChild(aEl);
+    ui.rdetails.appendChild(div);
+  });
+
+  if (isGuest) {
+    const lock = document.createElement('div');
+    lock.className = 'guest-lock';
+    lock.innerHTML = `
+      <div class="gl-icon">🔒</div>
+      <h3>Unlock All Questions</h3>
+      <p>You viewed ${Math.min(total, GUEST_LIMIT)} of ${total} questions as a guest.
+         Login to access all questions and full features.</p>
+      <button class="gl-btn" id="resultLockLoginBtn">🔐 Login Now</button>
+    `;
+    ui.rdetails.appendChild(lock);
+    lock.querySelector('#resultLockLoginBtn').onclick = logoutToLogin;
+  }
+
+  updateOverview();
+  renderDots();
+  updateProgress();
+  saveState();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restartQuiz() {
+  clearSavedState();
+  answers   = new Array(questions.length).fill(null);
+  status    = new Array(questions.length).fill(null);
+  locked    = new Array(questions.length).fill(false);
+  submitted = false;
+  finished  = false;
+  score     = 0;
+  currentQ  = 0;
+  timeLeft  = total * 60;
+  if (timerHandle) clearInterval(timerHandle);
+
+  ui.result.style.display = 'none';
+  ui.single.style.display = 'block';
+  ui.subBanner.style.display = 'none';
+  ui.endBtn.disabled = false;
+  $('endQuizBottom').style.display = 'flex';
+  ui.quizApp.classList.remove('result-active');
+
+  questions = questions.map((q) => {
+    const sh = shuffleArray(q.options);
+    const nc = sh.indexOf(q.options[q.correct]);
+    return { ...q, options: sh, correct: nc };
+  });
+
+  updateTimerDisplay();
+  startTimer();
+  renderQuestion();
+  renderDots();
+  updateOverview();
+  if (mode === 'read') renderReadMode();
+  if (mode === 'facts') renderFactsMode();
+  saveState();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   MODE TOGGLE (3 modes)
+   ============================================================ */
+function setMode(newMode) {
+  mode = (newMode === 'read' || newMode === 'facts') ? newMode : 'mcq';
+
+  ui.quizApp.classList.remove('read-mode-active', 'facts-mode-active');
+
+  ui.quizApp.classList.remove('result-active');
+  ui.result.style.display = 'none';
+  $('endQuizBottom').style.display = 'flex';
+
+  ui.mMcqL.classList.remove('active');
+  ui.mReadL.classList.remove('active');
+  ui.mFactsL.classList.remove('active');
+
+  if (mode === 'mcq') {
+    ui.mMcqR.checked = true;
+    ui.mMcqL.classList.add('active');
+    applyQuizTitle();
+    renderSelectedSubjectsLine();
+
+    if (finished) {
+      ui.single.style.display = 'none';
+      ui.result.style.display = 'block';
+      $('endQuizBottom').style.display = 'none';
+      ui.quizApp.classList.add('result-active');
+    } else {
+      ui.single.style.display = 'block';
+    }
+  } else if (mode === 'read') {
+    ui.mReadR.checked = true;
+    ui.mReadL.classList.add('active');
+    ui.quizApp.classList.add('read-mode-active');
+    applyQuizTitle();
+    renderSelectedSubjectsLine();
+    renderReadMode();
+  } else if (mode === 'facts') {
+    ui.mFactsR.checked = true;
+    ui.mFactsL.classList.add('active');
+    ui.quizApp.classList.add('facts-mode-active');
+    applyQuizTitle();
+    renderSelectedSubjectsLine();
+    if (!factsLoaded && !factsLoading) {
+      fetchFacts(() => renderFactsMode());
+    } else {
+      renderFactsMode();
+    }
+  }
+
+  try { localStorage.setItem(KEY_MODE, mode); } catch (e) { /* ignore */ }
+}
+
+ui.mMcqL.onclick  = (e) => { if (e.target.tagName !== 'INPUT') setMode('mcq'); };
+ui.mReadL.onclick = (e) => { if (e.target.tagName !== 'INPUT') setMode('read'); };
+ui.mFactsL.onclick = (e) => { if (e.target.tagName !== 'INPUT') setMode('facts'); };
+ui.mMcqR.onchange = () => setMode('mcq');
+ui.mReadR.onchange = () => setMode('read');
+ui.mFactsR.onchange = () => setMode('facts');
+
+/* ============================================================
+   READ (SOLVED) MODE — with case-insensitive search
+   ============================================================ */
+function readItemMatchesSearch(q, query) {
+  if (!query) return true;
+  const nq = query.toLowerCase();
+
+  if (q.question && q.question.toLowerCase().includes(nq)) return true;
+  if (q.subject  && q.subject.toLowerCase().includes(nq))  return true;
+  if (q.topic    && q.topic.toLowerCase().includes(nq))    return true;
+  if (q.job      && q.job.toLowerCase().includes(nq))      return true;
+
+  if (Array.isArray(q.options)) {
+    for (const opt of q.options) {
+      if (opt && String(opt).toLowerCase().includes(nq)) return true;
+    }
+  }
+  return false;
+}
+
+function renderReadMode() {
+  if (!questions.length) {
+    ui.readBox.innerHTML = '<div class="read-empty">No questions</div>';
+    ui.readGuestLock.style.display = 'none';
+    ui.readSearchCount.textContent = '';
+    return;
+  }
+
+  const letters = ['A', 'B', 'C', 'D'];
+  const limit = isGuest ? GUEST_LIMIT : questions.length;
+  let html = '';
+  let shownCount = 0;
+
+  questions.slice(0, limit).forEach((q, i) => {
+    if (!readItemMatchesSearch(q, readSearchQuery)) return;
+    shownCount++;
+
+    const inv = invalidQs.includes(i);
+
+    let optsHtml = '';
+    q.options.forEach((opt, oi) => {
+      const isCorrect = !inv && q.correct !== -1 && oi === q.correct;
+      optsHtml += `
+        <div class="read-opt${isCorrect ? ' correct-opt' : ''}">
+          <span class="ro-letter">${letters[oi]}</span>
+          <span>${opt || '(Empty)'}</span>
+          ${isCorrect ? '<span class="ro-check">✓</span>' : ''}
+        </div>`;
+    });
+
+    const metaChips = [];
+    if (q.subject) metaChips.push(`<span class="rm-chip rm-subject">📚 ${titleCase(q.subject)}</span>`);
+    if (q.topic)   metaChips.push(`<span class="rm-chip rm-topic">🏷️ ${titleCase(q.topic)}</span>`);
+    if (q.job)     metaChips.push(`<span class="rm-chip rm-job">💼 ${titleCase(q.job)}</span>`);
+
+    html += `
+      <div class="read-item">
+        ${renderMColBadge(q.mcol).replace('m-col-badge', 'read-mcol')}
+        <div class="read-q"
+             data-q="${encodeURIComponent(q.question)}"
+             data-s="${encodeURIComponent(q.subject || '')}"
+             data-t="${encodeURIComponent(q.topic || '')}">
+          <span class="read-srno">${i + 1}.</span>${q.question}
+        </div>
+        <div class="read-options">${optsHtml}</div>
+        ${metaChips.length ? '<div class="read-meta">' + metaChips.join('') + '</div>' : ''}
+      </div>`;
+  });
+
+  if (shownCount === 0) {
+    ui.readBox.innerHTML =
+      '<div class="read-empty">🔍 No questions match "' + escapeHtml(readSearchQuery) + '"</div>';
+    ui.readSearchCount.textContent = '0';
+  } else {
+    ui.readBox.innerHTML = html;
+    ui.readSearchCount.textContent = readSearchQuery ? (shownCount + ' found') : '';
+
+    ui.readBox.querySelectorAll('.read-q').forEach((el) => {
+      el.onclick = (e) => {
+        e.stopPropagation();
+        openGoogleSearch(
+          decodeURIComponent(el.dataset.q),
+          decodeURIComponent(el.dataset.s),
+          decodeURIComponent(el.dataset.t)
+        );
+      };
+    });
+  }
+
+  ui.readGuestLock.style.display = isGuest ? 'block' : 'none';
+  updateSearchBarState(ui.readSearchBar, ui.readSearchInput);
+}
+
+ui.readLockLoginBtn.onclick = logoutToLogin;
+
+ui.readSearchInput.addEventListener('input', () => {
+  readSearchQuery = ui.readSearchInput.value.trim();
+  renderReadMode();
+});
+ui.readSearchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    ui.readSearchInput.value = '';
+    readSearchQuery = '';
+    renderReadMode();
+    ui.readSearchInput.blur();
+  }
+});
+ui.readSearchClear.onclick = () => {
+  ui.readSearchInput.value = '';
+  readSearchQuery = '';
+  renderReadMode();
+  ui.readSearchInput.focus();
+};
+
+/* ============================================================
+   FACTS MODE
+   ============================================================ */
+function factMatchesSearch(f, query) {
+  if (!query) return true;
+  const nq = query.toLowerCase();
+
+  if (f.question && f.question.toLowerCase().includes(nq)) return true;
+  if (f.answer   && f.answer.toLowerCase().includes(nq))   return true;
+  if (f.topic    && f.topic.toLowerCase().includes(nq))    return true;
+  if (f.subject  && f.subject.toLowerCase().includes(nq))  return true;
+  return false;
+}
+
+function renderFactsMode() {
+  if (!factsLoaded) {
+    if (!factsLoading) fetchFacts(() => renderFactsMode());
+    return;
+  }
+
+  if (!facts.length) {
+    ui.factsBox.innerHTML = '<div class="facts-empty">No facts available</div>';
+    ui.factsGuestLock.style.display = 'none';
+    ui.factsDone.textContent = '0';
+    ui.factsTotal.textContent = '0';
+    ui.factsSearchCount.textContent = '';
+    return;
+  }
+
+  const limit = isGuest ? GUEST_LIMIT : facts.length;
+  let html = '';
+  let shownCount = 0;
+
+  facts.slice(0, limit).forEach((f) => {
+    if (!factMatchesSearch(f, factsSearchQuery)) return;
+    shownCount++;
+
+    const hasAnswer = f.answer && f.answer.trim() !== '';
+    const key = String(f.srno || f.question).trim();
+    const isRead = factsReadSet.has(key);
+
+    let cornerHtml = '';
+    if (f.verify === 'true') {
+      cornerHtml = '<span class="verify-corner true" title="Verified: true">✔</span>';
+    } else if (f.verify === 'false') {
+      cornerHtml = '<span class="verify-corner false" title="Verified: false">✘</span>';
+    } else {
+      cornerHtml = '<span class="verify-corner unknown" title="Unverified">?</span>';
+    }
+
+    const metaChips = [];
+    if (f.topic)   metaChips.push(`<span class="fm-chip topic">🏷️ ${escapeHtml(f.topic)}</span>`);
+    if (f.subject) metaChips.push(`<span class="fm-chip">📚 ${escapeHtml(f.subject)}</span>`);
+
+    html += `
+      <div class="fact-card${isRead ? ' read-flag' : ''}"
+           data-key="${encodeURIComponent(key)}"
+           data-q="${encodeURIComponent(f.question)}"
+           data-c="${encodeURIComponent(f.subject || f.topic || '')}">
+        ${cornerHtml}
+        <div class="fact-head">
+          <span class="fact-srno">${escapeHtml(f.srno)}</span>
+          <span class="fact-question">${escapeHtml(f.question)}
+            <span class="fact-search-hint">🔍</span>
+          </span>
+        </div>
+        <div class="fact-answer${hasAnswer ? '' : ' empty'}">
+          <strong style="color:#047857;">Answer:</strong> ${hasAnswer ? escapeHtml(f.answer) : '—'}
+        </div>
+        ${metaChips.length ? '<div class="fact-meta">' + metaChips.join('') + '</div>' : ''}
+      </div>`;
+  });
+
+  if (shownCount === 0) {
+    ui.factsBox.innerHTML =
+      '<div class="facts-empty">🔍 No facts match "' + escapeHtml(factsSearchQuery) + '"</div>';
+    ui.factsSearchCount.textContent = '0';
+  } else {
+    ui.factsBox.innerHTML = html;
+    ui.factsSearchCount.textContent = factsSearchQuery ? (shownCount + ' found') : '';
+
+    ui.factsBox.querySelectorAll('.fact-card').forEach((card) => {
+      card.onclick = (e) => {
+        e.stopPropagation();
+        const key = decodeURIComponent(card.dataset.key);
+        const q = decodeURIComponent(card.dataset.q);
+        const c = decodeURIComponent(card.dataset.c);
+
+        if (!factsReadSet.has(key)) {
+          factsReadSet.add(key);
+          saveFactsReadSet();
+          card.classList.add('read-flag');
+          updateFactsCounter();
         }
+        openGoogleSearch(q, c, '');
+      };
+    });
+  }
 
-        // 2. Detect standalone (already installed)
-        function isStandalone() {
-            return window.matchMedia('(display-mode: standalone)').matches
-                || window.navigator.standalone === true;
+  ui.factsGuestLock.style.display = isGuest && facts.length > GUEST_LIMIT ? 'block' : 'none';
+  updateFactsCounter();
+  updateSearchBarState(ui.factsSearchBar, ui.factsSearchInput);
+}
+
+function updateFactsCounter() {
+  const limit = isGuest ? Math.min(GUEST_LIMIT, facts.length) : facts.length;
+  let done = 0;
+  for (let i = 0; i < limit; i++) {
+    const key = String(facts[i].srno || facts[i].question).trim();
+    if (factsReadSet.has(key)) done++;
+  }
+  ui.factsDone.textContent = done;
+  ui.factsTotal.textContent = limit;
+}
+
+if (ui.factsLockLoginBtn) {
+  ui.factsLockLoginBtn.onclick = logoutToLogin;
+}
+
+ui.factsSearchInput.addEventListener('input', () => {
+  factsSearchQuery = ui.factsSearchInput.value.trim();
+  renderFactsMode();
+});
+ui.factsSearchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    ui.factsSearchInput.value = '';
+    factsSearchQuery = '';
+    renderFactsMode();
+    ui.factsSearchInput.blur();
+  }
+});
+ui.factsSearchClear.onclick = () => {
+  ui.factsSearchInput.value = '';
+  factsSearchQuery = '';
+  renderFactsMode();
+  ui.factsSearchInput.focus();
+};
+
+function updateSearchBarState(bar, input) {
+  if (!bar || !input) return;
+  if (input.value && input.value.length > 0) bar.classList.add('has-text');
+  else bar.classList.remove('has-text');
+}
+
+/* ============================================================
+   FILTER PANEL — shared multi-select logic
+   ============================================================ */
+const panels = {
+  modal: {
+    root:      ui.modal,
+    jobC:      $('modalJobMsContainer'),
+    jobW:      $('modalJobMsWrapper'),
+    jobChips:  $('modalJobMsChips'),
+    jobSearch: $('modalJobMsSearch'),
+    jobDrop:   $('modalJobMsDropdown'),
+    subjC:     $('modalSubjMsContainer'),
+    subjW:     $('modalSubjMsWrapper'),
+    subjChips: $('modalSubjMsChips'),
+    subjSearch:$('modalSubjMsSearch'),
+    subjDrop:  $('modalSubjMsDropdown'),
+  },
+  drawer: {
+    root:      ui.drawer,
+    jobC:      $('drawerJobMsContainer'),
+    jobW:      $('drawerJobMsWrapper'),
+    jobChips:  $('drawerJobMsChips'),
+    jobSearch: $('drawerJobMsSearch'),
+    jobDrop:   $('drawerJobMsDropdown'),
+    subjC:     $('drawerSubjMsContainer'),
+    subjW:     $('drawerSubjMsWrapper'),
+    subjChips: $('drawerSubjMsChips'),
+    subjSearch:$('drawerSubjMsSearch'),
+    subjDrop:  $('drawerSubjMsDropdown'),
+  },
+};
+
+function closeAllDropdowns() {
+  ['modal', 'drawer'].forEach((key) => {
+    panels[key].jobC.classList.remove('open');
+    panels[key].subjC.classList.remove('open');
+  });
+}
+
+function renderChipsInto(container, items, onRemove) {
+  container.innerHTML = '';
+  items.forEach((item) => {
+    const chip = document.createElement('span');
+    chip.className = 'ms-chip';
+    chip.innerHTML = `
+      <span class="ms-chip-text">${titleCase(item)}</span>
+      <button class="ms-chip-remove">×</button>`;
+    chip.querySelector('.ms-chip-remove').onclick = (e) => {
+      e.stopPropagation();
+      onRemove(item);
+    };
+    container.appendChild(chip);
+  });
+}
+
+function renderJobDropdowns() {
+  ['modal', 'drawer'].forEach((key) => {
+    const p = panels[key];
+    const search = jobSearchText.toLowerCase();
+    const filtered = [];
+    const seen = new Set();
+    originalQuestions.forEach((q) => {
+      if (q.job && !seen.has(q.job.toLowerCase())) {
+        seen.add(q.job.toLowerCase());
+        if (titleCase(q.job).toLowerCase().includes(search)) filtered.push(q.job);
+      }
+    });
+
+    p.jobDrop.innerHTML = '';
+    const allSelected = selJobs.length > 0 && selJobs.length === filtered.length;
+
+    const selectAll = document.createElement('div');
+    selectAll.className = 'ms-select-all-row' + (allSelected ? ' selected' : '');
+    selectAll.innerHTML = `<span class="ms-check">${allSelected ? '✓' : ''}</span><span>Select All Jobs</span>`;
+    selectAll.onclick = (e) => {
+      e.stopPropagation();
+      selJobs = allSelected ? [] : [...filtered];
+      updateAvailableSubjects();
+      renderJobChipsBoth();
+      renderJobDropdowns();
+      renderSubjectChipsBoth();
+      renderSubjectDropdowns();
+    };
+    p.jobDrop.appendChild(selectAll);
+
+    if (!filtered.length) {
+      p.jobDrop.innerHTML += '<div class="ms-no-results">No jobs found</div>';
+      return;
+    }
+
+    filtered.forEach((job) => {
+      const isSel = selJobs.some((j) => sameText(j, job));
+      const opt = document.createElement('div');
+      opt.className = 'ms-option' + (isSel ? ' selected' : '');
+      opt.innerHTML = `<span class="ms-check">${isSel ? '✓' : ''}</span><span class="ms-opt-label">${titleCase(job)}</span>`;
+      opt.onclick = (e) => {
+        e.stopPropagation();
+        selJobs = isSel
+          ? selJobs.filter((j) => !sameText(j, job))
+          : [...selJobs, job];
+        updateAvailableSubjects();
+        renderJobChipsBoth();
+        renderJobDropdowns();
+        renderSubjectChipsBoth();
+        renderSubjectDropdowns();
+        p.jobC.classList.remove('open');
+      };
+      p.jobDrop.appendChild(opt);
+    });
+  });
+}
+
+function renderSubjectDropdowns() {
+  ['modal', 'drawer'].forEach((key) => {
+    const p = panels[key];
+    const search = subjSearchText.toLowerCase();
+    const filtered = availSubjs.filter((x) => titleCase(x).toLowerCase().includes(search));
+
+    p.subjDrop.innerHTML = '';
+    const allSelected = availSubjs.length > 0 && selSubjs.length === availSubjs.length;
+
+    const selectAll = document.createElement('div');
+    selectAll.className = 'ms-select-all-row' + (allSelected ? ' selected' : '');
+    selectAll.innerHTML = `<span class="ms-check">${allSelected ? '✓' : ''}</span><span>Select All Subjects</span>`;
+    selectAll.onclick = (e) => {
+      e.stopPropagation();
+      selSubjs = allSelected ? [] : [...availSubjs];
+      renderSubjectChipsBoth();
+      renderSubjectDropdowns();
+    };
+    p.subjDrop.appendChild(selectAll);
+
+    if (!filtered.length) {
+      p.subjDrop.innerHTML +=
+        `<div class="ms-no-results">${availSubjs.length ? 'No subjects found' : 'No subjects available'}</div>`;
+      return;
+    }
+
+    filtered.forEach((subj) => {
+      const isSel = selSubjs.some((s) => sameText(s, subj));
+      const opt = document.createElement('div');
+      opt.className = 'ms-option' + (isSel ? ' selected' : '');
+      opt.innerHTML = `<span class="ms-check">${isSel ? '✓' : ''}</span><span class="ms-opt-label">${titleCase(subj)}</span>`;
+      opt.onclick = (e) => {
+        e.stopPropagation();
+        selSubjs = isSel
+          ? selSubjs.filter((s) => !sameText(s, subj))
+          : [...selSubjs, subj];
+        renderSubjectChipsBoth();
+        renderSubjectDropdowns();
+        p.subjC.classList.remove('open');
+      };
+      p.subjDrop.appendChild(opt);
+    });
+  });
+}
+
+function renderJobChipsBoth() {
+  const handler = (job) => {
+    selJobs = selJobs.filter((j) => !sameText(j, job));
+    updateAvailableSubjects();
+    renderJobChipsBoth();
+    renderJobDropdowns();
+    renderSubjectChipsBoth();
+    renderSubjectDropdowns();
+  };
+  renderChipsInto(panels.modal.jobChips, selJobs, handler);
+  renderChipsInto(panels.drawer.jobChips, selJobs, handler);
+}
+
+function renderSubjectChipsBoth() {
+  const handler = (subj) => {
+    selSubjs = selSubjs.filter((s) => !sameText(s, subj));
+    renderSubjectChipsBoth();
+    renderSubjectDropdowns();
+  };
+  renderChipsInto(panels.modal.subjChips, selSubjs, handler);
+  renderChipsInto(panels.drawer.subjChips, selSubjs, handler);
+}
+
+function updateAvailableSubjects() {
+  const set = new Set();
+  originalQuestions.forEach((q) => {
+    if (!selJobs.length || selJobs.some((j) => sameText(q.job, j))) {
+      if (q.subject && q.subject.trim()) set.add(q.subject);
+    }
+  });
+  availSubjs = [...set];
+  selSubjs = selSubjs.filter((s) => availSubjs.some((a) => sameText(a, s)));
+}
+
+['modal', 'drawer'].forEach((key) => {
+  const p = panels[key];
+
+  p.jobW.onclick = (e) => {
+    if (e.target.closest('.ms-chip-remove')) return;
+    const wasOpen = p.jobC.classList.contains('open');
+    closeAllDropdowns();
+    if (!wasOpen) p.jobC.classList.add('open');
+    p.jobSearch.focus();
+  };
+  p.subjW.onclick = (e) => {
+    if (e.target.closest('.ms-chip-remove')) return;
+    const wasOpen = p.subjC.classList.contains('open');
+    closeAllDropdowns();
+    if (!wasOpen) p.subjC.classList.add('open');
+    p.subjSearch.focus();
+  };
+  p.jobSearch.oninput = () => {
+    jobSearchText = p.jobSearch.value;
+    renderJobDropdowns();
+    closeAllDropdowns();
+    p.jobC.classList.add('open');
+  };
+  p.subjSearch.oninput = () => {
+    subjSearchText = p.subjSearch.value;
+    renderSubjectDropdowns();
+    closeAllDropdowns();
+    p.subjC.classList.add('open');
+  };
+});
+
+document.addEventListener('click', (e) => {
+  ['modal', 'drawer'].forEach((key) => {
+    const p = panels[key];
+    if (!p.jobC.contains(e.target) && !p.subjC.contains(e.target)) {
+      p.jobC.classList.remove('open');
+      p.subjC.classList.remove('open');
+    }
+  });
+});
+
+/* ============================================================
+   PANEL OPEN/CLOSE
+   ============================================================ */
+function resetFilters() {
+  selJobs = [];
+  selSubjs = [];
+  jobSearchText = subjSearchText = '';
+  panels.modal.jobSearch.value = '';
+  panels.modal.subjSearch.value = '';
+  panels.drawer.jobSearch.value = '';
+  panels.drawer.subjSearch.value = '';
+  updateAvailableSubjects();
+  renderJobChipsBoth();
+  renderJobDropdowns();
+  renderSubjectChipsBoth();
+  renderSubjectDropdowns();
+  toast('Filters reset', 'info', 2000, false);
+}
+
+function confirmAndRefresh() {
+  closeBothPanels();
+  if (timerHandle) clearInterval(timerHandle);
+  resetToQuizView();
+  fetchQuestions(true);
+  factsLoaded = false;
+  if (mode === 'facts') fetchFacts(() => renderFactsMode());
+}
+
+function populatePanels() {
+  updateUserLabels();
+  renderJobChipsBoth();
+  renderJobDropdowns();
+  updateAvailableSubjects();
+  renderSubjectChipsBoth();
+  renderSubjectDropdowns();
+}
+
+function openModal() {
+  populatePanels();
+  ui.modal.classList.add('active');
+}
+function closeModal() {
+  ui.modal.classList.remove('active');
+  closeAllDropdowns();
+}
+
+function openDrawer() {
+  populatePanels();
+  ui.drawer.classList.add('open');
+  ui.drawerOverlay.classList.add('active');
+  ui.drawer.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  ui.drawer.classList.remove('open');
+  ui.drawerOverlay.classList.remove('active');
+  ui.drawer.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  closeAllDropdowns();
+}
+function closeBothPanels() {
+  closeModal();
+  closeDrawer();
+}
+
+ui.refresh.onclick = openModal;
+ui.mCancel.onclick  = closeModal;
+ui.mConfirm.onclick = confirmAndRefresh;
+ui.mReset.onclick   = resetFilters;
+ui.modal.onclick = (e) => { if (e.target === ui.modal) closeModal(); };
+
+ui.drawerBtn.onclick      = openDrawer;
+ui.drawerCloseBtn.onclick = closeDrawer;
+ui.drawerOverlay.onclick  = closeDrawer;
+ui.dCancel.onclick  = closeDrawer;
+ui.dConfirm.onclick = confirmAndRefresh;
+ui.dReset.onclick   = resetFilters;
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (ui.drawer.classList.contains('open')) closeDrawer();
+    else if (ui.modal.classList.contains('active')) closeModal();
+    else if (ui.jobsitesOverlay.classList.contains('active')) closeJobSitesModal();
+  }
+});
+
+async function doLogout() {
+  const ok = await confirmBox('🚪', 'Logout?', 'Your quiz progress will NOT be saved.', 'Logout');
+  if (!ok) return;
+  localStorage.removeItem(KEY_USER);
+  localStorage.removeItem(KEY_QUIZ);
+  user = null;
+  isGuest = false;
+  if (timerHandle) clearInterval(timerHandle);
+
+  ui.quizApp.style.display = 'none';
+  ui.loginScreen.style.display = 'block';
+  ui.loginStat.textContent = '🔐 Sign in to continue';
+  ui.email.value = ui.pass.value = '';
+  passwordVisible = false;
+  ui.pass.type = 'password';
+  ui.tglPw.textContent = '👁️';
+
+  closeBothPanels();
+  toast('Logged out', 'info', 3000, false);
+}
+ui.mLogout.onclick = doLogout;
+ui.dLogout.onclick = doLogout;
+
+/* ============================================================
+   NAVIGATION BUTTONS
+   ============================================================ */
+ui.prev.onclick = () => {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+    renderDots(currentQ);
+  }
+};
+
+ui.next.onclick = () => {
+  if (isGuest && currentQ >= GUEST_LIMIT - 1) { promptGuestLock(); return; }
+  if (currentQ < total - 1) {
+    currentQ++;
+    renderQuestion();
+    renderDots(currentQ);
+  }
+};
+
+ui.endBtn.onclick = handleEndQuiz;
+ui.restart.onclick = () => {
+  if (isGuest) { promptGuestLock(); return; }
+  restartQuiz();
+};
+
+/* ============================================================
+   STICKY TOP BAR SHADOW
+   ============================================================ */
+window.addEventListener('scroll', () => {
+  ui.topBar.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+/* ============================================================
+   JOB SITES MODAL
+   ============================================================ */
+function openJobSitesModal() {
+  ui.jobsitesOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  ui.jobsitesSearchInput.value = '';
+  jobSitesSearchQuery = '';
+  if (!jobSitesLoaded && !jobSitesLoading) {
+    fetchJobSites(() => renderJobSites());
+  } else {
+    renderJobSites();
+  }
+}
+function closeJobSitesModal() {
+  ui.jobsitesOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function fetchJobSites(callback) {
+  if (jobSitesLoaded) { if (callback) callback(); return; }
+  if (jobSitesLoading) return;
+  jobSitesLoading = true;
+  ui.jobsitesList.innerHTML = '<div class="jobsites-loading"><div class="spinner"></div><br>Loading job sites...</div>';
+
+  fetch(JOBSITES_URL + (JOBSITES_URL.includes('?') ? '&' : '?') + '_t=' + Date.now(), { cache: 'no-store' })
+    .then((r) => r.text())
+    .then((text) => {
+      const lines = text.split('\n').filter((l) => l.trim());
+      jobSites = [];
+      if (lines.length < 2) {
+        jobSitesLoaded = true; jobSitesLoading = false;
+        if (callback) callback(); return;
+      }
+      const headerCols = parseCSVLine(lines[0]).map((h) => h.toLowerCase().trim());
+      const findIdx = (keywords, fallback) => {
+        for (let k = 0; k < headerCols.length; k++) {
+          const h = headerCols[k];
+          if (keywords.some((kw) => h.includes(kw))) return k;
         }
+        return fallback;
+      };
+      const srnoIdx = findIdx(['srno', 'sr no', 's.no', 'serial'], 0);
+      const sectorIdx = findIdx(['sector'], 1);
+      const nameIdx = findIdx(['name of job', 'name', 'website'], 2);
+      const urlIdx = findIdx(['url', 'link'], 3);
 
-        // 3. Dismiss logic (24-hour cooldown)
-        function shouldShowBanner() {
-            if (isStandalone()) return false;
-            try {
-                const dismissed = localStorage.getItem(KEY_INSTALL_DISMISSED);
-                if (!dismissed) return true;
-                const dayMs = 24 * 60 * 60 * 1000;
-                return (Date.now() - parseInt(dismissed, 10)) > dayMs;
-            } catch (e) { return true; }
-        }
-
-        function showBanner() {
-            if (!banner) return;
-            if (!shouldShowBanner()) return;
-            setTimeout(() => banner.classList.add('show'), 2000);
-        }
-
-        function hideBanner(persist) {
-            if (!banner) return;
-            banner.classList.remove('show');
-            if (persist) {
-                try { localStorage.setItem(KEY_INSTALL_DISMISSED, String(Date.now())); } catch (e) {}
-            }
-        }
-
-        // 4. Capture beforeinstallprompt
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            showBanner();
+      for (let i = 1; i < lines.length; i++) {
+        const cols = parseCSVLine(lines[i]);
+        if (!cols.length) continue;
+        const name = cols[nameIdx] ? cols[nameIdx].trim() : '';
+        if (!name) continue;
+        jobSites.push({
+          srno: cols[srnoIdx] ? cols[srnoIdx].trim() : String(i),
+          sector: cols[sectorIdx] ? cols[sectorIdx].trim() : '',
+          name: name,
+          url: cols[urlIdx] ? cols[urlIdx].trim() : '',
         });
+      }
+      jobSitesLoaded = true; jobSitesLoading = false;
+      if (callback) callback();
+    })
+    .catch((err) => {
+      console.error('Job sites fetch error:', err);
+      jobSitesLoading = false;
+      ui.jobsitesList.innerHTML = '<div class="jobsites-empty" style="color:#ef4444;">❌ Failed to load job sites. Please try again later.</div>';
+    });
+}
+function renderJobSites() {
+  if (!jobSitesLoaded) return;
+  if (!jobSites.length) {
+    ui.jobsitesList.innerHTML = '<div class="jobsites-empty">No job sites available.</div>';
+    return;
+  }
+  const q = jobSitesSearchQuery.toLowerCase().trim();
+  const filtered = jobSites.filter((s) => {
+    if (!q) return true;
+    return (s.sector && s.sector.toLowerCase().includes(q)) ||
+           (s.name && s.name.toLowerCase().includes(q)) ||
+           (s.url && s.url.toLowerCase().includes(q));
+  });
+  if (!filtered.length) {
+    ui.jobsitesList.innerHTML = '<div class="jobsites-empty">🔍 No job sites match your search.</div>';
+    return;
+  }
+  let html = '';
+  filtered.forEach((s) => {
+    let urlHtml = '';
+    if (s.url) {
+      let displayUrl = s.url;
+      try { displayUrl = new URL(s.url).hostname; } catch (e) { /* ignore */ }
+      urlHtml = `<a class="js-url" href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(s.url)}">${escapeHtml(displayUrl)}</a>`;
+    }
+    html += `<div class="jobsites-item">
+        <span class="js-srno">${escapeHtml(s.srno)}</span>
+        ${s.sector ? `<span class="js-sector">${escapeHtml(s.sector)}</span>` : ''}
+        <span class="js-name">${escapeHtml(s.name)}</span>
+        ${urlHtml}
+    </div>`;
+  });
+  ui.jobsitesList.innerHTML = html;
+}
 
-        // 5. Install button
-        if (installBtn) {
-            installBtn.addEventListener('click', async () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        hideBanner(true);
-                    }
-                    deferredPrompt = null;
-                } else {
-                    showManualInstructions();
-                }
-            });
-        }
+ui.jobSitesBtn.addEventListener('click', openJobSitesModal);
+ui.jobsitesClose.addEventListener('click', closeJobSitesModal);
+ui.jobsitesOverlay.addEventListener('click', (e) => {
+  if (e.target === ui.jobsitesOverlay) closeJobSitesModal();
+});
+ui.jobsitesSearchInput.addEventListener('input', () => {
+  jobSitesSearchQuery = ui.jobsitesSearchInput.value;
+  renderJobSites();
+});
 
-        // 6. Manual instructions fallback
-        function showManualInstructions() {
-            const ua = navigator.userAgent || '';
-            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-            const isAndroid = /Android/.test(ua);
-            let msg = '📲 To install Self Learners:\n\n';
-            if (isIOS) {
-                msg += '1. Tap the Share button (⬆️) at the bottom\n'
-                     + '2. Scroll and tap "Add to Home Screen"\n'
-                     + '3. Tap "Add"';
-            } else if (isAndroid) {
-                msg += '1. Tap the browser menu (⋮)\n'
-                     + '2. Tap "Install app" or "Add to Home Screen"\n'
-                     + '3. Confirm';
-            } else {
-                msg += '1. Look for the install icon in the address bar\n'
-                     + '2. Or open browser menu → "Install App"\n'
-                     + '3. Confirm';
-            }
-            alert(msg);
-        }
+/* ============================================================
+   BOOT
+   ============================================================ */
+fetchUsers();
 
-        // 7. Close button
-        if (installClose) {
-            installClose.addEventListener('click', () => hideBanner(true));
-        }
-
-        // 8. If not installable via prompt, still show after 3s on mobile (helps iOS)
-        window.addEventListener('load', () => {
-            if (!isStandalone() && shouldShowBanner()) {
-                setTimeout(() => {
-                    if (!deferredPrompt && banner && !banner.classList.contains('show')) {
-                        banner.classList.add('show');
-                    }
-                }, 3000);
-            }
-        });
-
-        // 9. Hide if user installs from browser UI
-        window.addEventListener('appinstalled', () => {
-            hideBanner(true);
-            deferredPrompt = null;
-        });
-    })();
+})();
 </script>
 </body>
 </html>
