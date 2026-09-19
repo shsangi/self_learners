@@ -41,17 +41,130 @@
         .edu-page * { -webkit-user-select: none; user-select: none; }
         .edu-page input, .edu-page textarea { -webkit-user-select: text; user-select: text; }
 
-        /* TOASTS */
-        .toast-container { position: fixed; top: 1.3rem; right: 1.3rem; z-index: 9999; display: flex; flex-direction: column; gap: .7rem; max-width: 380px; width: 100%; }
-        .toast { padding: 1rem 1.2rem; border-radius: var(--r); font-size: .88rem; font-weight: 600; box-shadow: var(--shadow-xl); animation: slideInToast .35s cubic-bezier(.16,1,.3,1); display: flex; align-items: center; gap: .7rem; border-left: 4px solid; }
-        .toast.success { background: var(--success-bg); color: #065f46; border-left-color: var(--success); }
-        .toast.error { background: var(--danger-bg); color: #991b1b; border-left-color: var(--danger); }
-        .toast.warning { background: var(--warning-bg); color: #92400e; border-left-color: var(--warning); }
-        .toast.info { background: var(--sky-soft); color: #075985; border-left-color: var(--sky); }
-        .toast .toast-close { margin-left: auto; background: 0 0; border: none; font-size: 1.1rem; cursor: pointer; color: inherit; opacity: .5; }
-        @keyframes slideInToast { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes fadeOutToast { to { opacity: 0; transform: translateY(-8px); } }
-        .toast.removing { animation: fadeOutToast .25s ease forwards; }
+        /* INSTALL BANNER */
+        .install-banner {
+            position: fixed; bottom: 1.2rem; left: 50%;
+            transform: translateX(-50%) translateY(200%);
+            background: var(--sf);
+            border-radius: var(--r);
+            padding: 1.1rem 1.4rem;
+            display: flex; align-items: center; gap: 1rem;
+            z-index: 9998; max-width: 460px; width: calc(100% - 2rem);
+            border: 2px solid var(--sky);
+            transition: transform .45s cubic-bezier(.16,1,.3,1);
+            box-shadow: 0 30px 60px -15px rgba(14,165,233,.35), 0 0 0 4px rgba(14,165,233,.08);
+        }
+        .install-banner.show { transform: translateX(-50%) translateY(0); }
+        .install-banner .ib-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 800; flex-shrink: 0; overflow: hidden;
+            box-shadow: 0 6px 16px -4px rgba(14,165,233,.5);
+        }
+        .install-banner .ib-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .install-banner .ib-text { flex: 1; min-width: 0; }
+        .install-banner .ib-text strong {
+            display: block; font-size: .95rem; font-weight: 800;
+            color: var(--navy); margin-bottom: .2rem; letter-spacing: -.01em;
+        }
+        .install-banner .ib-text span { font-size: .78rem; color: var(--text-soft); line-height: 1.35; display: block; }
+        .install-banner .ib-btn {
+            background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+            color: #fff; border: none; font-weight: 800;
+            font-size: .85rem; padding: .7rem 1.3rem;
+            border-radius: var(--rf); cursor: pointer; font-family: inherit;
+            box-shadow: 0 4px 12px -4px rgba(14,165,233,.6);
+            transition: all .2s;
+            white-space: nowrap;
+        }
+        .install-banner .ib-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -4px rgba(14,165,233,.7); }
+        .install-banner .ib-close {
+            background: 0 0; border: none; font-size: 1.1rem;
+            color: var(--text-muted); cursor: pointer; padding: .3rem;
+            border-radius: 50%; width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all .15s;
+        }
+        .install-banner .ib-close:hover { background: var(--bg); color: var(--text); }
+
+        /* INSTALL INSTRUCTIONS MODAL */
+        .install-modal {
+            position: fixed; inset: 0;
+            background: rgba(10,30,63,.6);
+            backdrop-filter: blur(8px);
+            z-index: 12000;
+            display: none;
+            align-items: center; justify-content: center;
+            padding: 1rem;
+        }
+        .install-modal.active { display: flex; }
+        .install-modal-box {
+            background: var(--sf);
+            border-radius: 24px;
+            padding: 2rem 1.6rem 1.6rem;
+            max-width: 440px; width: 100%;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border);
+            animation: scaleIn .3s cubic-bezier(.16,1,.3,1);
+            max-height: 90vh; overflow-y: auto;
+        }
+        @keyframes scaleIn {
+            from { transform: scale(.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .install-modal-box .im-icon {
+            text-align: center; margin-bottom: 1rem;
+        }
+        .install-modal-box .im-icon span {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 72px; height: 72px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+            font-size: 2.2rem; color: #fff;
+            box-shadow: 0 8px 24px -8px rgba(14,165,233,.6);
+        }
+        .install-modal-box h3 {
+            font-size: 1.3rem; font-weight: 800;
+            text-align: center; margin-bottom: .5rem; color: var(--navy);
+        }
+        .install-modal-box .im-sub {
+            color: var(--text-soft); font-size: .9rem;
+            text-align: center; margin-bottom: 1.4rem; line-height: 1.5;
+        }
+        .install-modal-box ol {
+            list-style: none; counter-reset: step;
+            display: flex; flex-direction: column; gap: .75rem;
+            margin-bottom: 1.5rem;
+        }
+        .install-modal-box ol li {
+            counter-increment: step;
+            display: flex; align-items: flex-start; gap: .8rem;
+            padding: .85rem 1rem;
+            background: var(--sky-soft);
+            border-radius: 14px;
+            border: 1px solid var(--sky-light);
+            font-size: .88rem; font-weight: 600;
+            color: var(--navy); line-height: 1.45;
+        }
+        .install-modal-box ol li::before {
+            content: counter(step);
+            flex-shrink: 0;
+            width: 26px; height: 26px;
+            background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+            color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: .8rem;
+        }
+        .install-modal-box .im-close-btn {
+            width: 100%; padding: .9rem;
+            background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+            color: #fff; border: none; border-radius: var(--rf);
+            font-weight: 800; font-size: .95rem; font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 6px 16px -4px rgba(14,165,233,.5);
+            transition: all .2s;
+        }
+        .install-modal-box .im-close-btn:hover { transform: translateY(-1px); }
 
         /* LOGIN */
         .login-wrapper {
@@ -82,11 +195,22 @@
         .login-wrapper .divider::before, .login-wrapper .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
         .login-wrapper .login-footer { text-align: center; font-size: .8rem; color: var(--text-muted); margin-top: 1.4rem; font-weight: 500; }
 
+        /* TOASTS */
+        .toast-container { position: fixed; top: 1.3rem; right: 1.3rem; z-index: 9999; display: flex; flex-direction: column; gap: .7rem; max-width: 380px; width: 100%; }
+        .toast { padding: 1rem 1.2rem; border-radius: var(--r); font-size: .88rem; font-weight: 600; box-shadow: var(--shadow-xl); animation: slideInToast .35s cubic-bezier(.16,1,.3,1); display: flex; align-items: center; gap: .7rem; border-left: 4px solid; }
+        .toast.success { background: var(--success-bg); color: #065f46; border-left-color: var(--success); }
+        .toast.error { background: var(--danger-bg); color: #991b1b; border-left-color: var(--danger); }
+        .toast.warning { background: var(--warning-bg); color: #92400e; border-left-color: var(--warning); }
+        .toast.info { background: var(--sky-soft); color: #075985; border-left-color: var(--sky); }
+        .toast .toast-close { margin-left: auto; background: 0 0; border: none; font-size: 1.1rem; cursor: pointer; color: inherit; opacity: .5; }
+        @keyframes slideInToast { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeOutToast { to { opacity: 0; transform: translateY(-8px); } }
+        .toast.removing { animation: fadeOutToast .25s ease forwards; }
+
         /* CONFIRM */
         .confirm-overlay { position: fixed; inset: 0; background: rgba(10,30,63,.55); backdrop-filter: blur(8px); z-index: 10000; display: none; align-items: center; justify-content: center; }
         .confirm-overlay.active { display: flex; }
         .confirm-box { background: var(--sf); border-radius: 28px; padding: 2.2rem 2.4rem; max-width: 440px; width: 90%; box-shadow: var(--shadow-xl); animation: scaleIn .3s cubic-bezier(.16,1,.3,1); border: 1px solid var(--border); }
-        @keyframes scaleIn { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .confirm-box .icon { text-align: center; margin-bottom: .5rem; }
         .confirm-box .icon span { display: inline-flex; align-items: center; justify-content: center; width: 68px; height: 68px; border-radius: 50%; background: var(--sky-soft); font-size: 2.2rem; }
         .confirm-box h3 { font-size: 1.3rem; font-weight: 800; text-align: center; margin-bottom: .5rem; color: var(--navy); }
@@ -654,12 +778,39 @@
             .mode-toggle label { font-size: .68rem; padding: .4rem .6rem; }
             .mode-toggle label .mode-emoji { display: none; }
             .attempted-pill, .timer-pill, .facts-pill { font-size: .7rem; padding: .45rem .75rem; }
+            .install-banner { padding: .9rem 1rem; gap: .7rem; }
+            .install-banner .ib-icon { width: 44px; height: 44px; }
+            .install-banner .ib-text strong { font-size: .85rem; }
+            .install-banner .ib-text span { font-size: .7rem; }
+            .install-banner .ib-btn { font-size: .78rem; padding: .6rem 1rem; }
         }
     </style>
 </head>
 <body>
 <div class="edu-page">
     <div class="toast-container" id="toastContainer"></div>
+
+    <div class="install-banner" id="installBanner">
+        <div class="ib-icon"><img src="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27" alt="SL" onerror="this.parentElement.textContent='SL'"></div>
+        <div class="ib-text">
+            <strong>📲 Install Self Learners App</strong>
+            <span>Get quick access &amp; offline-friendly learning — tap Install to add to your home screen.</span>
+        </div>
+        <button class="ib-btn" id="installBtn">Install</button>
+        <button class="ib-close" id="installClose" aria-label="Close">✕</button>
+    </div>
+
+    <div class="install-modal" id="installModal">
+        <div class="install-modal-box">
+            <div class="im-icon"><span id="installModalIcon">📲</span></div>
+            <h3 id="installModalTitle">Install Self Learners</h3>
+            <p class="im-sub" id="installModalSub">Follow these steps to add the app to your home screen.</p>
+            <ol id="installModalSteps">
+                <!-- filled dynamically -->
+            </ol>
+            <button class="im-close-btn" id="installModalCloseBtn">Got it</button>
+        </div>
+    </div>
 
     <div class="confirm-overlay" id="confirmOverlay">
         <div class="confirm-box">
@@ -938,6 +1089,7 @@
     const GUEST_LIMIT = 15;
     const JOBSITES_URL = 'https://docs.google.com/spreadsheets/d/108C9USSy1WysOwKThC1JFsL5OfjSC3HAX5EysDMw4gM/gviz/tq?tqx=out:csv&gid=614189291';
     const KEY_QUIZ = 'slQuizV4', KEY_USER = 'slUser', KEY_MODE = 'slMode', KEY_FACTS_READ = 'slFactsRead';
+    const KEY_INSTALL_DISMISSED = 'slInstallDismissed';
 
     const $ = (id) => document.getElementById(id);
     const ui = {
@@ -955,6 +1107,8 @@
         modal: $('refreshModal'), mCancel: $('modalCancel'), mConfirm: $('modalConfirm'), mReset: $('modalResetBtn'), mUserAv: $('modalUserAvatar'), mUserName: $('modalUserName'), mLogout: $('modalLogoutBtn'),
         drawer: $('drawer'), drawerOverlay: $('drawerOverlay'), drawerCloseBtn: $('drawerCloseBtn'), dCancel: $('drawerCancel'), dConfirm: $('drawerConfirm'), dReset: $('drawerResetBtn'), dUserAv: $('drawerUserAvatar'), dUserName: $('drawerUserName'), dLogout: $('drawerLogoutBtn'),
         cOverlay: $('confirmOverlay'), cIcon: $('confirmIcon'), cTitle: $('confirmTitle'), cMsg: $('confirmMessage'), cOk: $('confirmOk'), cCancel: $('confirmCancel'),
+        installBanner: $('installBanner'), installBtn: $('installBtn'), installClose: $('installClose'),
+        installModal: $('installModal'), installModalIcon: $('installModalIcon'), installModalTitle: $('installModalTitle'), installModalSub: $('installModalSub'), installModalSteps: $('installModalSteps'), installModalCloseBtn: $('installModalCloseBtn'),
         jobSitesBtn: $('jobSitesBtn'), jobsitesOverlay: $('jobsitesOverlay'), jobsitesClose: $('jobsitesClose'), jobsitesSearchInput: $('jobsitesSearchInput'), jobsitesList: $('jobsitesList'),
     };
 
@@ -966,6 +1120,7 @@
     let readSearchQuery = '', factsSearchQuery = '';
     let passwordVisible = false, toastTimer = null, confirmResolve = null;
     let jobSites = [], jobSitesLoaded = false, jobSitesLoading = false, jobSitesSearchQuery = '';
+    let deferredPrompt = null;
 
     function clean(v) { if (v == null) return ''; return String(v).replace(/[\u200B-\u200D\uFEFF\u00A0]/g, ' ').replace(/\s+/g, ' ').trim(); }
     function parseCSVLine(line) { const result = []; let cell = ''; let inQuotes = false; for (let i = 0; i < line.length; i++) { const ch = line[i]; if (inQuotes) { if (ch === '"' && line[i + 1] === '"') { cell += '"'; i++; } else if (ch === '"') inQuotes = false; else cell += ch; } else { if (ch === '"') inQuotes = true; else if (ch === ',') { result.push(clean(cell)); cell = ''; } else cell += ch; } } result.push(clean(cell)); return result; }
@@ -982,6 +1137,127 @@
     function confirmBox(icon, title, message, okText) { return new Promise((resolve) => { ui.cIcon.textContent = icon || '❓'; ui.cTitle.textContent = title; ui.cMsg.textContent = message; if (okText) ui.cOk.textContent = okText; ui.cOverlay.classList.add('active'); confirmResolve = resolve; }); }
     function closeConfirm(result) { ui.cOverlay.classList.remove('active'); if (confirmResolve) { confirmResolve(result); confirmResolve = null; } }
     ui.cCancel.onclick = () => closeConfirm(false); ui.cOk.onclick = () => closeConfirm(true); ui.cOverlay.onclick = (e) => { if (e.target === ui.cOverlay) closeConfirm(false); };
+
+    /* ============ INSTALL LOGIC (fixed) ============ */
+    function showInstallBanner() {
+        setTimeout(() => { if (ui.installBanner) ui.installBanner.classList.add('show'); }, 1500);
+    }
+    function hideInstallBanner(persistDismiss) {
+        if (!ui.installBanner) return;
+        ui.installBanner.classList.remove('show');
+        if (persistDismiss) { try { localStorage.setItem(KEY_INSTALL_DISMISSED, String(Date.now())); } catch (e) { /* ignore */ } }
+    }
+    function shouldShowInstallBanner() {
+        try {
+            const dismissed = localStorage.getItem(KEY_INSTALL_DISMISSED);
+            if (!dismissed) return true;
+            const dayMs = 24 * 60 * 60 * 1000;
+            return (Date.now() - parseInt(dismissed, 10)) > dayMs;
+        } catch (e) { return true; }
+    }
+
+    function detectPlatform() {
+        const ua = navigator.userAgent || '';
+        const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        const isAndroid = /Android/.test(ua);
+        const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        return { isIOS, isAndroid, isSafari, isStandalone };
+    }
+
+    function getInstallSteps(platform) {
+        if (platform.isIOS) {
+            return {
+                icon: '📲',
+                title: 'Install on iPhone / iPad',
+                sub: 'Apple requires a manual step — it takes 5 seconds:',
+                steps: [
+                    'Tap the <strong>Share</strong> button (⬆️) at the bottom of Safari.',
+                    'Scroll and tap <strong>"Add to Home Screen"</strong>.',
+                    'Tap <strong>"Add"</strong> in the top-right corner.',
+                    'Find the app on your home screen and open it like a native app!'
+                ]
+            };
+        }
+        if (platform.isAndroid) {
+            return {
+                icon: '📲',
+                title: 'Install on Android',
+                sub: 'Use your browser menu to add the app:',
+                steps: [
+                    'Tap the <strong>⋮ menu</strong> in your browser (top-right).',
+                    'Tap <strong>"Install app"</strong> or <strong>"Add to Home Screen"</strong>.',
+                    'Confirm by tapping <strong>"Install"</strong>.',
+                    'The app will appear on your home screen.'
+                ]
+            };
+        }
+        return {
+            icon: '📲',
+            title: 'Install this App',
+            sub: 'Use your browser to install the app on this device:',
+            steps: [
+                'Look for the <strong>install icon</strong> (⊕ or monitor) in the address bar.',
+                'Or open the browser menu and choose <strong>"Install App"</strong>.',
+                'Confirm the installation.',
+                'Launch it from your desktop or app list.'
+            ]
+        };
+    }
+
+    function openInstallModal(platform) {
+        const info = getInstallSteps(platform);
+        ui.installModalIcon.textContent = info.icon;
+        ui.installModalTitle.textContent = info.title;
+        ui.installModalSub.textContent = info.sub;
+        ui.installModalSteps.innerHTML = info.steps.map((s) => `<li>${s}</li>`).join('');
+        ui.installModal.classList.add('active');
+    }
+    function closeInstallModal() { ui.installModal.classList.remove('active'); }
+    ui.installModalCloseBtn.onclick = closeInstallModal;
+    ui.installModal.addEventListener('click', (e) => { if (e.target === ui.installModal) closeInstallModal(); });
+
+    function handleInstallClick() {
+        const platform = detectPlatform();
+
+        // Already installed?
+        if (platform.isStandalone) {
+            toast('✅ App is already installed!', 'success', 2500, false);
+            return;
+        }
+
+        // Native prompt available (Chrome/Edge Android & Desktop)
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    toast('🎉 App installed! Check your home screen.', 'success', 3500, false);
+                    hideInstallBanner(true);
+                } else {
+                    toast('Install cancelled', 'info', 2500, false);
+                }
+                deferredPrompt = null;
+            });
+            return;
+        }
+
+        // Fallback: show nice modal (replaces ugly alert)
+        openInstallModal(platform);
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        console.log('[PWA] beforeinstallprompt captured — native install ready');
+    });
+    window.addEventListener('appinstalled', () => {
+        hideInstallBanner(true);
+        toast('✅ App installed successfully!', 'success', 3000, false);
+        deferredPrompt = null;
+    });
+    if (ui.installBtn) ui.installBtn.onclick = handleInstallClick;
+    if (ui.installClose) ui.installClose.onclick = () => hideInstallBanner(true);
+    if (shouldShowInstallBanner()) showInstallBanner();
 
     [ui.loginLogo, ui.brandLogo].forEach((img) => { const probe = new Image(); probe.onload = () => (img.src = LOGO); probe.src = LOGO; });
     ui.tglPw.onclick = () => { passwordVisible = !passwordVisible; ui.pass.type = passwordVisible ? 'text' : 'password'; ui.tglPw.textContent = passwordVisible ? '🙈' : '👁️'; };
@@ -1379,7 +1655,7 @@
     ui.refresh.onclick = openModal; ui.mCancel.onclick = closeModal; ui.mConfirm.onclick = confirmAndRefresh; ui.mReset.onclick = resetFilters; ui.modal.onclick = (e) => { if (e.target === ui.modal) closeModal(); };
     ui.drawerBtn.onclick = openDrawer; ui.drawerCloseBtn.onclick = closeDrawer; ui.drawerOverlay.onclick = closeDrawer; ui.dCancel.onclick = closeDrawer; ui.dConfirm.onclick = confirmAndRefresh; ui.dReset.onclick = resetFilters;
 
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (ui.drawer.classList.contains('open')) closeDrawer(); else if (ui.modal.classList.contains('active')) closeModal(); else if (ui.jobsitesOverlay.classList.contains('active')) closeJobSitesModal(); } });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (ui.installModal.classList.contains('active')) closeInstallModal(); else if (ui.drawer.classList.contains('open')) closeDrawer(); else if (ui.modal.classList.contains('active')) closeModal(); else if (ui.jobsitesOverlay.classList.contains('active')) closeJobSitesModal(); } });
 
     async function doLogout() { const ok = await confirmBox('🚪', 'Logout?', 'Your quiz progress will NOT be saved.', 'Logout'); if (!ok) return; localStorage.removeItem(KEY_USER); localStorage.removeItem(KEY_QUIZ); user = null; isGuest = false; if (timerHandle) clearInterval(timerHandle); ui.quizApp.style.display = 'none'; ui.loginScreen.style.display = 'block'; ui.loginStat.textContent = '🔐 Sign in to continue'; ui.email.value = ui.pass.value = ''; passwordVisible = false; ui.pass.type = 'password'; ui.tglPw.textContent = '👁️'; closeBothPanels(); toast('Logged out', 'info', 3000, false); }
     ui.mLogout.onclick = doLogout; ui.dLogout.onclick = doLogout;
