@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="theme-color" content="#0ea5e9">
     
-    <!-- ============================================================
-         PWA META TAGS — REQUIRED FOR INSTALL PROMPT
-         ============================================================ -->
+    <!-- PWA META TAGS -->
     <meta name="description" content="Self Learners — CSS Preparation Hub">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,9 +15,7 @@
     
     <title>Self Learners · CSS 2027 Hub</title>
     
-    <!-- ============================================================
-         ICONS + MANIFEST LINK — REQUIRED FOR INSTALL
-         ============================================================ -->
+    <!-- ICONS + MANIFEST LINK -->
     <link rel="icon" type="image/png" 
           href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27">
     <link rel="apple-touch-icon" 
@@ -166,7 +162,6 @@
             background: var(--sky);
         }
 
-        /* PWA install banner on hub page */
         .hub-install-banner {
             position: fixed; bottom: 1.2rem; left: 50%;
             transform: translateX(-50%) translateY(200%);
@@ -186,6 +181,7 @@
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0; overflow: hidden;
             box-shadow: 0 6px 16px -4px rgba(14,165,233,.5);
+            color: #fff; font-weight: 800; font-size: 1.1rem;
         }
         .hub-install-banner .ib-icon img { width: 100%; height: 100%; object-fit: cover; }
         .hub-install-banner .ib-text { flex: 1; min-width: 0; }
@@ -242,9 +238,6 @@
     <div class="page-stage" id="pageStage"></div>
 </div>
 
-<!-- ============================================================
-     PWA INSTALL BANNER
-     ============================================================ -->
 <div class="hub-install-banner" id="hubInstallBanner">
     <div class="ib-icon">
         <img src="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27" alt="SL" onerror="this.parentElement.textContent='SL'">
@@ -285,7 +278,6 @@
 <script>
 /* ============================================================
    PWA SETUP — REQUIRED FOR INSTALL PROMPT
-   This block is what makes the app installable!
    ============================================================ */
 (function setupPWA() {
     const LOGO = 'https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27';
@@ -320,7 +312,6 @@
     document.getElementById('appManifest').href = URL.createObjectURL(manifestBlob);
     
     // ---- 2. Register a minimal Service Worker (Blob-based) ----
-    // Chrome/Firefox REQUIRE a registered service worker for install prompt.
     if ('serviceWorker' in navigator) {
         const swCode = `
             const CACHE = 'sl-shell-v1';
@@ -331,14 +322,12 @@
                 e.waitUntil(self.clients.claim());
             });
             self.addEventListener('fetch', (e) => {
-                // Network-first for Google Sheets (always fresh data)
                 if (e.request.url.includes('docs.google.com')) {
                     e.respondWith(
                         fetch(e.request).catch(() => caches.match(e.request))
                     );
                     return;
                 }
-                // Cache-first for everything else
                 e.respondWith(
                     caches.match(e.request).then((cached) => {
                         return cached || fetch(e.request).then((response) => {
@@ -369,7 +358,6 @@
         try {
             const dismissed = localStorage.getItem(KEY_DISMISSED);
             if (!dismissed) return true;
-            // Re-show after 24 hours
             const dayMs = 24 * 60 * 60 * 1000;
             return (Date.now() - parseInt(dismissed, 10)) > dayMs;
         } catch (e) { return true; }
@@ -385,7 +373,6 @@
         }
     }
     
-    // Capture the native install prompt
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
@@ -393,22 +380,17 @@
         if (shouldShowBanner()) showBanner();
     });
     
-    // Handle install button click
     if (installBtn) {
         installBtn.onclick = async () => {
             if (deferredPrompt) {
-                // Native prompt available (Chrome/Edge/Samsung)
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
                 if (outcome === 'accepted') {
                     console.log('✅ User installed the app');
                     hideBanner(true);
-                } else {
-                    console.log('❌ User dismissed install');
                 }
                 deferredPrompt = null;
             } else {
-                // Fallback: show device-specific instructions
                 const ua = navigator.userAgent || '';
                 const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
                 const isAndroid = /Android/.test(ua);
@@ -429,25 +411,20 @@
         installClose.onclick = () => hideBanner(true);
     }
     
-    // Show banner on page load if not dismissed
     window.addEventListener('load', () => {
         if (shouldShowBanner()) {
-            // Delay 2 seconds for smooth UX
             setTimeout(() => {
-                // Show banner even if beforeinstallprompt hasn't fired (in case browser is slow)
                 showBanner();
             }, 2000);
         }
     });
     
-    // Hide banner if app is already installed (standalone mode)
     window.addEventListener('appinstalled', () => {
         console.log('🎉 App installed successfully!');
         hideBanner(true);
     });
     
     if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true) {
-        // Already installed — hide banner permanently
         if (banner) banner.style.display = 'none';
     }
 })();
