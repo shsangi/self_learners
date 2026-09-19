@@ -4,24 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="theme-color" content="#0ea5e9">
-    
-    <!-- PWA META TAGS -->
-    <meta name="description" content="Self Learners — CSS Preparation Hub">
+    <title>Self Learners · CSS 2027 Hub</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27">
+    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Self Learners">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Self Learners">
-    
-    <title>Self Learners · CSS 2027 Hub</title>
-    
-    <!-- ICONS + MANIFEST LINK -->
-    <link rel="icon" type="image/png" 
-          href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27">
-    <link rel="apple-touch-icon" 
-          href="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27">
-    <link rel="manifest" id="appManifest">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -38,7 +31,6 @@
             --shadow-sm: 0 2px 6px rgba(10,30,63,.06);
             --shadow-md: 0 8px 20px -6px rgba(10,30,63,.12);
             --shadow-lg: 0 20px 40px -12px rgba(10,30,63,.18);
-            --shadow-xl: 0 30px 60px -15px rgba(10,30,63,.25);
             --radius-full: 9999px; --bottom-nav-h: 68px;
         }
         html { -webkit-text-size-adjust: 100%; }
@@ -162,10 +154,11 @@
             background: var(--sky);
         }
 
-        .hub-install-banner {
+        /* INSTALL BANNER */
+        .install-banner {
             position: fixed; bottom: 1.2rem; left: 50%;
             transform: translateX(-50%) translateY(200%);
-            background: var(--card);
+            background: #fff;
             border-radius: 20px;
             padding: 1.1rem 1.4rem;
             display: flex; align-items: center; gap: 1rem;
@@ -174,41 +167,45 @@
             transition: transform .45s cubic-bezier(.16,1,.3,1);
             box-shadow: 0 30px 60px -15px rgba(14,165,233,.35), 0 0 0 4px rgba(14,165,233,.08);
         }
-        .hub-install-banner.show { transform: translateX(-50%) translateY(0); }
-        .hub-install-banner .ib-icon {
+        .install-banner.show { transform: translateX(-50%) translateY(0); }
+        .install-banner .ib-icon {
             width: 52px; height: 52px; border-radius: 14px;
             background: linear-gradient(135deg, var(--sky), var(--sky-dark));
             display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; overflow: hidden;
+            color: #fff; font-weight: 800; flex-shrink: 0; overflow: hidden;
             box-shadow: 0 6px 16px -4px rgba(14,165,233,.5);
-            color: #fff; font-weight: 800; font-size: 1.1rem;
         }
-        .hub-install-banner .ib-icon img { width: 100%; height: 100%; object-fit: cover; }
-        .hub-install-banner .ib-text { flex: 1; min-width: 0; }
-        .hub-install-banner .ib-text strong {
+        .install-banner .ib-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .install-banner .ib-text { flex: 1; min-width: 0; }
+        .install-banner .ib-text strong {
             display: block; font-size: .95rem; font-weight: 800;
-            color: var(--navy); margin-bottom: .2rem;
+            color: var(--navy); margin-bottom: .2rem; letter-spacing: -.01em;
         }
-        .hub-install-banner .ib-text span { font-size: .78rem; color: var(--text-soft); line-height: 1.35; display: block; }
-        .hub-install-banner .ib-btn {
+        .install-banner .ib-text span { font-size: .78rem; color: var(--text-soft); line-height: 1.35; display: block; }
+        .install-banner .ib-btn {
             background: linear-gradient(135deg, var(--sky), var(--sky-dark));
             color: #fff; border: none; font-weight: 800;
             font-size: .85rem; padding: .7rem 1.3rem;
             border-radius: var(--radius-full); cursor: pointer; font-family: inherit;
             box-shadow: 0 4px 12px -4px rgba(14,165,233,.6);
+            transition: all .2s;
             white-space: nowrap;
         }
-        .hub-install-banner .ib-close {
+        .install-banner .ib-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -4px rgba(14,165,233,.7); }
+        .install-banner .ib-close {
             background: 0 0; border: none; font-size: 1.1rem;
             color: var(--text-muted); cursor: pointer; padding: .3rem;
             border-radius: 50%; width: 28px; height: 28px;
             display: flex; align-items: center; justify-content: center;
+            transition: all .15s;
         }
+        .install-banner .ib-close:hover { background: var(--bg); color: var(--text); }
 
         @media (max-width: 768px) {
             .toggle-bar { display: none; }
             .bottom-nav { display: block; }
             body { padding: .6rem .6rem calc(var(--bottom-nav-h) + env(safe-area-inset-bottom) + 16px); }
+            .install-banner { bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom) + 1rem); }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -238,18 +235,6 @@
     <div class="page-stage" id="pageStage"></div>
 </div>
 
-<div class="hub-install-banner" id="hubInstallBanner">
-    <div class="ib-icon">
-        <img src="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27" alt="SL" onerror="this.parentElement.textContent='SL'">
-    </div>
-    <div class="ib-text">
-        <strong>📲 Install Self Learners App</strong>
-        <span>Get quick access &amp; work offline — tap Install to add to your home screen.</span>
-    </div>
-    <button class="ib-btn" id="hubInstallBtn">Install</button>
-    <button class="ib-close" id="hubInstallClose">✕</button>
-</div>
-
 <nav class="bottom-nav" id="bottomNav" role="navigation">
     <div class="bottom-nav-inner">
         <button class="bottom-nav-btn active" data-page="edu" data-src="page-edu.html">
@@ -275,252 +260,227 @@
     </div>
 </nav>
 
+<!-- INSTALL BANNER (hub only) -->
+<div class="install-banner" id="installBanner">
+    <div class="ib-icon">
+        <img src="https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27"
+             alt="SL" onerror="this.parentElement.textContent='SL'">
+    </div>
+    <div class="ib-text">
+        <strong>📲 Install Self Learners App</strong>
+        <span>Get quick access &amp; work offline — tap Install to add to your home screen.</span>
+    </div>
+    <button class="ib-btn" id="installBtn">Install</button>
+    <button class="ib-close" id="installClose" aria-label="Close">✕</button>
+</div>
+
 <script>
-/* ============================================================
-   PWA SETUP — REQUIRED FOR INSTALL PROMPT
-   ============================================================ */
-(function setupPWA() {
-    const LOGO = 'https://lh3.googleusercontent.com/d/1NRgM5kUkl8A0R5QrklfvdhwYlVj6OY27';
-    const APP_NAME = 'Self Learners';
-    
-    // ---- 1. Create and attach the Web App Manifest (as a Blob) ----
-    const manifest = {
-        name: APP_NAME,
-        short_name: 'Self Learners',
-        description: 'CSS Preparation Hub — MCQs, Syllabus, Papers, Schedule',
-        start_url: './index.html',
-        scope: './',
-        display: 'standalone',
-        orientation: 'portrait',
-        background_color: '#f4f6fa',
-        theme_color: '#0ea5e9',
-        categories: ['education', 'productivity'],
-        icons: [
-            { src: LOGO, sizes: '192x192', type: 'image/png', purpose: 'any' },
-            { src: LOGO, sizes: '512x512', type: 'image/png', purpose: 'any' },
-            { src: LOGO, sizes: '192x192', type: 'image/png', purpose: 'maskable' },
-            { src: LOGO, sizes: '512x512', type: 'image/png', purpose: 'maskable' }
-        ],
-        shortcuts: [
-            { name: 'Edu — Quiz', url: './page-edu.html', description: 'Jump into MCQ quiz' },
-            { name: 'Schedule', url: './page-schedule.html', description: 'View daily schedule' },
-            { name: 'Syllabus', url: './page-syllabus.html', description: 'Browse CSS syllabus' }
-        ]
-    };
-    
-    const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
-    document.getElementById('appManifest').href = URL.createObjectURL(manifestBlob);
-    
-    // ---- 2. Register a minimal Service Worker (Blob-based) ----
-    if ('serviceWorker' in navigator) {
-        const swCode = `
-            const CACHE = 'sl-shell-v1';
-            self.addEventListener('install', (e) => {
-                self.skipWaiting();
-            });
-            self.addEventListener('activate', (e) => {
-                e.waitUntil(self.clients.claim());
-            });
-            self.addEventListener('fetch', (e) => {
-                if (e.request.url.includes('docs.google.com')) {
-                    e.respondWith(
-                        fetch(e.request).catch(() => caches.match(e.request))
-                    );
-                    return;
-                }
-                e.respondWith(
-                    caches.match(e.request).then((cached) => {
-                        return cached || fetch(e.request).then((response) => {
-                            const clone = response.clone();
-                            caches.open(CACHE).then((c) => c.put(e.request, clone));
-                            return response;
-                        }).catch(() => cached);
-                    })
-                );
-            });
-        `;
-        const swBlob = new Blob([swCode], { type: 'application/javascript' });
-        const swUrl = URL.createObjectURL(swBlob);
-        
-        navigator.serviceWorker.register(swUrl, { scope: './' })
-            .then((reg) => console.log('✅ Service Worker registered:', reg.scope))
-            .catch((err) => console.warn('⚠️ SW registration failed:', err));
-    }
-    
-    // ---- 3. Install prompt handling ----
-    let deferredPrompt = null;
-    const banner = document.getElementById('hubInstallBanner');
-    const installBtn = document.getElementById('hubInstallBtn');
-    const installClose = document.getElementById('hubInstallClose');
-    const KEY_DISMISSED = 'slInstallDismissed';
-    
-    function shouldShowBanner() {
-        try {
-            const dismissed = localStorage.getItem(KEY_DISMISSED);
-            if (!dismissed) return true;
-            const dayMs = 24 * 60 * 60 * 1000;
-            return (Date.now() - parseInt(dismissed, 10)) > dayMs;
-        } catch (e) { return true; }
-    }
-    
-    function showBanner() {
-        if (banner) banner.classList.add('show');
-    }
-    function hideBanner(persist) {
-        if (banner) banner.classList.remove('show');
-        if (persist) {
-            try { localStorage.setItem(KEY_DISMISSED, String(Date.now())); } catch (e) {}
-        }
-    }
-    
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        console.log('✅ beforeinstallprompt fired — app is installable!');
-        if (shouldShowBanner()) showBanner();
-    });
-    
-    if (installBtn) {
-        installBtn.onclick = async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    console.log('✅ User installed the app');
-                    hideBanner(true);
-                }
-                deferredPrompt = null;
-            } else {
-                const ua = navigator.userAgent || '';
-                const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-                const isAndroid = /Android/.test(ua);
-                let msg = '📲 To install:\n\n';
-                if (isIOS) {
-                    msg += '1. Tap the Share button (⬆️)\n2. Scroll down\n3. Tap "Add to Home Screen"\n4. Tap "Add"';
-                } else if (isAndroid) {
-                    msg += '1. Tap the ⋮ menu in Chrome\n2. Tap "Install app" or "Add to Home Screen"\n3. Confirm install';
-                } else {
-                    msg += '1. Look for the install icon in the address bar\n2. Or use browser menu → "Install App"';
-                }
-                alert(msg);
-            }
+    /* ---------- Page navigation (iframe hub) ---------- */
+    (function () {
+        const stage = document.getElementById('pageStage');
+        const topButtons = document.querySelectorAll('.toggle-btn');
+        const bottomButtons = document.querySelectorAll('.bottom-nav-btn');
+        const frames = new Map();
+        let activePage = null;
+
+        const THEME = {
+            navy: '#0a1e3f', navyLight: '#1a3a6b', navySoft: '#e8eef7',
+            black: '#0f1419', yellow: '#f5b800', yellowDark: '#d99e00',
+            yellowSoft: '#fff7dd', sky: '#0ea5e9', skyDark: '#0284c7', skySoft: '#e0f2fe',
+            bg: '#f4f6fa', card: '#ffffff',
+            text: '#0f1419', textSoft: '#475569', textMuted: '#94a3b8',
+            border: '#e2e8f0',
+            success: '#059669', danger: '#dc2626', warning: '#d97706', info: '#0284c7'
         };
-    }
-    
-    if (installClose) {
-        installClose.onclick = () => hideBanner(true);
-    }
-    
-    window.addEventListener('load', () => {
-        if (shouldShowBanner()) {
-            setTimeout(() => {
-                showBanner();
-            }, 2000);
-        }
-    });
-    
-    window.addEventListener('appinstalled', () => {
-        console.log('🎉 App installed successfully!');
-        hideBanner(true);
-    });
-    
-    if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true) {
-        if (banner) banner.style.display = 'none';
-    }
-})();
 
-/* ============================================================
-   PAGE NAVIGATION (iframes)
-   ============================================================ */
-(function () {
-    const stage = document.getElementById('pageStage');
-    const topButtons = document.querySelectorAll('.toggle-btn');
-    const bottomButtons = document.querySelectorAll('.bottom-nav-btn');
-    const frames = new Map();
-    let activePage = null;
+        function showPage(pageId, src) {
+            if (activePage === pageId) return;
+            activePage = pageId;
 
-    const THEME = {
-        navy: '#0a1e3f', navyLight: '#1a3a6b', navySoft: '#e8eef7',
-        black: '#0f1419', yellow: '#f5b800', yellowDark: '#d99e00',
-        yellowSoft: '#fff7dd', sky: '#0ea5e9', skyDark: '#0284c7', skySoft: '#e0f2fe',
-        bg: '#f4f6fa', card: '#ffffff',
-        text: '#0f1419', textSoft: '#475569', textMuted: '#94a3b8',
-        border: '#e2e8f0',
-        success: '#059669', danger: '#dc2626', warning: '#d97706', info: '#0284c7'
-    };
+            topButtons.forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
+            bottomButtons.forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
 
-    function showPage(pageId, src) {
-        if (activePage === pageId) return;
-        activePage = pageId;
+            if (!frames.has(pageId)) {
+                const wrap = document.createElement('div');
+                wrap.className = 'page-frame';
+                wrap.style.position = 'relative';
+                wrap.style.minHeight = 'calc(100vh - 100px)';
+                wrap.style.opacity = '0';
+                wrap.style.pointerEvents = 'none';
+                wrap.dataset.pageId = pageId;
 
-        topButtons.forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
-        bottomButtons.forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
+                const loader = document.createElement('div');
+                loader.className = 'page-loading';
+                loader.innerHTML = '<div class="spinner"></div><span>Loading…</span>';
 
-        if (!frames.has(pageId)) {
-            const wrap = document.createElement('div');
-            wrap.className = 'page-frame';
-            wrap.style.position = 'relative';
-            wrap.style.minHeight = 'calc(100vh - 100px)';
-            wrap.style.opacity = '0';
-            wrap.style.pointerEvents = 'none';
-            wrap.dataset.pageId = pageId;
+                const iframe = document.createElement('iframe');
+                iframe.src = src;
+                iframe.title = 'Self Learners · ' + pageId;
+                iframe.setAttribute('loading', 'lazy');
+                iframe.style.cssText = 'width:100%;min-height:calc(100vh - 100px);border:none;display:block;background:transparent;';
 
-            const loader = document.createElement('div');
-            loader.className = 'page-loading';
-            loader.innerHTML = '<div class="spinner"></div><span>Loading…</span>';
+                wrap.appendChild(loader);
+                wrap.appendChild(iframe);
+                stage.appendChild(wrap);
 
-            const iframe = document.createElement('iframe');
-            iframe.src = src;
-            iframe.title = 'Self Learners · ' + pageId;
-            iframe.setAttribute('loading', 'lazy');
-            iframe.style.cssText = 'width:100%;min-height:calc(100vh - 100px);border:none;display:block;background:transparent;';
-
-            wrap.appendChild(loader);
-            wrap.appendChild(iframe);
-            stage.appendChild(wrap);
-
-            iframe.addEventListener('load', () => {
-                try {
-                    iframe.contentWindow.postMessage({ type: 'SL_THEME', theme: THEME }, '*');
-                } catch (e) {}
-                wrap.style.opacity = '1';
-                wrap.style.pointerEvents = 'auto';
-                loader.style.display = 'none';
-            });
-
-            setTimeout(() => {
-                if (loader.style.display !== 'none') {
+                iframe.addEventListener('load', () => {
+                    try {
+                        iframe.contentWindow.postMessage({ type: 'SL_THEME', theme: THEME }, '*');
+                    } catch (e) { /* ignore */ }
                     wrap.style.opacity = '1';
                     wrap.style.pointerEvents = 'auto';
                     loader.style.display = 'none';
-                }
-            }, 3000);
+                });
 
-            frames.set(pageId, wrap);
+                setTimeout(() => {
+                    if (loader.style.display !== 'none') {
+                        wrap.style.opacity = '1';
+                        wrap.style.pointerEvents = 'auto';
+                        loader.style.display = 'none';
+                    }
+                }, 3000);
+
+                frames.set(pageId, wrap);
+            }
+
+            frames.forEach((wrap, id) => {
+                const isActive = id === pageId;
+                wrap.classList.toggle('active', isActive);
+                wrap.style.opacity = isActive ? '1' : '0';
+                wrap.style.pointerEvents = isActive ? 'auto' : 'none';
+                wrap.style.position = isActive ? 'relative' : 'absolute';
+                wrap.style.display = isActive ? 'block' : 'none';
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        frames.forEach((wrap, id) => {
-            const isActive = id === pageId;
-            wrap.classList.toggle('active', isActive);
-            wrap.style.opacity = isActive ? '1' : '0';
-            wrap.style.pointerEvents = isActive ? 'auto' : 'none';
-            wrap.style.position = isActive ? 'relative' : 'absolute';
-            wrap.style.display = isActive ? 'block' : 'none';
+        topButtons.forEach(btn => {
+            btn.addEventListener('click', () => showPage(btn.dataset.page, btn.dataset.src));
+        });
+        bottomButtons.forEach(btn => {
+            btn.addEventListener('click', () => showPage(btn.dataset.page, btn.dataset.src));
         });
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+        showPage('edu', 'page-edu.html');
+        window.__showPage = showPage;
+    })();
 
-    topButtons.forEach(btn => {
-        btn.addEventListener('click', () => showPage(btn.dataset.page, btn.dataset.src));
-    });
-    bottomButtons.forEach(btn => {
-        btn.addEventListener('click', () => showPage(btn.dataset.page, btn.dataset.src));
-    });
+    /* ---------- PWA: Service Worker + Install Prompt ---------- */
+    (function () {
+        const KEY_INSTALL_DISMISSED = 'slInstallDismissed';
+        const banner = document.getElementById('installBanner');
+        const installBtn = document.getElementById('installBtn');
+        const installClose = document.getElementById('installClose');
+        let deferredPrompt = null;
 
-    showPage('edu', 'page-edu.html');
-    window.__showPage = showPage;
-})();
+        // 1. Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch((err) => {
+                    console.warn('SW registration failed:', err);
+                });
+            });
+        }
+
+        // 2. Detect standalone (already installed)
+        function isStandalone() {
+            return window.matchMedia('(display-mode: standalone)').matches
+                || window.navigator.standalone === true;
+        }
+
+        // 3. Dismiss logic (24-hour cooldown)
+        function shouldShowBanner() {
+            if (isStandalone()) return false;
+            try {
+                const dismissed = localStorage.getItem(KEY_INSTALL_DISMISSED);
+                if (!dismissed) return true;
+                const dayMs = 24 * 60 * 60 * 1000;
+                return (Date.now() - parseInt(dismissed, 10)) > dayMs;
+            } catch (e) { return true; }
+        }
+
+        function showBanner() {
+            if (!banner) return;
+            if (!shouldShowBanner()) return;
+            setTimeout(() => banner.classList.add('show'), 2000);
+        }
+
+        function hideBanner(persist) {
+            if (!banner) return;
+            banner.classList.remove('show');
+            if (persist) {
+                try { localStorage.setItem(KEY_INSTALL_DISMISSED, String(Date.now())); } catch (e) {}
+            }
+        }
+
+        // 4. Capture beforeinstallprompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showBanner();
+        });
+
+        // 5. Install button
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        hideBanner(true);
+                    }
+                    deferredPrompt = null;
+                } else {
+                    showManualInstructions();
+                }
+            });
+        }
+
+        // 6. Manual instructions fallback
+        function showManualInstructions() {
+            const ua = navigator.userAgent || '';
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+            const isAndroid = /Android/.test(ua);
+            let msg = '📲 To install Self Learners:\n\n';
+            if (isIOS) {
+                msg += '1. Tap the Share button (⬆️) at the bottom\n'
+                     + '2. Scroll and tap "Add to Home Screen"\n'
+                     + '3. Tap "Add"';
+            } else if (isAndroid) {
+                msg += '1. Tap the browser menu (⋮)\n'
+                     + '2. Tap "Install app" or "Add to Home Screen"\n'
+                     + '3. Confirm';
+            } else {
+                msg += '1. Look for the install icon in the address bar\n'
+                     + '2. Or open browser menu → "Install App"\n'
+                     + '3. Confirm';
+            }
+            alert(msg);
+        }
+
+        // 7. Close button
+        if (installClose) {
+            installClose.addEventListener('click', () => hideBanner(true));
+        }
+
+        // 8. If not installable via prompt, still show after 3s on mobile (helps iOS)
+        window.addEventListener('load', () => {
+            if (!isStandalone() && shouldShowBanner()) {
+                setTimeout(() => {
+                    if (!deferredPrompt && banner && !banner.classList.contains('show')) {
+                        banner.classList.add('show');
+                    }
+                }, 3000);
+            }
+        });
+
+        // 9. Hide if user installs from browser UI
+        window.addEventListener('appinstalled', () => {
+            hideBanner(true);
+            deferredPrompt = null;
+        });
+    })();
 </script>
 </body>
 </html>
